@@ -1,0 +1,101 @@
+/*Fuente Poppins*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+:root{
+	--fuente-principal:'Poppins', sans-serif;
+	--fuente-secundaria:'Roboto', sans-serif;
+
+	--color-celeste:#40CFFF;
+	--color-verde:#7fff00;
+	--color-blanco:#fff;
+	--color-negro:#000;
+	--color-azulsuave:#5BA9D9;
+	--color-grisclaro:#c4c4c4;
+	--color-grisoscuro:#A0BDC1;
+	--color-grisoscuro2:rgb(177, 200, 230);
+	--color-azulopaco:#011629;
+	--color-azulclaro:#99baf8;
+	--color-naranja:rgba(255, 99, 71, 0.986);
+	--color-amarillo:rgb(255, 245, 0);
+	--color-azul:rgb(6, 83, 184);
+	--color-celestesuave: rgb(207,224,252);
+}
+
+* {
+	/*Elimina los márgenes y espaciados predeterminados*/
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	line-height: 1.5;
+	font-family: var(--fuente-principal);
+}
+
+/*-----------------------
+Selector de estilo ID
+------------------------*/
+
+#menu {	
+	background-color: var(--color-negro);
+	color: var(--color-blanco);
+	font-weight: 400;
+}
+
+/*efecto para el menu*/
+.menu_barra {
+	list-style-type: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+/*efectos list item del manu*/
+.menu_barra li a {
+	display: block;
+	padding: 20px;
+	border-bottom: 3px solid transparent;
+	color: var(--color-verde);
+	text-decoration: none;
+}
+
+/*efectos de seleccion list item*/
+.menu_barra li a:hover {
+	background-color: var(--color-grisclaro);
+	color: var(--color-negro);
+	border-bottom: 3px solid var(--color-negro);
+}
+
+/*-----------------------
+Selector de estilo CLASS
+------------------------*/
+
+/*Efectos para todas las clases fila*/
+.fila {
+	display: flex;
+	flex-direction: row;
+}
+
+/*Efectos para todas las clases columna*/
+.columna {
+	flex-basis: 0;
+	flex-grow: 1;
+	margin-left: 5px;
+	margin-right: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+/* Efectos para todas las clases espaciado */
+.espaciado{
+	padding-top: 90px;
+	padding-bottom: 90px;
+}
+
+/* Efectos para todos los contenedores */
+.contenedor{
+	max-width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
