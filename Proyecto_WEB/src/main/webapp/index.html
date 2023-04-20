@@ -21,19 +21,19 @@
         <link rel="stylesheet" href="css/estilos.css">
     </head>
     <body>
-        <link rel="stylesheet" href="css/nav.css">
-<nav id="menu">
-    <div class="contenedor">
-        <ul class="menu_barra">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="#nosotros">Sobre Buho|+</a></li>
-            <li><a href="#proposito">Propósito</a></li>
-            <li><a href="#mision">Misión y Visión</a></li>
-            <li><a href="#lugares">Peliculas</a></li>
-            <li><a href="#ubicanos">Ubicanos</a></li>
-            <li><a href="#pie">Contactanos</a></li>
-        </ul>
-    </div>
-</nav><!--fin menu-->
+        <nav id="menu">
+            <div class="cont"></div>
+        </nav>
+
+        <footer id="pie">
+            <div class="piee"></div>
+        </footer>
+
+        <script>
+            $(document).ready(function () {
+            $('.cont').load('./liquido.html');
+            $('.piee').load('./pie.html');
+            });
+        </script>
     </body>
 </html>
