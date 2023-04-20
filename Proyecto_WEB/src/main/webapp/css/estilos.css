@@ -29,8 +29,8 @@
 }
 
 body {
-	line-height: 1.5;
 	font-family: var(--fuente-principal);
+	/* background-color: var(--color-negro); */
 }
 
 /*-----------------------
@@ -39,19 +39,18 @@ Selector de estilo ID
 
 #menu {	
 	background-color: var(--color-negro);
-	color: var(--color-blanco);
-	font-weight: 400;
+	
 }
 
-/*efecto para el menu*/
+/* efecto para el menu
 .menu_barra {
 	list-style-type: none;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-}
+} */
 
-/*efectos list item del manu*/
+/* efectos list item del manu
 .menu_barra li a {
 	display: block;
 	padding: 20px;
@@ -60,12 +59,12 @@ Selector de estilo ID
 	text-decoration: none;
 }
 
-/*efectos de seleccion list item*/
+
 .menu_barra li a:hover {
 	background-color: var(--color-grisclaro);
 	color: var(--color-negro);
 	border-bottom: 3px solid var(--color-negro);
-}
+} */
 
 /*-----------------------
 Selector de estilo CLASS
