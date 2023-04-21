@@ -25,8 +25,20 @@
             <div class="cont"></div>
         </nav>
         
+        <section id="slider" class="espaciado">
+            <div class="contenedor">
+                <div class="bxslider">
+                    <div><img src="imagenes/th.jpg" title="peli1" class="ajuste_img"></div>
+                    <div><img src="imagenes/OIP.jpg" title="peli1" class="ajuste_img"></div>
+                </div>
+            </div>
+        </section>
         
-        
+        <section id="cartel">
+            <div class="fila">
+            </div>
+        </section>
+
         <section id="infor">
             <div class="informacion"></div>
         </section>
@@ -36,6 +48,28 @@
         
         <section id="peliculas">
             <div class="peli"></div>
+                <form id="formulario" action="">
+                    <div class="entrada">
+                        <select class="campo" id="lstPelicula" name="lstPelicula">
+                            <option value="" selected hidden>Pelicula</option>
+                        </select>
+                    </div>
+                    <div class="entrada">
+                        <select class="campo" id="lstCiudad" name="lstCiudad">
+                            <option value="" selected hidden>Pelicula</option>
+                        </select>
+                    </div>
+                    <div class="entrada">
+                        <select class="campo" id="lstCine" name="lstCine">
+                            <option value="" selected hidden>Pelicula</option>
+                        </select>
+                    </div>
+                    <div class="entrada">
+                        <select class="campo" id="lstFecha" name="lstFecha">
+                            <option value="" selected hidden>Pelicula</option>
+                        </select>
+                    </div>
+            </div>
         </section>
 
         <section id="ubicanos" class="espaciado">
@@ -50,7 +84,8 @@
 		</section><!-- finde seccion contactanos  -->
 
         <footer id="pie">
-            <div class="piee"></div>
+            <div class="piee">
+            </div>
         </footer>
 
         <script>
@@ -62,5 +97,8 @@
             $('.informacion').load('./info.html');
             });
         </script>
+
+        <!--js para el slider-->
+        <script type="text/javascript" src="scripts/slider.js"></script>
     </body>
 </html>
