@@ -13,6 +13,7 @@ public interface IControl {
     List<Categoria> liscat();
     List<Sala> lisala();
     List<PeliCate> lispelicat();
+    List<Usuarios> lisusu();
     
     void addasi(Asiento a);
     void addbol(Boleto b);

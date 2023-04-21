@@ -503,6 +503,30 @@ public class Control implements IControl{
         }
         return lis; 
     }
+
+    @Override
+    public List<Usuarios> lisusu() {
+        List<Usuarios> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select usuarios_nombre, usuarios_pssw from usuarios";
+            PreparedStatement st=cn.prepareStatement(sql);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                Usuarios a=new Usuarios();
+                a.setUser(rs.getString(1));
+                a.setPssw(rs.getString(2));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis; 
+    
+    }
 }
            
                 

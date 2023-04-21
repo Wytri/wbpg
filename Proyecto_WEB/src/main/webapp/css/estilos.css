@@ -22,6 +22,10 @@
 	--color-celestesuave: rgb(207,224,252);
 }
 
+#tabla_cliente {
+    justify-content: space-evenly;
+}
+
 * {
 	/*Elimina los márgenes y espaciados predeterminados*/
 	margin: 0;
