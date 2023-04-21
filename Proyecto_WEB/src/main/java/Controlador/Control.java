@@ -476,6 +476,33 @@ public class Control implements IControl{
     public void delsala(String s) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public List<PeliCate> lispelicat() {
+        List<PeliCate> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select c.Categoria_id, c.Categoria_name, p.Pelicula_id, p.Pelicula_name, p.Pelicula_duracion, p.Pelicula_costo from Pelicula p, Categoria c where p.Categoria_id=c.Categoria_id";
+            PreparedStatement st=cn.prepareStatement(sql);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                PeliCate a=new PeliCate();
+                a.setCodc(rs.getString(1));
+                a.setNomec(rs.getString(2));
+                a.setCodp(rs.getString(3));
+                a.setNomp(rs.getString(4));
+                a.setDur(rs.getDouble(5));
+                a.setCost(rs.getDouble(6));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis; 
+    }
 }
            
                 
