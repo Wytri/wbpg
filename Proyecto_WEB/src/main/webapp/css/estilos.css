@@ -115,6 +115,11 @@ Selector de estilo CLASS
     flex-direction:row;
   }
 
+.entrada h2{
+	margin-left: 200px;
+	color: #f4f4f4;
+}
+
 #formulario{
   background-color: #222;
   color: #222;
@@ -136,4 +141,25 @@ Selector de estilo CLASS
 	border-right: 1px solid var(--color-grisclaro);
 	font:inherit;
 	color:var(--color-grisoscuro2)
+}
+
+.boton{
+	background-color: #222;
+	color: white;
+	padding: 45px 0px;
+	margin-left: 50px;
+	width: 100%;
+	cursor: pointer;
+	font: inherit;
+	border: none;
+	transition: all 0.5s;
+}
+
+.boton:hover{
+	color: #44d64c;
+}
+
+#slider{
+	display: flex;
+	justify-content: space-evenly;
 }
