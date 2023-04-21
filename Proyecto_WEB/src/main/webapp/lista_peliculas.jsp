@@ -34,7 +34,7 @@
                                         for (PeliCate x: obj.lispelicat()) {
                                     %>
                                         <tr>
-                                            <td><%=x.getNomp()%></td>
+                                            <td><%=x.getCodp()%></td>
                                             <td><%=x.getNomec()%></td>
                                             <td><%=x.getNomp()%></td>
                                             <td><%=x.getDur()%></td>
