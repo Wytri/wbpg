@@ -7,13 +7,34 @@
   box-sizing: border-box; }
 
 body {
-  background-color: #fee1e1; }
+  background-color: #2e2c2c; }
 
 #pie {
-  background-color: #000;
+  background-color: #000000;
   padding-top: 15px;
   padding-bottom: 15px;
-  margin-top: -8px; }
+  margin-top: -8px; 
+  /*flex-direction: column*/
+}
+
+#pie .sm{
+  flex-direction: column;
+}
+#pie .line{
+  flex-direction: row;
+}
+#pie .icons{
+  flex-direction: row;
+}
+#pie .test{
+  flex-direction: column-reverse;
+  color: #44d64c;
+  justify-content: space-evenly;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-left: 1px;
+  padding-right: 1px;
+}
 
 .icons {
   display: flex;
@@ -57,8 +78,8 @@ body {
   outline-color: #0077b5; }
 
 .icon--facebook:hover {
-  background-color: #362ea4;
-  outline-color: #362ea4; }
+  background-color: #1336fd;
+  outline-color: #1336fd; }
 
 @keyframes shake {
   10% {
@@ -88,7 +109,7 @@ body {
 #tocame {
   font-family: 'Oswald', sans-serif;
   font-size: 1.6rem;
-  color: #fdf497; }
+  color: #44d64c; }
 
 .line {
   width: 30rem;
@@ -150,4 +171,13 @@ body {
   flex-basis: 0;
   flex-grow: 1; }
 
+.entrada{
+    margin: 50px 50px;
+    flex-direction:row;
+}
 
+#formulario{
+
+  padding: 10x 30px;
+  border: none;
+}
