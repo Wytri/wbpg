@@ -12,6 +12,7 @@ function validacionformulario(evento){
     var nombre = document.getElementById("txtnombres").value;
     // alert(nombre);
     // ||  =  o
+    // XD
     if(nombre == null || nombre.length==0){
         menserr.innerHTML="El nombre no debe estar vacio";
         alert("El nombre no debe estar vacio")
