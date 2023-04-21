@@ -1,0 +1,139 @@
+/*Fuente Poppins*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@300&family=Dosis:wght@200&family=Roboto+Condensed:ital,wght@1,300&family=Roboto+Mono:wght@200&display=swap');
+
+:root{
+	--fuente-principal:'Poppins', sans-serif;
+	--fuente-secundaria:'Roboto', sans-serif;
+
+	--color-celeste:#40CFFF;
+	--color-verde:#7fff00;
+	--color-blanco:#fff;
+	--color-grisoscuro3: #454545;
+	--color-negro:#000;
+	--color-azulsuave:#5BA9D9;
+	--color-grisclaro:#c4c4c4;
+	--color-grisoscuro:#A0BDC1;
+	--color-grisoscuro2:rgb(177, 200, 230);
+	--color-azulopaco:#011629;
+	--color-azulclaro:#99baf8;
+	--color-naranja:rgba(255, 99, 71, 0.986);
+	--color-amarillo:rgb(255, 245, 0);
+	--color-azul:rgb(6, 83, 184);
+	--color-celestesuave: rgb(207,224,252);
+    --color-amarillo: #f3ff49;
+}
+
+* {
+	/*Elimina los márgenes y espaciados predeterminados*/
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: var(--fuente-principal);
+	/* background-color: var(--color-negro); */
+}
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+#contactanos {
+    background-color: var(--color-blanco);
+    padding: 50px;
+}
+
+.contenedorF{
+    max-width: 70%; /* Utilizara como maximo el 90% del ancho de la pantalla*/
+    /* centra el contenido entre */
+    /* el margen izq y der */
+    margin-left: auto;
+    margin-right: auto;
+    
+    /* color: var(--color-blanco); */
+}
+
+#formulario_contacto {
+    box-shadow: 0 15px 20px 0 rgb(32 54 70 / 20%) !important;
+    padding: 40px 85px; 
+    
+}
+
+#formulario_contacto h1 {
+    background-color: var(--color-blanco);
+    color: var(--color-azul);
+    font-size: 50px;
+    padding: 0px 0px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    font-family: var(--fuente-principal);
+}
+
+#formulario_contacto h2 {
+    background-color: var(--color-blanco);
+    color: var(--color-negro);
+    font-size: 27px;
+    padding: 0px 5px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    font-family: var(--fuente-principal);
+}
+
+#formulario_contacto h3 {
+    background-color: var(--color-blanco);
+    color: var(--color-negro);
+    font-size: 14px;
+    padding: 0px 5px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    font-family: var(--fuente-secundaria);
+}
+
+.campos {
+    width: 100%;
+    padding: 10px 0px;
+    border: none; /* quieta el borde */
+    outline: none; /* quieta el borde al pasar el mouse encima */
+    border-bottom: 1px solid var(--color-azulopaco);
+    font: inherit; /* hereda la misma letra que la caja padre del formulario */
+}
+
+.campo1 {
+    width: 100%;
+    padding: 10px 0px;
+    border: none; /* quieta el borde */
+    outline: none; /* quieta el borde al pasar el mouse encima */
+    border-bottom: 1px solid var(--color-azulopaco);
+    font: inherit; /* hereda la misma letra que la caja padre del formulario */
+    cursor: pointer;
+}
+
+#formulario_contacto p {
+    padding: 12px 0px;
+    text-align: center;
+}
+
+#formulario_contacto a {
+    padding: 0px 0px;
+    color: var(--color-naranja_O);
+    text-decoration: none; /* quitar el subrayado */
+    font-size: 15px;
+    display: contents;
+    font-weight: 0;
+    color: var(--color-azul); 
+}
+
+
+.boton_enviar {
+	background-color: var(--color-grisoscuro3);
+	color: var(--color-blanco);
+	padding: 15px 20px; 
+	width: 50%;
+	border: none;
+	font: inherit;
+	border-radius: 15px;
+	cursor: pointer;
+	transition: all 1s;
+  }
+  
+  .boton_enviar:hover{
+	background-color: var(--color-azulopaco);
+  } 
