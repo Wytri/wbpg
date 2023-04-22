@@ -1,0 +1,77 @@
+/*Fuente Poppins*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+:root{
+	--fuente-principal:'Poppins', sans-serif;
+	--fuente-secundaria:'Roboto', sans-serif;
+
+	--color-celeste:#40CFFF;
+	--color-verde:#7fff00;
+	--color-blanco:#fff;
+	--color-grisoscuro3: #454545;
+	--color-negro:#000;
+	--color-azulsuave:#5BA9D9;
+	--color-grisclaro:#c4c4c4;
+	--color-grisoscuro:#A0BDC1;
+	--color-grisoscuro2:rgb(177, 200, 230);
+	--color-azulopaco:#011629;
+	--color-azulclaro:#99baf8;
+	--color-naranja:rgba(255, 99, 71, 0.986);
+	--color-amarillo:rgb(255, 245, 0);
+	--color-azul:rgb(6, 83, 184);
+	--color-celestesuave: rgb(207,224,252);
+}
+
+* {
+	/*Elimina los márgenes y espaciados predeterminados*/
+	margin: 0;
+	padding: 0;
+}
+
+h2 {
+	font-size: 36px;
+	text-align: center;
+	padding-bottom: 20px;
+	font-weight: 500;
+}
+
+body {
+	font-family: var(--fuente-principal);
+	/* background-color: var(--color-negro); */
+}
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+#nosotros {
+    background-color: var(--color-blanco);
+    padding: 50px;
+}
+
+.espaciado{
+	padding-top: 90px;
+	padding-bottom: 90px;
+}
+
+#nosotros h3{
+    text-align: center;
+    font-size: 40px;
+}
+
+#proposito h2{
+    text-align: center;
+    font-family: var(--fuente-secundaria);
+    color: var(--color-blanco);
+}
+
+#proposito img{
+	width: 80%;
+	border-radius: 15%;
+}
+
+#mision{
+    background-color: var(--color-azulopaco);
+    color: var(--color-blanco);
+}
+
+#mision p{
+    text-align: center;
+}
