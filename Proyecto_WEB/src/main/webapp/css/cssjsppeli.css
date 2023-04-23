@@ -1,0 +1,15 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+#tabl tbody tr td{
+	border: 1px solid #fff;
+}
+
+.tabla thead tr th{
+	text-align: left;
+	background-color: #fff;
+        color: #000;
+	padding: 8px;
+}

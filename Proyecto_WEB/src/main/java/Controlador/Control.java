@@ -424,7 +424,21 @@ public class Control implements IControl{
 
     @Override
     public void modcli(Cliente c) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="UPDATE Cliente SET Cliente_name=?,Cliente_lastname=?, Paciente_edad=? WHERE Cliente_id=?";
+            CallableStatement st=cn.prepareCall(sql);
+            st.setString(1, c.getNombre());
+            st.setString(2, c.getApellido());
+            st.setInt(3, c.getEdad());
+            st.setInt(4, c.getDni());
+            st.executeUpdate();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
     }
 
     @Override
@@ -509,13 +523,14 @@ public class Control implements IControl{
         List<Usuarios> lis=new ArrayList();
         Connection cn=SQLConexion.getConexion();
         try{
-            String sql="select usuarios_nombre, usuarios_pssw from usuarios";
+            String sql="select* from usuarios";
             PreparedStatement st=cn.prepareStatement(sql);
             ResultSet rs=st.executeQuery();
             while(rs.next()){
                 Usuarios a=new Usuarios();
-                a.setUser(rs.getString(1));
-                a.setPssw(rs.getString(2));
+                a.setId(rs.getString(1));
+                a.setUser(rs.getString(2));
+                a.setPssw(rs.getString(3));
                 lis.add(a);
             }
         }catch(Exception ex){
@@ -526,6 +541,31 @@ public class Control implements IControl{
         }
         return lis; 
     
+    }
+
+    @Override
+    public List<Trabajadores> listra() {
+        List<Trabajadores> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select * from Trabajadores";
+            PreparedStatement st=cn.prepareStatement(sql);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                Trabajadores a = new Trabajadores();
+                a.setId(rs.getString(1));
+                a.setNom(rs.getString(2));
+                a.setApe(rs.getString(3));
+                a.setFh(rs.getString(4));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis; 
     }
 }
            

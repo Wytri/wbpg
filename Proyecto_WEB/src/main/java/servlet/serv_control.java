@@ -2,23 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package Servlet;
+package servlet;
 
+import Controlador.Control;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.*;
-import Controlador.Control;
-import Interfaz.IControl;
+import modelo.Cliente;
+import modelo.Usuarios;
 
 /**
  *
- * @author jefri
+ * @author henry
  */
-public class servlet_control extends HttpServlet {
+public class serv_control extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,8 +36,8 @@ public class servlet_control extends HttpServlet {
         int op=Integer.parseInt(request.getParameter("opc"));
         
             if (op==1) login(request, response);
-            
-            //if (op==2) modcli(request, response);
+            if (op==2) modcli(request, response);
+//            if (op==3) mod(request, response);
     }
     
     Control obj = new Control();
@@ -65,17 +65,34 @@ public class servlet_control extends HttpServlet {
             }
     }
     
-    /*protected void modcli(HttpServletRequest request, HttpServletResponse response)
+    protected void modcli(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-            String nom = request.getParameter("nom");
-            String ape = request.getParameter("ape");
-            int eda = Integer.parseInt(request.getParameter("eda"));
-            int dni = Integer.parseInt(request.getParameter("dni"));
+            String Nom = request.getParameter("nom");
+            String Ape = request.getParameter("ape");
+            int Eda = Integer.parseInt(request.getParameter("eda"));
+            int Dni = Integer.parseInt(request.getParameter("dni"));
+            obj.modcli(new Cliente(Dni, Nom, Ape, Eda));
+            request.setAttribute("dato1", "ERROR");
+            request.getRequestDispatcher("/modificar.jsp").forward(request, response);
+    }
+    
+    
+//    protected void mod(HttpServletRequest request, HttpServletResponse response)
+//        throws ServletException, IOException {
+//        int d=(int)request.getAttribute("data");
+//        int d=Integer.parseInt(request.getParameter("dni"));
+//        String nom="";
+//        String ape="";
+//        int eda=0;
             
-            
-            
-    }*/
+//            
+//        Cliente c;
+//        c=new Cliente(11111111, "XSSSSS", "WDWD", 12);
+//        obj.modcli(c);
+//        request.setAttribute("dato1", "xxxxxxx");
+//        request.getRequestDispatcher("/modificar.jsp").forward(request, response);
+//    } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

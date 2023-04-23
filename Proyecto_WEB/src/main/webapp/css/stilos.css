@@ -7,7 +7,8 @@
   box-sizing: border-box; }
 
 body {
-  background-color: #2e2c2c; }
+  background-color: #2e2c2c;
+}
 
 #pie {
   background-color: #000000;
@@ -27,8 +28,9 @@ body {
   flex-direction: row;
 }
 #pie .test{
+  text-align: end;
   flex-direction: column-reverse;
-  color: #44d64c;
+  color: #fff;
   justify-content: space-evenly;
   margin-left: 15px;
   margin-bottom: 15px;
@@ -183,3 +185,7 @@ body {
   border: none;
 }
 
+.test a {
+  padding: 0;
+  color: #bed644;
+}
