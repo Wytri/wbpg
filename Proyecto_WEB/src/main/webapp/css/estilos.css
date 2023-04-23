@@ -192,3 +192,120 @@ Selector de estilo CLASS
 	background-color: var(--color-blanco);
 	padding: 30px;
 }
+
+.box{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #23242a;
+	position: relative;
+	width: 340px;
+	height: 460px;
+	border-radius: 18px;
+	overflow: hidden;
+}
+
+.box form{
+	position: absolute;
+	inset: 4px;
+	background-color: #222;
+	padding: 20px 20px;
+	border-radius: 4%;
+	z-index: 2;
+	display: flex;
+
+}
+
+.box::before{
+	content: '';
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 380px;
+	height: 420px;
+	background: linear-gradient(0deg,transparent,
+	transparent,#45f3ff,#45f3ff,#45f3ff);
+	z-index: 1;
+	transform-origin: bottom right;
+	animation: animate 6s linear infinite;
+	animation-delay: -2.5s;
+}
+
+.box::after{
+	content: '';
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 380px;
+	height: 420px;
+	background: linear-gradient(0deg,transparent,
+	transparent,#45f3ff,#45f3ff,#45f3ff);
+	z-index: 1;
+	transform-origin: bottom right;
+	animation: animate 6s linear infinite;
+	animation-delay: -4s;
+}
+
+.borderline
+{
+	position: absolute;
+	top: 0;
+	inset: 0;
+}
+
+.borderline::before
+{
+	content: '';
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 380px;
+	height: 420px;
+	background: linear-gradient(0deg,transparent,
+	transparent,#ff2770,#ff2770,#ff2770);
+	z-index: 1;
+	transform-origin: bottom right;
+	animation: animate 6s linear infinite;
+	animation-delay: 0.5s;
+}
+
+.borderline::after
+{
+	content: '';
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 380px;
+	height: 420px;
+	background: linear-gradient(0deg,transparent,
+	transparent,#ff2770,#ff2770,#ff2770);
+	z-index: 1;
+	transform-origin: bottom right;
+	animation: animate 6s linear infinite;
+	animation-delay: -1s;
+}
+
+.pelicula:hover{
+	transform: scale(1.09);
+	transform-origin: center;
+	overflow: visible;
+	transition: .3s ease all;
+	box-shadow: 5px 5px 10px rgb(0,0,0,.3	);
+}
+
+.pelicula img{
+	width: 100%;
+	
+	border-radius: 15px;
+}
+
+@keyframes animate{
+	0%
+	{
+		transform: rotate(0deg);
+	}
+	100%
+	{
+		transform: rotate(360deg);
+	}
+}
