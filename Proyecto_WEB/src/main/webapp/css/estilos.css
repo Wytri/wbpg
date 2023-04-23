@@ -79,6 +79,8 @@ Selector de estilo CLASS
 .fila {
 	display: flex;
 	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
 }
 
 /*Efectos para todas las clases columna*/
@@ -167,4 +169,26 @@ Selector de estilo CLASS
 #slider{
 	display: flex;
 	justify-content: space-evenly;
+}
+
+#nosotros img {
+	width: 30%;
+	padding-top: 25px;
+}
+
+#tab_peli {
+	background-color: var(--color-negro);
+}
+
+#pelisl .fila{
+	padding-top: 50px;
+}
+
+#ubicanos {
+	background-color: var(--color-grisoscuro3);
+}
+
+#formulario {
+	background-color: var(--color-blanco);
+	padding: 30px;
 }

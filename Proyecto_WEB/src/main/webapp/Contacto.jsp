@@ -26,19 +26,19 @@
         <link rel="stylesheet" href="css/estilos.css">
     </head>
     <body>
-        <nav id="menu">
+        <!-- <nav id="menu">
             <div class="cont"></div>
         </nav>
         
         <section id="cartel">
             <div class="fila">
             </div>
-        </section>
+        </section> -->
 
 
         <section id="contactanos" class="espacios">
-            <div class="contenedorF">
-                <!--<div class="filaF">-->
+            <div class="contenedorF"> 
+                 <!-- <div class="filaF"> -->
                     <div class="columnaF">
                         <form id="formulario_contacto" action="" method="post">
         
@@ -96,19 +96,15 @@
                             
                             <p id="msjerror" class="error">
                             </p>
-        
                         </form>
-        
-        
                     </div>
                 <!-- </div> -->
             </div>
-        
         </section> <!-- contactanos -->  
         
         
         
-
+<!-- 
         <footer id="pie">
             <div class="piee">
             </div>
@@ -122,7 +118,7 @@
             
             $('.informacion').load('./info.html');
             });
-        </script>
+        </script> -->
 
 
     </body>

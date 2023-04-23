@@ -3,16 +3,20 @@ package modelo;
 
 
 public class Usuarios {
+    public String id;
     private String user;
     private String pssw;
 
     public Usuarios() {
     }
 
-    public Usuarios(String user, String pssw) {
+    public Usuarios(String id, String user, String pssw) {
+        this.id = id;
         this.user = user;
         this.pssw = pssw;
     }
+
+    
 
     /**
      * @return the user
@@ -40,6 +44,20 @@ public class Usuarios {
      */
     public void setPssw(String pssw) {
         this.pssw = pssw;
+    }
+
+    /**
+     * @return the id
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(String id) {
+        this.id = id;
     }
    
     

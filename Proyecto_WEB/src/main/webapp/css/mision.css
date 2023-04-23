@@ -11,6 +11,7 @@
 	--color-blanco:#fff;
 	--color-grisoscuro3: #454545;
 	--color-negro:#000;
+	--color-negrosuave:#000903;
 	--color-azulsuave:#5BA9D9;
 	--color-grisclaro:#c4c4c4;
 	--color-grisoscuro:#A0BDC1;
@@ -40,15 +41,20 @@ body {
 	font-family: var(--fuente-principal);
 	/* background-color: var(--color-negro); */
 }
-/*///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
 #nosotros {
-    background-color: var(--color-blanco);
+    background-color: var(--color-negro);	/* era blanco  */
+	color: var(--color-blanco);
     padding: 50px;
 }
 
 .espaciado{
 	padding-top: 90px;
 	padding-bottom: 90px;
+}
+
+#proposito {
+    background-color: #2e2c2c;
 }
 
 #nosotros h3{
@@ -60,6 +66,10 @@ body {
     text-align: center;
     font-family: var(--fuente-secundaria);
     color: var(--color-blanco);
+}
+
+#proposito h3 {
+	text-align: center;
 }
 
 #proposito img{

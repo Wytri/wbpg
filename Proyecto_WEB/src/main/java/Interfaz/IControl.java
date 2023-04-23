@@ -14,6 +14,7 @@ public interface IControl {
     List<Sala> lisala();
     List<PeliCate> lispelicat();
     List<Usuarios> lisusu();
+    List<Trabajadores> listra();
     
     void addasi(Asiento a);
     void addbol(Boleto b);
