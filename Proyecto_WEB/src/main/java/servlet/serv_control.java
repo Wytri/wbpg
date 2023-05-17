@@ -7,10 +7,16 @@ package servlet;
 import Controlador.Control;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import modelo.Asiento;
+import modelo.Boleto;
 import modelo.Cliente;
 import modelo.Usuarios;
 
@@ -19,7 +25,7 @@ import modelo.Usuarios;
  * @author henry
  */
 public class serv_control extends HttpServlet {
-
+    static SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,6 +43,7 @@ public class serv_control extends HttpServlet {
         
             if (op==1) login(request, response);
             if (op==2) modcli(request, response);
+            if (op==3) adicionarBoleta(request, response);
 //            if (op==3) mod(request, response);
     }
     
@@ -76,6 +83,37 @@ public class serv_control extends HttpServlet {
             request.setAttribute("dato1", "ERROR");
             request.getRequestDispatcher("/modificar.jsp").forward(request, response);
     }
+    
+    void adicionarBoleta(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        Control obj=new Control();
+        //HttpSession ses=request.getSession();
+        String nom=request.getParameter("txtnombres");
+        String ape=request.getParameter("txtapellidos");
+        int dni=Integer.parseInt(request.getParameter("txtdni"));
+        int edad=Integer.parseInt(request.getParameter("txtedad"));
+        //int asiento=Integer.parseInt(request.getParameter("tasiento"));
+        int asiento=9;
+        double pago=Integer.parseInt(request.getParameter("txtpago"));
+        String idpeli=request.getParameter("lstpelicula");
+        String idsala="S0001";
+        
+        List<Boleto> a = obj.codsbole();
+        String idBol= a.get(0).getCod();
+        
+        
+        //String codm=(String)ses.getAttribute("codmed");
+        
+        Cliente cl = new Cliente(dni, nom, ape, edad);
+        obj.addcli(cl);
+        Asiento as = new Asiento(asiento, idsala);
+        obj.addasi(as);
+        
+        Boleto b= new Boleto(idBol, dni, asiento, idsala, idpeli, sd.format(new Date()), pago);
+        obj.addbbb(b);
+        String pag="/registro.jsp";
+        request.getRequestDispatcher(pag).forward(request,
+        response);
+        }
     
     
 //    protected void mod(HttpServletRequest request, HttpServletResponse response)
