@@ -20,11 +20,6 @@
                     <input type="text" placeholder="Nombre" id="txtnombres" name="txtnombres" class="campo" required> 
                     <input type="text" placeholder="Apellidos" id="txtapellidos" name="txtapellidos" class="campo" required>
                     
-                    <select class="campo" id="lstsala" name="lstsala" required onchange="lista()">
-                        <option value="S0001" selected>S0001</option>
-                        <option value="S0002">S0002</option>
-                        <option value="S0003">S0003</option>
-                        </select>
                 <select class="campo" id="lstpelicula" name="lstpelicula" required onchange="cambio()">
 
                             <option value="" selected hidden>Escoger Película</option>
@@ -86,29 +81,7 @@
                                         }
                                         
                                     </script>
-                            
-                                    <script>
-                                        function lista(){
-                                        let sala=document.getElementById("lstsala");
-                                        let asiento=document.getElementById("tasiento");
-                                        sala.onchange= function(){
-                                            asiento.innerHTML="<option></option>";
-                                            if(this.value=="S0001"){
-                                                addToAsiento(asientos);
-                                            }
-                                            if(this.value=="S0002"){
-                                                addToAsiento(asientos);
-                                            }
-                                            if(this.value=="S0003"){
-                                                addToAsiento(asientos);
-                                            }
-                                        }
-                                        
-                                        function addToAsiento(arr){
-                                            
-                                        }
-                                    }
-                                    </script>
+
                     </select>
 
                     <select id="tasiento" name="tasiento" required>
