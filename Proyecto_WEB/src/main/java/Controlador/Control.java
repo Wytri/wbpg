@@ -617,6 +617,56 @@ public class Control implements IControl{
         }
         return lis; 
     }
+
+    @Override
+    public List<DetalleCombo> lisdetcom(int cod) {
+        List<DetalleCombo> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select* from DetalleCombos where IdCombo=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setInt(1, cod);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                DetalleCombo a=new DetalleCombo();
+                a.setDetcom(rs.getInt(1));
+                a.setCom(rs.getInt(2));
+                a.setCantidad(rs.getInt(3));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis;    
+    }
+
+    @Override
+    public List<DetalleProducto> lisdetpre(int cod) {
+        List<DetalleProducto> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select* from DetalleProducto where IdProducto=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setInt(1, cod);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                DetalleProducto a=new DetalleProducto();
+                a.setDetprod(rs.getInt(1));
+                a.setProd(rs.getInt(2));
+                a.setCant(rs.getInt(3));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis;    
+    }
 }
            
                 

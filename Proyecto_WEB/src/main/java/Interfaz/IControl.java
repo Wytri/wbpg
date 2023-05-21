@@ -17,6 +17,8 @@ public interface IControl {
     List<Trabajadores> listra();
     List<Combo> liscom();
     List<Productos> lisprod();
+    List<DetalleCombo> lisdetcom(int cod);
+    List<DetalleProducto> lisdetpre(int cod);
     
     void addasi(Asiento a);
     void addbol(Boleto b);
