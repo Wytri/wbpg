@@ -3,13 +3,15 @@ package modelo;
 
 public class Asiento {
     public int asiento;
+    public String tipoa;
     public String sala;
 
     public Asiento() {
     }
 
-    public Asiento(int asiento, String sala) {
+    public Asiento(int asiento, String tipoa, String sala) {
         this.asiento = asiento;
+        this.tipoa = tipoa;
         this.sala = sala;
     }
 
@@ -39,6 +41,20 @@ public class Asiento {
      */
     public void setSala(String sala) {
         this.sala = sala;
+    }
+
+    /**
+     * @return the tipoa
+     */
+    public String getTipoa() {
+        return tipoa;
+    }
+
+    /**
+     * @param tipoa the tipoa to set
+     */
+    public void setTipoa(String tipoa) {
+        this.tipoa = tipoa;
     }
 
     

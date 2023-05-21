@@ -3,13 +3,19 @@ package modelo;
 
 public class Sala {
     public String sala;
+    public int capacidad;
+    public String tipo;
 
     public Sala() {
     }
 
-    public Sala(String sala) {
+    public Sala(String sala, int capacidad, String tipo) {
         this.sala = sala;
+        this.capacidad = capacidad;
+        this.tipo = tipo;
     }
+
+    
 
     /**
      * @return the sala
@@ -23,6 +29,34 @@ public class Sala {
      */
     public void setSala(String sala) {
         this.sala = sala;
+    }
+
+    /**
+     * @return the capacidad
+     */
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    /**
+     * @param capacidad the capacidad to set
+     */
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    /**
+     * @return the tipo
+     */
+    public String getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
    
