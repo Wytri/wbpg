@@ -26,24 +26,24 @@
                         HttpSession ses=request.getSession();
                         ses.setAttribute("codPeli", codPeli);
                         ses.setAttribute("costo", costo);
+                        
+                        String idsala=request.getParameter("tpg");
+                        ses.setAttribute("codigo", idsala);
                         %>
                     </div>
                     <div class="fila">
-                        <table class="tabla">
-                            <select class="campo" id="lstsala" name="lstsala" required onchange="cambio()">
+                        <form action="pagRegistrar.jsp" method="post" name="fr">
+                        <table border=1 class="caja">
+                            <select class="campo" id="lstsala" name="lstsala" required onclick="cambio()">
                         <option value="S0001" selected>S0001</option>
                         <option value="S0002">S0002</option>
                         <option value="S0003">S0003</option>
                         </select>
                         </table><!-- fin tabla-->
+                        <input type="submit">
+                        </form>
                     </div> <!-- fila -->
-                    <script>
-                        function cambio(){
-                            var id=document.getElementById("lstsala").value;
-                            
-                        }
-                    </script>
-                    <br><a type="submit" href="pagRegistrar.jsp?idsala=id">Enviar</a>
+                    
 		</div> <!-- contenedor -->
 	</section> <!-- tabla -->
     </body>

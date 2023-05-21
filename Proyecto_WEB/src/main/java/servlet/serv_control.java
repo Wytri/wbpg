@@ -70,7 +70,7 @@ public class serv_control extends HttpServlet {
         request.setAttribute("dato", obj.lispeli(cod));
         String pag="/pagPeliculas.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
-    }
+         
 //    
 //    protected void modcli(HttpServletRequest request, HttpServletResponse response)
 //            throws ServletException, IOException {
