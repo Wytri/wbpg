@@ -1,11 +1,18 @@
 
 package modelo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Cliente {
     public int dni;
     public String nombre;
     public String apellido;
-    public int edad;
+    public String birth;
+    public String correo;
+    public String tel;
 
     public Cliente() {
     }
@@ -13,18 +20,29 @@ public class Cliente {
     public Cliente(int dni) {
         this.dni = dni;
     }
-
-    public Cliente(int dni, String nombre, String apellido, int edad) {
+    
+    public Cliente(int dni, String nombre, String apellido, String birth, String correo, String tel) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.edad = edad;
+        this.birth = birth;
+        this.correo = correo;
+        this.tel = tel;
     }
 
-    
+    public int edad() throws ParseException{
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+            
+        Calendar cal = null;
+        Date date = (Date)formato.parse(birth); 
+        cal=Calendar.getInstance();
+        cal.setTime(date);
+            
+        return cal.get(Calendar.YEAR);
+    }
     
     public String print(){
-        String cad="\n Nombre: "+getNombre()+"\n DNI: "+getDni()+"\n Apellido: "+getApellido()+"\n Edad: "+getEdad();
+        String cad="\n Nombre: "+getNombre()+"\n DNI: "+getDni()+"\n Apellido: "+getApellido()+"\n Edad: "+getTel();
         return cad;
     }
 
@@ -71,16 +89,45 @@ public class Cliente {
     }
 
     /**
-     * @return the edad
+     * @return the birth
      */
-    public int getEdad() {
-        return edad;
+    public String getBirth() {
+        return birth;
     }
 
     /**
-     * @param edad the edad to set
+     * @param birth the birth to set
      */
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setBirth(String birth) {
+        this.birth = birth;
     }
+
+    /**
+     * @return the correo
+     */
+    public String getCorreo() {
+        return correo;
+    }
+
+    /**
+     * @param correo the correo to set
+     */
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    /**
+     * @return the tel
+     */
+    public String getTel() {
+        return tel;
+    }
+
+    /**
+     * @param tel the tel to set
+     */
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
 }
