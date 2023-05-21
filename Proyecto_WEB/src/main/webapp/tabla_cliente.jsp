@@ -51,7 +51,6 @@
                                         <td style="background-color: #d24d76"><%=x.getDni()%></td>
                                         <td><%=x.getNombre()%> </td>
                                         <td><%=x.getApellido()%> </td>
-                                        <td><%=x.getEdad()%> </td>
                                     </tr>
 
                                 <%

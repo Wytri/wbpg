@@ -23,7 +23,8 @@ public class Control implements IControl{
             while(rs.next()){
                 Asiento a=new Asiento();
                 a.setAsiento(rs.getInt(1));
-                a.setSala(rs.getString(2));
+                a.setTipoa(rs.getString(2));
+                a.setSala(rs.getString(3));
                 lis.add(a);
             }
         }catch(Exception ex){
@@ -46,7 +47,8 @@ public class Control implements IControl{
             while(rs.next()){
                 Asiento a=new Asiento();
                 a.setAsiento(rs.getInt(1));
-                a.setSala(rs.getString(2));
+                a.setTipoa(rs.getString(2));
+                a.setSala(rs.getString(3));
                 lis.add(a);
             }
         }catch(Exception ex){
@@ -68,13 +70,10 @@ public class Control implements IControl{
             ResultSet rs=st.executeQuery();
             while(rs.next()){
                 Boleto a=new Boleto();
-                a.setCod(rs.getString(1));
-                a.setDni(rs.getInt(2));
-                a.setIdasiento(rs.getInt(3));
-                a.setIdsala(rs.getString(4));
-                a.setIdpeli(rs.getString(5));
-                a.setFecha(rs.getString(6));
-                a.setPago(rs.getDouble(7));
+                a.setBoleta(rs.getString(1));
+                a.setDetalle(rs.getInt(2));
+                a.setDni(rs.getInt(3));
+                a.setPago(rs.getDouble(4));
                 lis.add(a);
             }
         }catch(Exception ex){
@@ -99,7 +98,9 @@ public class Control implements IControl{
                 a.setDni(rs.getInt(1));
                 a.setNombre(rs.getString(2));
                 a.setApellido(rs.getString(3));
-                a.setEdad(rs.getInt(4));
+                a.setBirth(rs.getString(4));
+                a.setCorreo(rs.getString(5));
+                a.setTel(rs.getString(6));
                 lis.add(a);
             }
         }catch(Exception ex){
@@ -124,8 +125,11 @@ public class Control implements IControl{
                 a.setIdpeli(rs.getString(1));
                 a.setIdcad(rs.getString(2));
                 a.setNom(rs.getString(3));
-                a.setDuracion(rs.getDouble(4));
-                a.setCosto(rs.getDouble(5));
+                a.setAnnio(rs.getInt(4));
+                a.setDuracion(rs.getDouble(5));
+                a.setCosto(rs.getDouble(6));
+                a.setClasificacio(rs.getString(7));
+                a.setSinop(rs.getString(8));
                 lis.add(a);
             }
         }catch(Exception ex){
@@ -148,6 +152,8 @@ public class Control implements IControl{
             while(rs.next()){
                 Sala a=new Sala();
                 a.setSala(rs.getString(1));
+                a.setCapacidad(rs.getInt(2));
+                a.setTipo(rs.getString(3));
                 lis.add(a);
             }
         }catch(Exception ex){
@@ -183,6 +189,36 @@ public class Control implements IControl{
     }
     
     //buscar especifico
+    public List<Pelicula> lispeli(String ID) {
+       List<Pelicula> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select * from Pelicula where Categoria_id=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setString(1, ID);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                Pelicula a=new Pelicula();
+                a.setIdpeli(rs.getString(1));
+                a.setIdcad(rs.getString(2));
+                a.setNom(rs.getString(3));
+                a.setAnnio(rs.getInt(4));
+                a.setDuracion(rs.getDouble(5));
+                a.setCosto(rs.getDouble(6));
+                a.setClasificacio(rs.getString(7));
+                a.setSinop(rs.getString(8));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis;    
+    }
+    
+    //buscar especifico
     public List<Pelicula> buspel(String ID) {
        List<Pelicula> lis=new ArrayList();
         Connection cn=SQLConexion.getConexion();
@@ -196,8 +232,11 @@ public class Control implements IControl{
                 a.setIdpeli(rs.getString(1));
                 a.setIdcad(rs.getString(2));
                 a.setNom(rs.getString(3));
-                a.setDuracion(rs.getDouble(4));
-                a.setCosto(rs.getDouble(5));
+                a.setAnnio(rs.getInt(4));
+                a.setDuracion(rs.getDouble(5));
+                a.setCosto(rs.getDouble(6));
+                a.setClasificacio(rs.getString(7));
+                a.setSinop(rs.getString(8));
                 lis.add(a);
             }
         }catch(Exception ex){
@@ -211,11 +250,11 @@ public class Control implements IControl{
     
     public ArrayList<Pelicula> buscarP(String cod) {
         ArrayList<Pelicula> com = new ArrayList();
-             for(Pelicula x: lispe()){
-            if(cod.equals(x.getIdpeli())){
-                 System.out.println(""+x.getIdpeli()+x.getIdcad()+x.getNom()+x.getCosto()+x.getDuracion());
-                 com.add(new Pelicula(x.getIdpeli(),x.getIdcad(), x.getNom(), x.getDuracion(), x.getCosto()));
-                 break;
+            for(Pelicula x: lispe()){
+                if(cod.equals(x.getIdpeli())){
+                    System.out.println(""+x.getIdpeli()+x.getIdcad()+x.getNom()+x.getCosto()+x.getDuracion());
+                    com.add(new Pelicula(x.getIdpeli(),x.getIdcad(),x.getNom(),x.getAnnio(),x.getDuracion(),x.getCosto(),x.getClasificacio(),x.getSinop()));
+                break;
          }
              
     }return com;
@@ -236,7 +275,7 @@ public class Control implements IControl{
         ArrayList<Cliente> com = new ArrayList();
              for(Cliente x: liscli()){
             if(cod==x.getDni()){
-                com.add(new Cliente(x.getDni(), x.getNombre(), x.getApellido(), x.getEdad()));
+                com.add(new Cliente(x.getDni(), x.getNombre(), x.getApellido(), x.getBirth(),x.getCorreo(),x.getTel()));
                  break;
          }
              
@@ -247,10 +286,11 @@ public class Control implements IControl{
     public void addasi(Asiento a) {
         Connection cn=SQLConexion.getConexion();
         try{
-            String sql="{call IDAsiento(?,?)}";
+            String sql="{call IDAsiento(?,?,?)}";
             CallableStatement st=cn.prepareCall(sql);
             st.setInt(1, a.getAsiento());
-            st.setString(2, a.getSala());
+            st.setString(2, a.getTipoa());
+            st.setString(3, a.getSala());
             st.executeUpdate();
         }catch(Exception ex){
             ex.printStackTrace();
@@ -269,7 +309,7 @@ public class Control implements IControl{
             ResultSet rs=st.executeQuery();
             while(rs.next()){
                 Boleto a=new Boleto();
-                a.setCod(rs.getString(1));
+                a.setBoleta(rs.getString(1));
                 lis.add(a);
             }
         }catch(Exception ex){
@@ -285,14 +325,11 @@ public class Control implements IControl{
     public void addbol(Boleto b) {
         Connection cn=SQLConexion.getConexion();
         try{
-            String sql="{call IDBoleta(?,?,?,?,?,?)}";
+            String sql="{call IDBoleta(?,?,?)}";
             CallableStatement st=cn.prepareCall(sql);
-            st.setInt(1, b.getDni());
-            st.setInt(2, b.getIdasiento());
-            st.setString(3, b.getIdsala());
-            st.setString(4, b.getIdpeli());
-            st.setString(5, b.getFecha());
-            st.setDouble(6, b.getPago());
+            st.setInt(1, b.getDetalle());
+            st.setInt(2, b.getDni());
+            st.setDouble(3, b.getPago());
             st.executeUpdate();
         }catch(Exception ex){
             ex.printStackTrace();
@@ -305,18 +342,15 @@ public class Control implements IControl{
     public void addbbb(Boleto p) {
         Connection cn=SQLConexion.getConexion();
         try{
-            String sql="insert into Boleta values(?,?,?,?,?,?,?)";
+            String sql="insert into Boleta values(?,?,?,?)";
             //CallableStatement st=cn.prepareCall(sql);
             PreparedStatement st=cn.prepareStatement(sql);
             //ResultSet rs=st.executeQuery();
             //while(rs.next()){
-            st.setString(1, p.getCod());
-            st.setInt(2, p.getDni());
-            st.setInt(3, p.getIdasiento());
-            st.setString(4, p.getIdsala());
-            st.setString(5, p.getIdpeli());
-            st.setString(6, p.getFecha());
-            st.setDouble(7, p.getPago());
+            st.setString(1, p.getBoleta());
+            st.setInt(2, p.getDetalle());
+            st.setInt(3, p.getDni());
+            st.setDouble(4, p.getPago());
             st.executeUpdate();
                
         }catch(Exception ex){
@@ -327,39 +361,19 @@ public class Control implements IControl{
         }
     }
     
-    public void addb(Boleto p) {
-        Connection cn=SQLConexion.getConexion();
-        try{
-            String sql="{insert into Boleta values(?,?,?,?,?,?,?)}";
-            //CallableStatement st=cn.prepareCall(sql);
-            PreparedStatement st=cn.prepareStatement(sql);
-            //ResultSet rs=st.executeQuery();
-            st.setString(1, p.getCod());
-            st.setInt(2, p.getDni());
-            st.setInt(3, p.getIdasiento());
-            st.setString(4, p.getIdsala());
-            st.setString(5, p.getIdpeli());
-            st.setString(6, p.getFecha());
-            st.setDouble(7, p.getPago());
-            st.executeUpdate();
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }finally{
-          try{ cn.close();}catch(Exception ex2){}
-
-        }
-    }
 
     @Override
     public void addcli(Cliente c) {
         Connection cn=SQLConexion.getConexion();
         try{
-            String sql="{call adddCliente(?,?,?,?)}";
+            String sql="{call ADDCliente(?,?,?,?,?,?)}";
             CallableStatement st=cn.prepareCall(sql);
             st.setInt(1, c.getDni());
             st.setString(2, c.getNombre());
             st.setString(3, c.getApellido());
-            st.setInt(4, c.getEdad());
+            st.setString(4, c.getBirth());
+            st.setString(5, c.getCorreo());
+            st.setString(6, c.getTel());
             st.executeUpdate();
         }catch(Exception ex){
             ex.printStackTrace();
@@ -371,33 +385,17 @@ public class Control implements IControl{
 
     @Override
     public void addpeli(Pelicula p) {
-//        Connection cn=SQLConexion.getConexion();
-//        try{
-//            String sql="insert into Pelicula values(?,?,?,?,?)";
-//            CallableStatement st=cn.prepareCall(sql);
-//            st.setString(1, p.getIdpeli());
-//            st.setString(2, p.getIdpeli());
-//            st.setString(3, p.getNom());
-//            st.setDouble(4, p.getDuracion());
-//            st.setDouble(5, p.getCosto());
-//            st.executeUpdate();
-//        }catch(Exception ex){
-//            ex.printStackTrace();
-//        }finally{
-//          try{ cn.close();}catch(Exception ex2){}
-//
-//        }
-    }
-    
-    public void addpelic(Pelicula p) {
         Connection cn=SQLConexion.getConexion();
         try{
-            String sql="{call IDPelicula(?,?,?,?)}";
+            String sql="{call IDPelicula(?,?,?,?,?,?,?)}";
             CallableStatement st=cn.prepareCall(sql);
             st.setString(1, p.getIdcad());
             st.setString(2, p.getNom());
-            st.setDouble(3, p.getDuracion());
-            st.setDouble(4, p.getCosto());
+            st.setInt(3, p.getAnnio());
+            st.setDouble(4, p.getDuracion());
+            st.setDouble(5, p.getCosto());
+            st.setString(6, p.getClasificacio());
+            st.setString(7, p.getSinop());
             st.executeUpdate();
         }catch(Exception ex){
             ex.printStackTrace();
@@ -426,12 +424,14 @@ public class Control implements IControl{
     public void modcli(Cliente c) {
         Connection cn=SQLConexion.getConexion();
         try{
-            String sql="UPDATE Cliente SET Cliente_name=?,Cliente_lastname=?, Paciente_edad=? WHERE Cliente_id=?";
+            String sql="UPDATE Cliente SET Cliente_name=?,Cliente_lastname=?, Cliente_date=?, CorreoElectronico=?, Telefono=? WHERE Cliente_id=?";
             CallableStatement st=cn.prepareCall(sql);
             st.setString(1, c.getNombre());
             st.setString(2, c.getApellido());
-            st.setInt(3, c.getEdad());
-            st.setInt(4, c.getDni());
+            st.setString(3, c.getBirth());
+            st.setString(4, c.getCorreo());
+            st.setString(5, c.getTel());
+            st.setInt(6, c.getDni());
             st.executeUpdate();
         }catch(Exception ex){
             ex.printStackTrace();
@@ -557,6 +557,56 @@ public class Control implements IControl{
                 a.setNom(rs.getString(2));
                 a.setApe(rs.getString(3));
                 a.setFh(rs.getString(4));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis; 
+    }
+
+    @Override
+    public List<Combo> liscom() {
+        List<Combo> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select * from Combos";
+            PreparedStatement st=cn.prepareStatement(sql);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                Combo a = new Combo();
+                a.setComb(rs.getInt(1));
+                a.setNom(rs.getString(2));
+                a.setPrecio(rs.getDouble(3));
+                a.setDescr(rs.getString(4));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis; 
+    }
+
+    @Override
+    public List<Productos> lisprod() {
+        List<Productos> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select* from Productos";
+            PreparedStatement st=cn.prepareStatement(sql);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                Productos a = new Productos();
+                a.setProd(rs.getInt(1));
+                a.setNombre(rs.getString(2));
+                a.setPrecio(rs.getDouble(3));
+                a.setDescr(rs.getString(4));
                 lis.add(a);
             }
         }catch(Exception ex){

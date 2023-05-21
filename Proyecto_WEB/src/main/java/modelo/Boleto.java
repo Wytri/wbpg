@@ -2,89 +2,49 @@
 package modelo;
 
 public class Boleto {
-    public String cod;
+    public String boleta;
+    public int detalle;
     public int dni;
-    public int idasiento;
-    public String idsala;
-    public String idpeli;
-    public String fecha;
     public double pago;
 
     public Boleto() {
     }
 
-    public Boleto(String cod) {
-        this.cod = cod;
-    }
-    
-    public Boleto(int dni, int idasiento, String idsala, String idpeli, String fecha, double pago) {
+    public Boleto(String boleta, int detalle, int dni, double pago) {
+        this.boleta = boleta;
+        this.detalle = detalle;
         this.dni = dni;
-        this.idasiento = idasiento;
-        this.idsala = idsala;
-        this.idpeli = idpeli;
-        this.fecha = fecha;
-        this.pago = pago;
-    }
-
-    public Boleto(String cod, int dni, int idasiento, String idsala, String idpeli, String fecha, double pago) {
-        this.cod = cod;
-        this.dni = dni;
-        this.idasiento = idasiento;
-        this.idsala = idsala;
-        this.idpeli = idpeli;
-        this.fecha = fecha;
         this.pago = pago;
     }
     
     
 
     /**
-     * @return the idasiento
+     * @return the boleta
      */
-    public int getIdasiento() {
-        return idasiento;
+    public String getBoleta() {
+        return boleta;
     }
 
     /**
-     * @param idasiento the idasiento to set
+     * @param boleta the boleta to set
      */
-    public void setIdasiento(int idasiento) {
-        this.idasiento = idasiento;
+    public void setBoleta(String boleta) {
+        this.boleta = boleta;
     }
 
     /**
-     * @return the fecha
+     * @return the detalle
      */
-    public String getFecha() {
-        return fecha;
+    public int getDetalle() {
+        return detalle;
     }
 
     /**
-     * @param fecha the fecha to set
+     * @param detalle the detalle to set
      */
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-
-    /**
-     * @return the cod
-     */
-    public String getCod() {
-        return cod;
-    }
-
-    /**
-     * @param cod the cod to set
-     */
-    public void setCod(String cod) {
-        this.cod = cod;
-    }
-
-    /**
-     * @param dni the dni to set
-     */
-    public void setDni(int dni) {
-        this.dni = dni;
+    public void setDetalle(int detalle) {
+        this.detalle = detalle;
     }
 
     /**
@@ -95,31 +55,10 @@ public class Boleto {
     }
 
     /**
-     * @return the idpeli
+     * @param dni the dni to set
      */
-    public String getIdpeli() {
-        return idpeli;
-    }
-
-    /**
-     * @param idpeli the idpeli to set
-     */
-    public void setIdpeli(String idpeli) {
-        this.idpeli = idpeli;
-    }
-
-    /**
-     * @return the idsala
-     */
-    public String getIdsala() {
-        return idsala;
-    }
-
-    /**
-     * @param idsala the idsala to set
-     */
-    public void setIdsala(String idsala) {
-        this.idsala = idsala;
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
     /**
