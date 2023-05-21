@@ -86,16 +86,16 @@ public class serv_control extends HttpServlet {
     
     void adicionarBoleta(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
         Control obj=new Control();
-        //HttpSession ses=request.getSession();
+        HttpSession ses=request.getSession();
         String nom=request.getParameter("txtnombres");
         String ape=request.getParameter("txtapellidos");
         int dni=Integer.parseInt(request.getParameter("txtdni"));
         int edad=Integer.parseInt(request.getParameter("txtedad"));
-        //int asiento=Integer.parseInt(request.getParameter("tasiento"));
-        int asiento=9;
+        int asiento=Integer.parseInt(request.getParameter("tasiento"));
+
         double pago=Integer.parseInt(request.getParameter("txtpago"));
-        String idpeli=request.getParameter("lstpelicula");
-        String idsala="S0001";
+        String idpeli=(String)ses.getAttribute("codPeli");
+        String idsala=(String)ses.getAttribute("idsala");
         
         List<Boleto> a = obj.codsbole();
         String idBol= a.get(0).getCod();
@@ -110,7 +110,7 @@ public class serv_control extends HttpServlet {
         
         Boleto b= new Boleto(idBol, dni, asiento, idsala, idpeli, sd.format(new Date()), pago);
         obj.addbbb(b);
-        String pag="/registro.jsp";
+        String pag="/pagRegistrar.jsp";
         request.getRequestDispatcher(pag).forward(request,
         response);
         }
