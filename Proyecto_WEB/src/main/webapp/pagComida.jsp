@@ -30,7 +30,7 @@
                         for(Combo x:obj.liscom()){
                     %>
                     <tr><td><%=x.getComb()%><td><%=x.getNom()%><td><%=x.getDescr()%>
-                        <td><a href="serv_control?opc=2&cod=<%=x.getComb()%>">Registro</a>
+                        <td><a href="serv_control?opc=3&cod=<%=x.getComb()%>&o=1">Registro</a>
                     <%
                         }  
                   %>  
@@ -47,7 +47,7 @@
                     for(Productos x:obj.lisprod()){
                 %>
                 <tr><td><%=x.getProd()%><td><%=x.getNombre()%><td><%=x.getDescr()%>
-                    <td><a href="serv_control?opc=2&cod=<%=x.getProd()%>">Registro</a>
+                    <td><a href="serv_control?opc=3&cod=<%=x.getProd()%>&o=2">Registro</a>
                 <%
                     }  
               %>  
