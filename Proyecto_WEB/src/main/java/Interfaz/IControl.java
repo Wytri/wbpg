@@ -19,6 +19,10 @@ public interface IControl {
     List<Productos> lisprod();
     List<DetalleCombo> lisdetcom(int cod);
     List<DetalleProducto> lisdetpre(int cod);
+    List<Boleto> lisboleta(int cod);
+    List<Detalle> lisdeta(int cod);
+    List<Pelicula> listadetafun(int cod);
+    List<DetalleComida> listadetalleorden(int cod);
     
     void addasi(Asiento a);
     void addbol(Boleto b);

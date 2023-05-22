@@ -8,11 +8,9 @@ package modelo;
  *
  * @author henry
  */
-public class Funciones {
-    public int funcion;
+public class Funciones extends Detalle{
     public String inicio;
     public String peli;
-    public String sala;
 
     public Funciones() {
     }
@@ -23,23 +21,18 @@ public class Funciones {
         this.peli = peli;
         this.sala = sala;
     }
-    
-    
 
-    /**
-     * @return the funcion
-     */
-    public int getFuncion() {
-        return funcion;
+    public Funciones(String inicio, String peli, int funcion, String sala, int asi, int orden, String boleta, int detalle, int dni, double pago) {
+        super(funcion, sala, asi, orden, boleta, detalle, dni, pago);
+        this.inicio = inicio;
+        this.peli = peli;
     }
-
-    /**
-     * @param funcion the funcion to set
-     */
-    public void setFuncion(int funcion) {
-        this.funcion = funcion;
+    
+    public Funciones(String inicio, int funcion, String sala, int asiento, int orden) {
+        super(funcion,sala,asiento,orden);
+        this.inicio = inicio;
     }
-
+    
     /**
      * @return the inicio
      */
@@ -66,19 +59,5 @@ public class Funciones {
      */
     public void setPeli(String peli) {
         this.peli = peli;
-    }
-
-    /**
-     * @return the sala
-     */
-    public String getSala() {
-        return sala;
-    }
-
-    /**
-     * @param sala the sala to set
-     */
-    public void setSala(String sala) {
-        this.sala = sala;
     }
 }
