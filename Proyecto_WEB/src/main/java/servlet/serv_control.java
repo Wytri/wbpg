@@ -36,6 +36,10 @@ public class serv_control extends HttpServlet {
             if (op==1) login(request, response);
             if (op==2) lisPeli(request, response);
             if (op==3) lisComida(request, response);
+            
+            if (op==5) lisBoleta(request, response);
+            if (op==6) lisDetalle(request, response);
+            if (op==7) lisOrden(request, response);
 //            if (op==3) mod(request, response);
     }
     
@@ -85,6 +89,43 @@ public class serv_control extends HttpServlet {
         request.setAttribute("codigo", cod);
         request.setAttribute("o", opcion);
         String pag="/pagDetalleComida.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
+    
+    
+    protected void lisBoleta(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        int cod=Integer.parseInt(request.getParameter("cod"));           
+        request.setAttribute("dato", obj.lisboleta(cod));
+        //almacenar temporalmente la lista y llamar a la pagagina Factura
+        request.setAttribute("codigo", cod);
+        String pag="/pagBoleta.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
+    
+    protected void lisDetalle(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        int cod=Integer.parseInt(request.getParameter("cod"));    
+        int dni=Integer.parseInt(request.getParameter("dni"));  
+        request.setAttribute("dato", obj.listadetafun(cod));
+        //almacenar temporalmente la lista y llamar a la pagagina Factura
+        request.setAttribute("codigo", cod);
+        request.setAttribute("dni", dni);
+        String pag="/pagDetalle.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
+    
+    protected void lisOrden(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        int cod=Integer.parseInt(request.getParameter("cod"));    
+        int dni=Integer.parseInt(request.getParameter("dni"));  
+        int deta=Integer.parseInt(request.getParameter("detalle"));  
+        request.setAttribute("dato", obj.listadetalleorden(cod));
+        //almacenar temporalmente la lista y llamar a la pagagina Factura
+        request.setAttribute("codigo", cod);
+        request.setAttribute("dni", dni);
+        request.setAttribute("detalle", deta);
+        String pag="/pagOrden.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
     }
     

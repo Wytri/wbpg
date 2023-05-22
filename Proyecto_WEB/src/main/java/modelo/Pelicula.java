@@ -1,7 +1,7 @@
 
 package modelo;
 
-public class Pelicula {
+public class Pelicula extends Funciones{
     public String idpeli;
     public String idcad;
     public String nom;
@@ -25,6 +25,12 @@ public class Pelicula {
         this.sinop = sinop;
     }
 
+    public Pelicula(String nom, String inicio, int funcion, String sala, int asi, int orden) {
+        super(inicio, funcion, sala, asi, orden);
+        this.nom = nom;
+    }
+
+    
     
 
     public String print(){
