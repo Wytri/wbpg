@@ -33,5 +33,6 @@
             <%
                 }  
           %>  
+          </table><!-- fin tabla-->
     </body>
 </html>

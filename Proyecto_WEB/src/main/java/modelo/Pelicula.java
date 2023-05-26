@@ -14,6 +14,18 @@ public class Pelicula extends Funciones{
     public Pelicula() {
     }
 
+    public Pelicula(String idcad, String nom, int annio, double duracion, double costo, String clasificacio, String sinop) {
+        this.idcad = idcad;
+        this.nom = nom;
+        this.annio = annio;
+        this.duracion = duracion;
+        this.costo = costo;
+        this.clasificacio = clasificacio;
+        this.sinop = sinop;
+    }
+    
+    
+
     public Pelicula(String idpeli, String idcad, String nom, int annio, double duracion, double costo, String clasificacio, String sinop) {
         this.idpeli = idpeli;
         this.idcad = idcad;

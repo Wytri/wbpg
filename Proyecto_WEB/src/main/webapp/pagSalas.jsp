@@ -12,9 +12,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="stylesheet" href="css/cssjsppeli.css">
+        <link href="css/adminlte.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <center>
         <section id="tabl" class="espaciado">
 		<div class="contenedor">
                     <div class="fila">
@@ -40,11 +41,12 @@
                         <option value="S0003">S0003</option>
                         </select>
                         </table><!-- fin tabla-->
-                        <input type="submit">
+                        <br><input type="submit">
                         </form>
                     </div> <!-- fila -->
                     
 		</div> <!-- contenedor -->
 	</section> <!-- tabla -->
+        </center>
     </body>
 </html>

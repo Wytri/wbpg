@@ -7,8 +7,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link href="css/adminlte.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <center>
         <%
             HttpSession ses=request.getSession();
             String codPeli=(String)ses.getAttribute("codPeli");
@@ -19,7 +21,7 @@
         %>
         <h3>Nuevo registro para la Película: <%=codPeli%></h3>
         <form action="serv_control" method="post" name="fr">
-            <table border=1 class="caja">
+            <table border=1 class="table table-hover">
                 <input type="hidden" name="opc" value="3">
                 
                 <input type="text" placeholder="Nombre" id="txtnombres" name="txtnombres" class="campo" required><br>
@@ -71,5 +73,6 @@
         </p>
         </table>
         </form>
+                    </center>
     </body>
 </html>
