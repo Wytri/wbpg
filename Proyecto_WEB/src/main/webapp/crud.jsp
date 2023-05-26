@@ -16,7 +16,8 @@
         <center>
             <h1>Listar Base de Datos</h1>
             <a href="pagCategorias.jsp">Categoria de Peliculas</a><br>
-            <a href="pagComida.jsp">Venta de Comida</a>
+            <a href="pagComida.jsp">Venta de Comida</a><br>
+            <a href="pagPeliculasAdd.jsp">Registro de Boletas</a>
         </center> 
     </body>
 </html>

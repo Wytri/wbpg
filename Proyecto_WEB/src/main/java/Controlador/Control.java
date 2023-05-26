@@ -248,6 +248,8 @@ public class Control implements IControl{
         return lis;    
     }
     
+    
+    
     public ArrayList<Pelicula> buscarP(String cod) {
         ArrayList<Pelicula> com = new ArrayList();
             for(Pelicula x: lispe()){
@@ -443,7 +445,26 @@ public class Control implements IControl{
 
     @Override
     public void modpeli(Pelicula p) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Connection cn=SQLConexion.getConexion();
+        try {    
+            String id=p.getIdpeli();
+            String sql="UPDATE Pelicula SET Categoria_id=?, Pelicula_name=?, Pelicula_annio=?, Pelicula_duracion=?, Pelicula_costo=?, Clasificacion=?, Sinopsis=? WHERE Pelicula_id='"+id+"'";
+            PreparedStatement ps=cn.prepareStatement(sql);
+            
+            ps.setString(1, p.getIdcad());
+            ps.setString(2, p.getNom());
+            ps.setInt(3, p.getAnnio());
+            ps.setDouble(4, p.getDuracion());
+            ps.setDouble(5, p.getCosto());
+            ps.setString(6, p.getClasificacio());
+            ps.setString(7, p.getSinop());
+            ps.executeUpdate();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+        }
     }
 
     @Override
@@ -468,22 +489,22 @@ public class Control implements IControl{
 
     @Override
     public void delpeli(String p) {
-//        Connection cn=SQLConexion.getConexion();
-//        try{
-//            String sql="{call DELPeli(?)}";
-//            CallableStatement st=cn.prepareCall(sql);
-//            st.setString(1,p);
-//            st.executeUpdate();
-//            }
-//            catch(Exception ex){
-//            ex.printStackTrace();
-//            }
-//            finally{
-//            try {
-//            cn.close();}
-//
-//            catch(Exception z){}
-//        }
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="{call DELPeli(?)}";
+            CallableStatement st=cn.prepareCall(sql);
+            st.setString(1,p);
+            st.executeUpdate();
+            }
+            catch(Exception ex){
+            ex.printStackTrace();
+            }
+            finally{
+            try {
+            cn.close();}
+
+            catch(Exception z){}
+        }
     }
 
     @Override

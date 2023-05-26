@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import modelo.Asiento;
 import modelo.Boleto;
 import modelo.Cliente;
+import modelo.Pelicula;
 import modelo.Usuarios;
 
 /**
@@ -35,8 +36,11 @@ public class serv_control extends HttpServlet {
         
             if (op==1) login(request, response);
             if (op==2) lisPeli(request, response);
-            //if (op==3) adicionarBoleta(request, response);
-//            if (op==3) mod(request, response);
+            if (op==3) adicionarBoleta(request, response);
+            if (op==4) adicionarPeli(request, response);
+            if (op==5) eliminarPeli(request, response);
+            if (op==6) actualizarPeli(request, response);
+            if (op==7) actualizacionPeli(request, response);
     }
     
     Control obj = new Control();
@@ -64,13 +68,13 @@ public class serv_control extends HttpServlet {
     
     protected void lisPeli(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        String cod=request.getParameter("cod");           
+        String cod=request.getParameter("cod"); 
         //almacenar temporalmente la lista y llamar a la pagagina Factura
         request.setAttribute("codigo", cod);
         request.setAttribute("dato", obj.lispeli(cod));
         String pag="/pagPeliculas.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
-         
+    }
 //    
 //    protected void modcli(HttpServletRequest request, HttpServletResponse response)
 //            throws ServletException, IOException {
@@ -84,37 +88,101 @@ public class serv_control extends HttpServlet {
 //            request.getRequestDispatcher("/modificar.jsp").forward(request, response);
 //    }
 //    
-//    void adicionarBoleta(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-//        Control obj=new Control();
-//        //HttpSession ses=request.getSession();
-//        String nom=request.getParameter("txtnombres");
-//        String ape=request.getParameter("txtapellidos");
-//        int dni=Integer.parseInt(request.getParameter("txtdni"));
-//        int edad=Integer.parseInt(request.getParameter("txtedad"));
-//        //int asiento=Integer.parseInt(request.getParameter("tasiento"));
-//        int asiento=9;
-//        double pago=Integer.parseInt(request.getParameter("txtpago"));
-//        String idpeli=request.getParameter("lstpelicula");
-//        String idsala="S0001";
-//        
-//        List<Boleto> a = obj.codsbole();
-//        String idBol= a.get(0).getBoleta();
-//        
-//        
-//        //String codm=(String)ses.getAttribute("codmed");
-//        
-//        //Cliente cl = new Cliente(dni, nom, ape);
-//        //obj.addcli(cl);
-//        //Asiento as = new Asiento(asiento, idsala);
-//        //obj.addasi(as);
-//        
-//        //Boleto b= new Boleto(idBol, dni, asiento, idsala, idpeli, sd.format(new Date()), pago);
-//        //obj.addbbb(b);
-//        String pag="/registro.jsp";
-//        request.getRequestDispatcher(pag).forward(request,
-//        response);
-//        }
-//    
+
+    void adicionarBoleta(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        Control obj=new Control();
+        HttpSession ses=request.getSession();
+        String nom=request.getParameter("txtnombres");
+        String ape=request.getParameter("txtapellidos");
+        int dni=Integer.parseInt(request.getParameter("txtdni"));
+        int edad=Integer.parseInt(request.getParameter("txtedad"));
+        int asiento=Integer.parseInt(request.getParameter("tasiento"));
+
+        double pago=Integer.parseInt(request.getParameter("txtpago"));
+        String idpeli=(String)ses.getAttribute("codPeli");
+        String idsala=(String)ses.getAttribute("idsala");
+        
+        List<Boleto> a = obj.codsbole();
+        String idBol= a.get(0).getBoleta();
+        
+        
+        //String codm=(String)ses.getAttribute("codmed");
+        
+        /*Cliente cl = new Cliente(dni, nom, ape, edad);
+        obj.addcli(cl);*/
+        Asiento as = new Asiento(asiento, "EST", idsala);
+        obj.addasi(as);
+        
+        Boleto b= new Boleto(idBol, 1, dni, pago);
+        obj.addbbb(b);
+        String pag="/pagRegistrar.jsp";
+        request.getRequestDispatcher(pag).forward(request,
+        response);
+        }
+    
+    void adicionarPeli(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        Control obj=new Control();
+        HttpSession ses=request.getSession();
+        String codSala=(String)ses.getAttribute("codCate");
+        String idCat=(String)ses.getAttribute("codCate");
+        String nom=request.getParameter("txtnom");
+        int anio=Integer.parseInt(request.getParameter("txtanio"));
+        double costo=Double.parseDouble(request.getParameter("txtcosto"));
+        double duracion=Double.parseDouble(request.getParameter("txtdura"));
+        String clas=request.getParameter("listCla");
+        String des=request.getParameter("txtsin");
+
+
+        double pago=Double.parseDouble(request.getParameter("txtcosto"));
+
+        Pelicula p=new Pelicula(idCat, nom, anio, duracion, costo, clas, des);
+        
+        obj.addpeli(p);
+        String pag="serv_control?opc=2&cod="+codSala;
+        request.getRequestDispatcher(pag).forward(request,
+        response);
+        }
+    
+    void eliminarPeli(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        Control obj=new Control();
+        HttpSession ses=request.getSession();
+        String codSala=(String)ses.getAttribute("codCate");
+        String id=request.getParameter("id");
+        String pag="serv_control?opc=2&cod="+codSala;
+        obj.delpeli(id);
+        request.getRequestDispatcher(pag).forward(request, response);
+        }
+    
+    protected void actualizarPeli(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        HttpSession ses=request.getSession();
+        String codPeli=request.getParameter("cod"); 
+        ses.setAttribute("codPeli", codPeli);
+        request.setAttribute("codigo", codPeli);
+        request.setAttribute("dato", obj.buspel(codPeli));
+        String pag="/pagUpdatePeli.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
+    
+    void actualizacionPeli(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        Control obj=new Control();
+        HttpSession ses=request.getSession();
+        String idPeli=(String)ses.getAttribute("idPelic");
+        String idCat=(String)ses.getAttribute("codCate");
+        String nom=request.getParameter("txtnom");
+        int anio=Integer.parseInt(request.getParameter("txtanio"));
+        double costo=Double.parseDouble(request.getParameter("txtcosto"));
+        double duracion=Double.parseDouble(request.getParameter("txtdura"));
+        String clas=request.getParameter("listCla");
+        String des=request.getParameter("txtsin");
+        Pelicula p=new Pelicula(idPeli, idCat, nom, anio, duracion, costo, clas, des);
+        
+        obj.modpeli(p);
+        String pag="serv_control?opc=2&cod="+idCat;
+        request.getRequestDispatcher(pag).forward(request, response);
+        }
+    
+    
 //    
 ////    protected void mod(HttpServletRequest request, HttpServletResponse response)
 ////        throws ServletException, IOException {

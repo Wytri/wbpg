@@ -12,17 +12,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="stylesheet" href="css/cssjsppeli.css">
+        <link href="css/adminlte.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <center>
         <section id="tabl" class="espaciado">
 		<div class="contenedor">
                     <div class="fila">
                         <h2>Películas</h2>
                     </div>
                     <div class="fila">
-                        <table class="tabla">
-                            <thead>
+                        <a href="crud.jsp">Retornar</a>
+                        <table class="table table-hover">
+                            <thead class="bg-dark">
                                 <th>Película</th>
                                 <th>Categoria</th>
                                 <th>Nombre</th>
@@ -51,5 +53,6 @@
                     </div> <!-- fila -->
 		</div> <!-- contenedor -->
 	</section> <!-- tabla -->
+        </center>
     </body>
 </html>

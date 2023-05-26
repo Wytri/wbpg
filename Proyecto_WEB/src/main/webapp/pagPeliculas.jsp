@@ -17,10 +17,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Ejercicio 1 - Listar Peliculas (DEPENDINETE)!</h1>
+        <h1>Ejercicio 1 - Listar Peliculas (DEPENDIENTE)!</h1>
         <%
+            HttpSession ses=request.getSession();
             ArrayList<Pelicula> lista=(ArrayList)request.getAttribute("dato");
             String cate = request.getAttribute("codigo").toString();
+            ses.setAttribute("codCate", cate);
             out.print("<h3>Lista de Peliculas de la Categoria: "+cate+"</h3>");
         %>
         
@@ -39,15 +41,19 @@
         <h2 class="alert-default-info">Lista de Peliculas</h2>
         
         <a href="pagCategorias.jsp">Retornar</a><br>
-                
+        <a href="pagNuevaPelicula.jsp">Adicionar</a><br><br>
         <table class="table table-hover">
             <thead>
-                <tr class="bg-dark"><th>Codigo<th>Nombre<th>Año<th>Duracion<th>Costo<th>Clasificacion<th>Sinopsis</tr>
+                <tr class="bg-dark"><th>Codigo<th>Nombre<th>Año<th>Duracion<th>Costo<th>Clasificacion<th>Sinopsis<th>Actualizar<th>Eliminar</tr>
             </thead>   
         <%
             for(Pelicula x:lista){
             out.print("<tr><td>"+x.getIdpeli()+"<td>"+x.getNom()+"<td>"+x.getAnnio()+"<td>"+x.getDuracion()+"<td>"+x.getCosto()+"<td>"+x.getClasificacio()+"<td>"+x.getSinop());
-            }  
+            %>
+            <td><a href="serv_control?opc=6&cod=<%=x.getIdpeli()%>">UPDATE</a>
+            <td><a href="serv_control?opc=5&id=<%=x.getIdpeli()%>">DEL</a>
+            <%
+            }
         %>    
         </table>
     </body>
