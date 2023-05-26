@@ -50,8 +50,8 @@
             for(Pelicula x:lista){
             out.print("<tr><td>"+x.getIdpeli()+"<td>"+x.getNom()+"<td>"+x.getAnnio()+"<td>"+x.getDuracion()+"<td>"+x.getCosto()+"<td>"+x.getClasificacio()+"<td>"+x.getSinop());
             %>
-            <td><a href="serv_control?opc=6&cod=<%=x.getIdpeli()%>">UPDATE</a>
-            <td><a href="serv_control?opc=5&id=<%=x.getIdpeli()%>">DEL</a>
+            <td><a href="serv_control?opc=11&cod=<%=x.getIdpeli()%>">UPDATE</a>
+            <td><a href="serv_control?opc=10&id=<%=x.getIdpeli()%>">DEL</a>
             <%
             }
         %>    
