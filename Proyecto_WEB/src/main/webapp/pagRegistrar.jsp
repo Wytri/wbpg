@@ -22,7 +22,7 @@
         <h3>Nuevo registro para la Película: <%=codPeli%></h3>
         <form action="serv_control" method="post" name="fr">
             <table border=1 class="table table-hover">
-                <input type="hidden" name="opc" value="3">
+                <input type="hidden" name="opc" value="8">
                 
                 <input type="text" placeholder="Nombre" id="txtnombres" name="txtnombres" class="campo" required><br>
                 <input type="text" placeholder="Apellidos" id="txtapellidos" name="txtapellidos" class="campo" required><br>
