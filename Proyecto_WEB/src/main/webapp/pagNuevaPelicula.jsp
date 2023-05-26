@@ -38,7 +38,7 @@
         
         <form action="serv_control" method="post" name="fr">
             <table border=1 class="table table-hover">
-                <input type="hidden" name="opc" value="4">
+                <input type="hidden" name="opc" value="9">
                 <!-- type="number" -->
                 
                 <input type="text" placeholder="Nombre" id="txtnom" name="txtnom" class="campo" required><br>

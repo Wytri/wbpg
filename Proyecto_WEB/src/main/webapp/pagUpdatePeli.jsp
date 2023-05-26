@@ -51,7 +51,7 @@
                     sinopsis=x.getSinop();
                     }
                 %>
-                <input type="hidden" name="opc" value="7">
+                <input type="hidden" name="opc" value="12">
                 <!-- type="number" -->
                 <input type="text" value="<%=nombre%>" id="txtnom" name="txtnom" class="campo" required><br>
                 <input type="tel" value="<%=anio%>" id="txtanio" name="txtanio" class="campo" required><br>
