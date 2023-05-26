@@ -17,7 +17,11 @@ public class Boleto {
         this.pago = pago;
     }
     
-    
+    public Boleto(String boleta, int detalle, double pago) {
+        this.boleta = boleta;
+        this.detalle = detalle;
+        this.pago = pago;
+    }
 
     /**
      * @return the boleta

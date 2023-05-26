@@ -638,6 +638,173 @@ public class Control implements IControl{
         }
         return lis; 
     }
+
+    @Override
+    public List<DetalleCombo> lisdetcom(int cod) {
+        List<DetalleCombo> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select* from DetalleCombos where IdCombo=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setInt(1, cod);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                DetalleCombo a=new DetalleCombo();
+                a.setDetcom(rs.getInt(1));
+                a.setCom(rs.getInt(2));
+                a.setCantidad(rs.getInt(3));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis;    
+    }
+
+    @Override
+    public List<DetalleProducto> lisdetpre(int cod) {
+        List<DetalleProducto> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select* from DetalleProducto where IdProducto=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setInt(1, cod);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                DetalleProducto a=new DetalleProducto();
+                a.setDetprod(rs.getInt(1));
+                a.setProd(rs.getInt(2));
+                a.setCant(rs.getInt(3));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis;    
+    }
+
+    @Override
+    public List<Boleto> lisboleta(int cod) {
+        List<Boleto> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select Boleta_id,IdDetalle,Boleta_pago FROM Boleta where DNI=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setInt(1, cod);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                Boleto a=new Boleto();
+                a.setBoleta(rs.getString(1));
+                a.setDetalle(rs.getInt(2));
+                a.setPago(rs.getInt(3));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis;   
+    }
+
+    @Override
+    public List<Detalle> lisdeta(int i) {
+        List<Detalle> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select * FROM Detalle where IdDetalle=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setInt(1, i);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                Detalle a=new Detalle();
+                a.setDetalle(rs.getInt(1));
+                a.setFuncion(rs.getInt(2));
+                a.setSala(rs.getString(3));
+                a.setAsi(rs.getInt(4));
+                a.setOrden(rs.getInt(5));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis; 
+    }
+
+    @Override
+    public List<Pelicula> listadetafun(int i) {
+        List<Pelicula> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select f.IdFuncion,f.HoraInicio, f.IdSala,d.Asiento_id,p.Pelicula_name, d.IdOrden "
+                    + "from Detalle d, Funciones f, Pelicula p "
+                    + "where p.Pelicula_id=f.IdPelicula and d.IdFuncion=f.IdFuncion "
+                    + "and d.IdDetalle=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setInt(1, i);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                Pelicula a=new Pelicula();
+                a.setFuncion(rs.getInt(1));
+                a.setInicio(rs.getString(2));
+                a.setSala(rs.getString(3));
+                a.setAsi(rs.getInt(4));
+                a.setNom(rs.getString(5));
+                a.setOrden(rs.getInt(6));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis; 
+    }
+
+    @Override
+    public List<DetalleComida> listadetalleorden(int i) {
+        List<DetalleComida> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="SELECT o.IdOrden, c.NombreCombo,do.Cantidad, p.NombreProducto, dp.Cantidad, o.Total "
+                    + "FROM Ordenes o "
+                    + "LEFT JOIN DetalleProducto dp ON o.IdDetalleProducto = dp.IdDetalleProducto "
+                    + "LEFT JOIN DetalleCombos do ON o.IdDetalleCombo = do.IdDetalleCombo "
+                    + "LEFT JOIN Combos c ON do.IdCombo = c.IdCombo "
+                    + "LEFT JOIN Productos p ON dp.IdProducto = p.IdProducto "
+                    + "WHERE o.IdOrden =?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setInt(1, i);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                DetalleComida a=new DetalleComida();
+                a.setOrden(rs.getInt(1));
+                a.setCombo(rs.getString(2));
+                a.setCantc(rs.getInt(3));
+                a.setProd(rs.getString(4));
+                a.setCantp(rs.getInt(5));
+                a.setPago(rs.getDouble(6));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis; 
+    }
 }
            
                 

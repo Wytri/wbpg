@@ -8,8 +8,7 @@ package modelo;
  *
  * @author henry
  */
-public class Detalle {
-    public int detalle;
+public class Detalle extends Boleto{
     public int funcion;
     public String sala;
     public int asi;
@@ -25,21 +24,28 @@ public class Detalle {
         this.asi = asi;
         this.orden = orden;
     }
-    
-    
 
-    /**
-     * @return the detalle
-     */
-    public int getDetalle() {
-        return detalle;
+    public Detalle(int funcion, String sala, int asi, int orden, String boleta, int detalle, int dni, double pago) {
+        super(boleta, detalle, dni, pago);
+        this.funcion = funcion;
+        this.sala = sala;
+        this.asi = asi;
+        this.orden = orden;
     }
-
-    /**
-     * @param detalle the detalle to set
-     */
-    public void setDetalle(int detalle) {
-        this.detalle = detalle;
+    
+    public Detalle(int funcion, String sala, int asi, int orden, String boleta, int detalle, double pago) {
+        super(boleta, detalle, pago);
+        this.funcion = funcion;
+        this.sala = sala;
+        this.asi = asi;
+        this.orden = orden;
+    }
+    
+    public Detalle(int funcion, String sala, int asi, int orden) {
+        this.funcion = funcion;
+        this.sala = sala;
+        this.asi = asi;
+        this.orden = orden;
     }
 
     /**

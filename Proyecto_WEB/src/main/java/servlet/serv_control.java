@@ -36,11 +36,19 @@ public class serv_control extends HttpServlet {
         
             if (op==1) login(request, response);
             if (op==2) lisPeli(request, response);
-            if (op==3) adicionarBoleta(request, response);
-            if (op==4) adicionarPeli(request, response);
-            if (op==5) eliminarPeli(request, response);
-            if (op==6) actualizarPeli(request, response);
-            if (op==7) actualizacionPeli(request, response);
+
+            if (op==3) lisComida(request, response);
+            
+            if (op==5) lisBoleta(request, response);
+            if (op==6) lisDetalle(request, response);
+            if (op==7) lisOrden(request, response);
+      
+            if (op==8) adicionarBoleta(request, response);
+            if (op==9) adicionarPeli(request, response);
+            if (op==10) eliminarPeli(request, response);
+            if (op==11) actualizarPeli(request, response);
+            if (op==12) actualizacionPeli(request, response);
+//            if (op==3) mod(request, response);
     }
     
     Control obj = new Control();
@@ -75,6 +83,60 @@ public class serv_control extends HttpServlet {
         String pag="/pagPeliculas.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
     }
+    
+    protected void lisComida(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        int cod=Integer.parseInt(request.getParameter("cod"));           
+        String opcion=request.getParameter("o");      
+        if (opcion.equals("1")) {
+            request.setAttribute("dato", obj.lisdetcom(cod));
+        }else if(opcion.equals("2")) {
+            request.setAttribute("dato", obj.lisdetpre(cod));
+        }
+        //almacenar temporalmente la lista y llamar a la pagagina Factura
+        request.setAttribute("codigo", cod);
+        request.setAttribute("o", opcion);
+        String pag="/pagDetalleComida.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
+    
+    
+    protected void lisBoleta(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        int cod=Integer.parseInt(request.getParameter("cod"));           
+        request.setAttribute("dato", obj.lisboleta(cod));
+        //almacenar temporalmente la lista y llamar a la pagagina Factura
+        request.setAttribute("codigo", cod);
+        String pag="/pagBoleta.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
+    
+    protected void lisDetalle(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        int cod=Integer.parseInt(request.getParameter("cod"));    
+        int dni=Integer.parseInt(request.getParameter("dni"));  
+        request.setAttribute("dato", obj.listadetafun(cod));
+        //almacenar temporalmente la lista y llamar a la pagagina Factura
+        request.setAttribute("codigo", cod);
+        request.setAttribute("dni", dni);
+        String pag="/pagDetalle.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
+    
+    protected void lisOrden(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        int cod=Integer.parseInt(request.getParameter("cod"));    
+        int dni=Integer.parseInt(request.getParameter("dni"));  
+        int deta=Integer.parseInt(request.getParameter("detalle"));  
+        request.setAttribute("dato", obj.listadetalleorden(cod));
+        //almacenar temporalmente la lista y llamar a la pagagina Factura
+        request.setAttribute("codigo", cod);
+        request.setAttribute("dni", dni);
+        request.setAttribute("detalle", deta);
+        String pag="/pagOrden.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
+    
 //    
 //    protected void modcli(HttpServletRequest request, HttpServletResponse response)
 //            throws ServletException, IOException {
