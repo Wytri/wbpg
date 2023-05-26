@@ -18,7 +18,7 @@
             <a href="pagCategorias.jsp">Categoria de Peliculas</a><br>
             <a href="pagComida.jsp">Venta de Comida</a><br>
 
-            <a href="pagPeliculasAdd.jsp">Registro de Boletas</a>
+            <a href="pagPeliculasAdd.jsp">Registro de Boletas</a><br>
             <a href="pagClientes.jsp">Clientes</a>
         </center> 
     </body>
