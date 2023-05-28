@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelo.Asiento;
 import modelo.Boleto;
-import modelo.Cliente;
+import modelo.*;
 import modelo.Pelicula;
 import modelo.Trabajadores;
 import modelo.Usuarios;
@@ -39,7 +39,7 @@ public class serv_control extends HttpServlet {
             if (op==2) lisPeli(request, response);
 
             if (op==3) lisComida(request, response);
-            
+            if (op==4) actualizarCombo(request, response);  
             if (op==5) lisBoleta(request, response);
             if (op==6) lisDetalle(request, response);
             if (op==7) lisOrden(request, response);
@@ -50,9 +50,13 @@ public class serv_control extends HttpServlet {
             if (op==11) actualizarPeli(request, response);
             if (op==12) actualizacionPeli(request, response);
             
+            if (op==13) cambiarCombo(request, response);
+            if (op==14) adicionarCombo(request, response);
+            
             if (op==15) modificarTrabajadores(request, response);   
             if (op==16) agregarTrabajadores(request, response);   
             if (op==17) eliminarTrabajadores(request, response);   
+            
     }
     
     Control obj = new Control();
@@ -156,7 +160,7 @@ public class serv_control extends HttpServlet {
 //    
 
     void adicionarBoleta(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        Control obj=new Control();
+        
         HttpSession ses=request.getSession();
         String nom=request.getParameter("txtnombres");
         String ape=request.getParameter("txtapellidos");
@@ -187,7 +191,7 @@ public class serv_control extends HttpServlet {
         }
     
     void adicionarPeli(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        Control obj=new Control();
+        
         HttpSession ses=request.getSession();
         String codSala=(String)ses.getAttribute("codCate");
         String idCat=(String)ses.getAttribute("codCate");
@@ -210,7 +214,7 @@ public class serv_control extends HttpServlet {
         }
     
     void eliminarPeli(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        Control obj=new Control();
+        
         HttpSession ses=request.getSession();
         String codSala=(String)ses.getAttribute("codCate");
         String id=request.getParameter("id");
@@ -231,7 +235,7 @@ public class serv_control extends HttpServlet {
     }
     
     void actualizacionPeli(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        Control obj=new Control();
+        
         HttpSession ses=request.getSession();
         String idPeli=(String)ses.getAttribute("idPelic");
         String idCat=(String)ses.getAttribute("codCate");
@@ -317,6 +321,49 @@ public class serv_control extends HttpServlet {
 ////        request.setAttribute("dato1", "xxxxxxx");
 ////        request.getRequestDispatcher("/modificar.jsp").forward(request, response);
 ////    } 
+    
+    void adicionarCombo(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        
+        HttpSession ses=request.getSession();
+        
+
+        String nom=request.getParameter("txtnom");
+        double costo=Double.parseDouble(request.getParameter("txtcosto"));
+        String des=request.getParameter("txtdes");
+
+        Combo p=new Combo(nom, costo, des);
+        
+        obj.addCombo(p);
+        String pag="pagComida.jsp";
+        request.getRequestDispatcher(pag).forward(request,
+        response);
+        }
+    
+    protected void actualizarCombo(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        HttpSession ses=request.getSession();
+        int codCombos=Integer.parseInt(request.getParameter("cod")); 
+        ses.setAttribute("codCombos", codCombos);
+        request.setAttribute("codigo", codCombos);
+        request.setAttribute("dato", obj.busCombos(codCombos));
+        String pag="/pagUpdateCombos.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
+    
+    void cambiarCombo(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        
+        HttpSession ses=request.getSession();
+        int idcombo=(int)ses.getAttribute("codCombos");
+        
+        String nom=request.getParameter("txtnom");
+        double costo=Double.parseDouble(request.getParameter("txtcosto"));
+        String des=request.getParameter("txtdes");
+        Combo p=new Combo(idcombo, nom, costo, des);
+        
+        obj.modCombos(p);
+        String pag="pagComida.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
