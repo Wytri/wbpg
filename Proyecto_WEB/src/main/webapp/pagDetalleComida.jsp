@@ -22,24 +22,28 @@
                  Control obj = new Control();
                  String nom="";
                  String o = request.getAttribute("o").toString();
-                 ArrayList<DetalleCombo> lista=(ArrayList)request.getAttribute("dato");;
-                 ArrayList<DetalleProducto> lista2=(ArrayList)request.getAttribute("dato");;
-                if (o.equals("1")) {
-                     lista=(ArrayList)request.getAttribute("dato");
-                     for (Combo c: obj.liscom()) {
-                             if (c.getComb()==lista.iterator().next().getCom()) {
+                 ArrayList<DetalleCombo> lista=(ArrayList)request.getAttribute("dato");
+                 ArrayList<DetalleProducto> lista2=(ArrayList)request.getAttribute("dato");
+                if (o.equals("1")) {         
+                lista=(ArrayList)request.getAttribute("dato");
+                    for (Combo c: obj.liscom()) {
+                        for(DetalleCombo DC:lista){
+                            if (c.getComb()==DC.getCom()) {
                                      nom = c.getNom();
-                                 }
-                         }
+                            }                                
+                        }
+                    }
                 }
                 else if (o.equals("2")) {
                         lista2=(ArrayList)request.getAttribute("dato");
                         for (Productos p: obj.lisprod()) {
-                             if (p.getProd()==lista2.iterator().next().getProd()) {
+                            for(DetalleProducto DP:lista2){
+                            if (p.getProd()==DP.getProd()) {
                                      nom = p.getNombre();
-                                 }
-                         }
+                            }                                
+                        }
                     }
+                 }
                  
                     String c = request.getAttribute("codigo").toString();
                  int cod = Integer.parseInt(c);
