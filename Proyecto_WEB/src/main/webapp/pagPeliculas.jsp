@@ -44,12 +44,13 @@
         <a href="pagNuevaPelicula.jsp">Adicionar</a><br><br>
         <table class="table table-hover">
             <thead>
-                <tr class="bg-dark"><th>Codigo<th>Nombre<th>Año<th>Duracion<th>Costo<th>Clasificacion<th>Sinopsis<th>Actualizar<th>Eliminar</tr>
+                <tr class="bg-dark" style="text-align: center;"><th>Codigo<th>Nombre<th>Año<th>Duracion<th>Costo<th>Clasificacion<th>Sinopsis<th>Imagen<th>Actualizar<th>Eliminar</tr>
             </thead>   
         <%
             for(Pelicula x:lista){
-            out.print("<tr><td>"+x.getIdpeli()+"<td>"+x.getNom()+"<td>"+x.getAnnio()+"<td>"+x.getDuracion()+"<td>"+x.getCosto()+"<td>"+x.getClasificacio()+"<td>"+x.getSinop());
+            out.print("<tr style='text-align: center;'><td>"+x.getIdpeli()+"<td>"+x.getNom()+"<td>"+x.getAnnio()+"<td>"+x.getDuracion()+"<td>"+x.getCosto()+"<td>"+x.getClasificacio()+"<td style='text-align: left;'>"+x.getSinop());
             %>
+            <td><img style="max-width: 70%" src="imagenes/<%=x.getNom()%>.jpg" alt="alt"/>
             <td><a href="serv_control?opc=11&cod=<%=x.getIdpeli()%>">UPDATE</a>
             <td><a href="serv_control?opc=10&id=<%=x.getIdpeli()%>">DEL</a>
             <%

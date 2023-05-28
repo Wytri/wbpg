@@ -805,6 +805,134 @@ public class Control implements IControl{
         }
         return lis; 
     }
+
+    @Override
+    public void modtrabajadores(Trabajadores t) {
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="update Trabajadores set Trabajadores_nombre=?, Trabajadores_apellido=?, Trabajadores_fecha_nacimiento=? where Trabajadores_id=?";
+            CallableStatement st=cn.prepareCall(sql);
+            st.setString(1, t.getNom());
+            st.setString(2, t.getApe());
+            st.setString(3, t.getFh());
+            st.setString(4, t.getId());
+            st.executeUpdate();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+    }
+
+    @Override
+    public void modusuario(Usuarios u) {
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="update Usuarios set usuarios_nombre=?, usuarios_pssw=? where usuarios_id=?";
+            CallableStatement st=cn.prepareCall(sql);
+            st.setString(1, u.getUser());
+            st.setString(2, u.getPssw());
+            st.setString(3, u.getId());
+            st.executeUpdate();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+    }
+    
+    
+    public List<Usuarios> coduser() {
+        List<Usuarios> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select 'T'+right('00000'+convert(varchar,isnull(Max(right(Trabajadores_id,4)),0)+1),4) from Trabajadores";
+            PreparedStatement st=cn.prepareStatement(sql);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+               Usuarios a=new Usuarios();
+                a.setId(rs.getString(1));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis; 
+    }
+
+    @Override
+    public void addtrabajador(Trabajadores p) {
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="{call IDTrabajadores (?,?,?)}";
+            CallableStatement st=cn.prepareCall(sql);
+            st.setString(1, p.getNom());
+            st.setString(2, p.getApe());
+            st.setString(3, p.getFh());
+            st.executeUpdate();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+    }
+
+    @Override
+    public void addusuario(Usuarios usrs) {
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="{call ADDUser (?,?,?)}";
+            CallableStatement st=cn.prepareCall(sql);
+            st.setString(1, usrs.getId());
+            st.setString(2, usrs.getUser());
+            st.setString(3, usrs.getPssw());
+            st.executeUpdate();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+    }
+
+    @Override
+    public void deltrab(String c) {
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="delete Trabajadores where Trabajadores_id=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setString(1, c);
+            st.executeUpdate();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+    }
+
+    @Override
+    public void deluser(String c) {
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="delete Usuarios where usuarios_id=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setString(1, c);
+            st.executeUpdate();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+    }
+    
 }
            
                 
