@@ -18,7 +18,7 @@ public class RegistroG {
     private String apellido;
     private String birth;
     private String correo;
-    private String tel;
+    private String tel;//try
 
     public RegistroG() {
     }
