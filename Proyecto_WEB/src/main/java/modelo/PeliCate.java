@@ -2,12 +2,12 @@
 package modelo;
 
 public class PeliCate {
-    private String codc;
-    private String nomec;
-    private String codp;
-    private String nomp;
-    private double dur;
-    private double cost;
+    public String codc;
+    public String nomec;
+    public String codp;
+    public String nomp;
+    public double dur;
+    public double cost;
 
     public PeliCate() {
     }

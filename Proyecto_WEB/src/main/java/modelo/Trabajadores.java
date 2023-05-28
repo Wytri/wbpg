@@ -16,10 +16,10 @@ import java.util.GregorianCalendar;
  * @author henry
  */
 public class Trabajadores {
-    private String id;
-    private String nom; 
-    private String ape;
-    private String fh;
+    public String id;
+    public String nom; 
+    public String ape;
+    public String fh;
 
     public Trabajadores() {
     }

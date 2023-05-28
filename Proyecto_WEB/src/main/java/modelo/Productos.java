@@ -9,10 +9,10 @@ package modelo;
  * @author henry
  */
 public class Productos {
-    private int prod;
-    private String nombre;
-    private double precio;
-    private String descr;
+    public int prod;
+    public String nombre;
+    public double precio;
+    public String descr;
 
     public Productos() {
     }

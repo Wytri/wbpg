@@ -3,7 +3,7 @@ package modelo;
 
 
 public class Usuarios {
-    private String id;
+    public String id;
     private String user;
     private String pssw;
 

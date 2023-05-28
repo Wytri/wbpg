@@ -9,9 +9,9 @@ package modelo;
  * @author henry
  */
 public class DetalleCombo {
-    private int detcom;
-    private int com;
-    private int cantidad;
+    public int detcom;
+    public int com;
+    public int cantidad;
 
     public DetalleCombo() {
     }

@@ -2,14 +2,14 @@
 package modelo;
 
 public class Pelicula extends Funciones{
-    private String idpeli;
-    private String idcad;
-    private String nom;
-    private int annio;
-    private double duracion;
-    private double costo;
-    private String clasificacio;
-    private String sinop;
+    public String idpeli;
+    public String idcad;
+    public String nom;
+    public int annio;
+    public double duracion;
+    public double costo;
+    public String clasificacio;
+    public String sinop;
 
     public Pelicula() {
     }

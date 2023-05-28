@@ -2,9 +2,9 @@
 package modelo;
 
 public class Sala {
-    private String sala;
-    private int capacidad;
-    private String tipo;
+    public String sala;
+    public int capacidad;
+    public String tipo;
 
     public Sala() {
     }

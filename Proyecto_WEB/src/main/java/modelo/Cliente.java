@@ -7,12 +7,12 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Cliente {
-    private int dni;
-    private String nombre;
-    private String apellido;
-    private String birth;
-    private String correo;
-    private String tel;
+    public int dni;
+    public String nombre;
+    public String apellido;
+    public String birth;
+    public String correo;
+    public String tel;
 
     public Cliente() {
     }

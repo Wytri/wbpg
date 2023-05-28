@@ -9,8 +9,8 @@ package modelo;
  * @author henry
  */
 public class Funciones extends Detalle{
-    private String inicio;
-    private String peli;
+    public String inicio;
+    public String peli;
 
     public Funciones() {
     }
