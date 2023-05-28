@@ -9,10 +9,10 @@ package modelo;
  * @author henry
  */
 public class Combo {
-    public int comb;
-    public String nom;
-    public double precio;
-    public String descr;
+    private int comb;
+    private String nom;
+    private double precio;
+    private String descr;
 
     public Combo() {
     }
