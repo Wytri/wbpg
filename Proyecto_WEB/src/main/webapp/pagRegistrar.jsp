@@ -18,8 +18,14 @@
             double costo=(double)ses.getAttribute("costo");
             ses.setAttribute("idsala", idsala);
             Control obj = new Control();
+            
+            String coso ="";
+            for(Pelicula x:obj.buscarP(codPeli)){
+            out.print("<tr><td>"+x.getNom());
+            coso=x.getNom();
+            }
         %>
-        <h3>Nuevo registro para la Película: <%=codPeli%></h3>
+        <h3>Nuevo registro para la Película: <%=coso%></h3>
         <form action="serv_control" method="post" name="fr">
             <table border=1 class="table table-hover">
                 <input type="hidden" name="opc" value="8">
@@ -63,9 +69,11 @@
                             %>
                     </select><br>
             
-                    <input type="tel" placeholder="Pago" id="txtpago" name="txtpago" class="campo" required><br>             
-                    <input type="tel" placeholder="Edad" id="txtedad" name="txtedad" class="campo" required><br>
-                    <input type="tel" placeholder="DNI" id="txtdni" name="txtdni" class="campo" required>            
+                    <input type="text" placeholder="Pago" id="txtpago" name="txtpago" class="campo" required><br>             
+                    <input type="text" placeholder="Edad" id="txtedad" name="txtedad" class="campo" required><br>
+                    <input type="email" placeholder="Correo" id="txtcorreo" name="txtcorreo" class="campo" required><br>
+                    <input type="tel" placeholder="Telefono" id="txttelefono" name="txttelefono" class="campo" required><br>
+                    <input type="text" placeholder="DNI" id="txtdni" name="txtdni" class="campo" required>            
                     <br>Costo de la Entrada: S/<%=costo%>
 
         <p>
