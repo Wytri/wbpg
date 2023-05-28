@@ -932,6 +932,191 @@ public class Control implements IControl{
 
         }
     }
+
+    @Override
+    public List<grafico> graficopelicula() {
+        List<grafico> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="{call GPELI}";
+            CallableStatement st=cn.prepareCall(sql);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                grafico a=new grafico();
+                a.setNombre(rs.getString(1));
+                a.setCantidad(rs.getInt(2));
+                a.setTotal(rs.getDouble(3));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+        }
+        return lis;    
+    }
+
+    @Override
+    public List<grafico> graficocategoria() {
+        List<grafico> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="{call GCATE}";
+            CallableStatement st=cn.prepareCall(sql);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                grafico a=new grafico();
+                a.setNombre(rs.getString(1));
+                a.setCantidad(rs.getInt(2));
+                a.setTotal(rs.getDouble(3));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+        }
+        return lis;
+    }
+
+    @Override
+    public List<grafico> graficocombo() {
+        List<grafico> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="{call GCOMBO}";
+            CallableStatement st=cn.prepareCall(sql);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                grafico a=new grafico();
+                a.setNombre(rs.getString(1));
+                a.setCantidad(rs.getInt(2));
+                a.setTotal(rs.getDouble(3));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+        }
+        return lis;
+    }
+
+    @Override
+    public List<grafico> graficoproducto() {
+        List<grafico> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="{call GPROD}";
+            CallableStatement st=cn.prepareCall(sql);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                grafico a=new grafico();
+                a.setNombre(rs.getString(1));
+                a.setCantidad(rs.getInt(2));
+                a.setTotal(rs.getDouble(3));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+        }
+        return lis;
+    }
+
+    @Override
+    public List<grafico> graficosala() {
+        List<grafico> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="{call GSALA}";
+            CallableStatement st=cn.prepareCall(sql);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                grafico a=new grafico();
+                a.setNombre(rs.getString(1));
+                a.setCantidad(rs.getInt(2));
+                a.setTotal(rs.getDouble(3));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+        }
+        return lis;
+    }
+
+    @Override
+    public List<grafico> graficomes() {
+        List<grafico> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="{call GMES}";
+            CallableStatement st=cn.prepareCall(sql);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                grafico a=new grafico();
+                a.setNombre(rs.getString(1));
+                a.setCantidad(rs.getInt(2));
+                a.setTotal(rs.getDouble(3));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+        }
+        return lis;
+    }
+
+    @Override
+    public List<grafico> graficoannio() {
+        List<grafico> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="{call GANNIO}";
+            CallableStatement st=cn.prepareCall(sql);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                grafico a=new grafico();
+                a.setNombre(rs.getString(1));
+                a.setCantidad(rs.getInt(2));
+                a.setTotal(rs.getDouble(3));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+        }
+        return lis;
+    }
+
+    @Override
+    public List<grafico> graficomesa(int i) {
+        List<grafico> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="{call GMESA(?)}";
+            CallableStatement st=cn.prepareCall(sql);            
+            st.setInt(1,i);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                grafico a=new grafico();
+                a.setNombre(rs.getString(1));
+                a.setCantidad(rs.getInt(2));
+                a.setTotal(rs.getDouble(3));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+        }
+        return lis;
+    }
     
 }
            
