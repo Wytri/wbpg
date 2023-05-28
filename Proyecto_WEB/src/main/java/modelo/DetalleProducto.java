@@ -9,9 +9,9 @@ package modelo;
  * @author henry
  */
 public class DetalleProducto {
-    private int detprod;
-    private int prod;
-    private int cant;
+    public int detprod;
+    public int prod;
+    public int cant;
 
     public DetalleProducto() {
     }

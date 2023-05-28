@@ -9,12 +9,12 @@ package modelo;
  * @author henry
  */
 public class DetalleComida {
-    private int orden;
-    private String combo;
-    private int cantc;
-    private String Prod;
-    private int cantp;
-    private double pago;
+    public int orden;
+    public String combo;
+    public int cantc;
+    public String Prod;
+    public int cantp;
+    public double pago;
 
     public DetalleComida(int orden, String combo, int cantc, String Prod, int cantp, double pago) {
         this.orden = orden;
