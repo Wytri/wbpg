@@ -2,8 +2,8 @@
 package modelo;
 
 public class Categoria {
-    private String id;
-    private String name;
+    public String id;
+    public String name;
 
     public Categoria(String id, String name) {
         this.id = id;
