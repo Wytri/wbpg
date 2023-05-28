@@ -3,9 +3,9 @@ package modelo;
 
 public class Boleto {
     public String boleta;
-    public int detalle;
-    public int dni;
-    public double pago;
+    int detalle;
+    private int dni;
+    private double pago;
 
     public Boleto() {
     }

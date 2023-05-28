@@ -9,10 +9,10 @@ package modelo;
  * @author henry
  */
 public class Ordenes {
-    public int orden;
-    public int detcom;
-    public int detprod;
-    public double total;
+    private int orden;
+    private int detcom;
+    private int detprod;
+    private double total;
 
     public Ordenes() {
     }
