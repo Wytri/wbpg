@@ -85,7 +85,7 @@
                                 <tr class="table table-active">
                                     <td><%=x.getId()%></td>
                                     <td><%=x.getUser()%></td>
-                                    <td><input type="password" value="<%=x.getPssw()%>"></td>
+                                    <td><input type="password" value="<%=x.getPssw()%>" readonly></td>
                                 </tr>
                                 <%
                                     }
