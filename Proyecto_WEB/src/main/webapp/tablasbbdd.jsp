@@ -12,135 +12,50 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="stylesheet" href="css/estilos.css"/>
+        <link href="css/adminlte.min.css" rel="stylesheet" type="text/css"/>
         <!-- libreria jquwey  -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </head>
     <body>
         <center>
-            <h1>BASE DE DATOS</h1>
+            <h1>TRABAJADORES</h1>
+            <a href="crud.jsp">Retornar</a><br>
+        <%
+            Control obj = new Control();
+        %>
             
-            <section id="tabl" class="espaciado">
-		<div class="contenedor">
-                    <div class="fila">
-                        <h2>CATEGORIAS</h2>
-                    </div>
-                    <div class="fila">
-                        <table class="tabla">
-                            <thead>
-                                <th>ID</th>
-                                <th>NOMBRE</th>
-                            </thead>
-                            <tbody>
-                                <%
-                                    Control obj = new Control();
-                                    for (Categoria x: obj.liscat()) {
-                                %>
-                                <tr>
-                                    <td><%=x.getId()%></td>
-                                    <td><%=x.getName()%></td>
-                                </tr>
-                                <%
-                                    }
-                                %>
-                            </tbody>
-                        </table>
-                    </div>
-		</div>
-            </section>
+            <!--<div class="pelic"></div>
             
-            <div class="pelic"></div>
+            <div class="cli"></div>-->
             
-            <div class="cli"></div>
-            
-            <section id="tabl" class="espaciado">
-		<div class="contenedor">
-                    <div class="fila">
-                        <h2>Asientos-Salas</h2>
-                    </div>
-                    <div class="fila">
-                        <table class="tabla">
-                            <thead>
-                                <th>ASIENTO</th>
-                                <th>SALA</th>
-                            </thead>
-                            <tbody>
-                                <%
-                                    for (Asiento x: obj.lisasi()) {
-                                %>
-                                <tr>
-                                    <td><%=x.getAsiento()%></td>
-                                    <td><%=x.getSala()%></td>
-                                </tr>
-                                <%
-                                    }
-                                %>
-                            </tbody>
-                        </table>
-                    </div>
-		</div>
-            </section>
-            
-            <section id="tabl" class="espaciado">
-		<div class="contenedor">
-                    <div class="fila">
-                        <h2>Boleto</h2>
-                    </div>
-                    <div class="fila">
-                        <table class="tabla">
-                            <thead>
-                                <th>CODIGO</th>
-                                <th>DNI</th>
-                                <th>ID ASIENTO</th>
-                                <th>ID SALA</th>
-                                <th>ID PELICULA</th>
-                                <th>FECHA</th>
-                                <th>PAGO</th>
-                            </thead>
-                            <tbody>
-                                <%
-                                    for (Boleto x: obj.lisbole()) {
-                                %>
-                                <tr>
-                                    <td><%=x.getCod()%></td>
-                                    <td><%=x.getDni()%></td>
-                                    <td><%=x.getIdasiento()%></td>
-                                    <td><%=x.getIdsala()%></td>
-                                    <td><%=x.getIdpeli()%></td>
-                                    <td><%=x.getFecha()%></td>
-                                    <td><%=x.getPago()%></td>
-                                </tr>
-                                <%
-                                    }
-                                %>
-                            </tbody>
-                        </table>
-                    </div>
-		</div>
-            </section>
+            <a href="pagAgregarTrabajador.jsp">Agregar</a>
                             
             <section id="tabl" class="espaciado">
 		<div class="contenedor">
                     <div class="fila">
-                        <h2>TRABAJADORES</h2>
+                        <h2 class="alert-default-info">TRABAJADORES</h2>
                     </div>
                     <div class="fila">
-                        <table class="tabla">
-                            <thead>
-                                <th>ID</th>
-                                <th>NOMBRE</th>
-                                <th>APELLIDO</th>
-                                <th>FECHA</th>
+                        <table class="tabla"  class="table table-hover">
+                            <thead class="bg-dark">
+                                <th>ID </th>
+                                <th>NOMBRE </th>
+                                <th>APELLIDO </th>
+                                <th>FECHA </th>
+                                <th>EDAD </th>
                             </thead>
                             <tbody>
                                 <%
                                     for (Trabajadores x: obj.listra()) {
                                 %>
-                                <tr>
-                                    <td><%=x.getId()%></td>
-                                    <td><%=x.getNom()%></td>
-                                    <td><%=x.getApe()%></td>
-                                    <td><%=x.getFh()%></td>
+                                <tr   class="table table-bordered">
+                                    <td><%=x.getId()%> </td>
+                                    <td><%=x.getNom()%> </td>
+                                    <td><%=x.getApe()%> </td>
+                                    <td><%=x.getFh()%> </td>
+                                    <td style="text-align: center;"><%=x.edad()%> </td>
+                                    <td><a href="pagEditarT.jsp?cod=<%=x.getId()%>">Editar</a></td>
+                                    <td><a href="pagConfirmacion.jsp?cod=<%=x.getId()%>">Eliminar</a></td>
                                 </tr>
                                 <%
                                     }
@@ -151,14 +66,14 @@
 		</div>
             </section>
                             
-            <section id="tabl" class="espaciado">
+                            <section id="tabl" class="espaciado" style="margin-top: 100px">
 		<div class="contenedor">
                     <div class="fila">
-                        <h2>USUARIOS</h2>
+                        <h2 class="alert-default-info">USUARIOS</h2>
                     </div>
                     <div class="fila">
-                        <table class="tabla">
-                            <thead>
+                        <table class="tabla"  class="table table-hover">
+                            <thead class="bg-dark">
                             <th>ID</th>
                                 <th>USUARIO</th>
                                 <th>PSS</th>
@@ -167,7 +82,7 @@
                                 <%
                                     for (Usuarios x: obj.lisusu()) {
                                 %>
-                                <tr>
+                                <tr class="table table-active">
                                     <td><%=x.getId()%></td>
                                     <td><%=x.getUser()%></td>
                                     <td><input type="password" value="<%=x.getPssw()%>"></td>
@@ -181,12 +96,12 @@
 		</div>
             </section>
         </center>
-    
-        <script>
+                      
+        <!--<script>
             $(document).ready(function () {
             $('.pelic').load('./lista_peliculas.jsp');
             $('.cli').load('./tabla_cliente.jsp');
             });
-        </script>
+        </script>-->
     </body>
 </html>

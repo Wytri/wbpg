@@ -53,7 +53,8 @@
                 </select><br>
                 
                 <textarea type="text" placeholder="Sinopsis" id="txtsin" name="txtsin" class="campo" required></textarea><br>             
-                         
+                Imagen: <input type="file" accept="image/jpg" id="img" name="img" class="campo"><br>        
+                
 
         <p>
                 <input class="boton-enviar" type="submit" value="Enviar"> <!-- submit es para enviar los datos -->

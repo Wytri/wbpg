@@ -4,6 +4,7 @@
     Author     : henry
 --%>
 
+<%@page import="java.util.Iterator"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="modelo.*"%>
 <%@page import="Controlador.Control"%>
@@ -18,43 +19,59 @@
     <body>
             <h1>Ejercicio 1 - Listar Detalle de Comida (DEPENDINETE)!</h1>
              <%
+                 Control obj = new Control();
+                 String nom="";
                  String o = request.getAttribute("o").toString();
                  ArrayList<DetalleCombo> lista=(ArrayList)request.getAttribute("dato");;
                  ArrayList<DetalleProducto> lista2=(ArrayList)request.getAttribute("dato");;
                 if (o.equals("1")) {
                      lista=(ArrayList)request.getAttribute("dato");
-                }else if (o.equals("2")) {
+                     for (Combo c: obj.liscom()) {
+                             if (c.getComb()==lista.iterator().next().getCom()) {
+                                     nom = c.getNom();
+                                 }
+                         }
+                }
+                else if (o.equals("2")) {
                         lista2=(ArrayList)request.getAttribute("dato");
+                        for (Productos p: obj.lisprod()) {
+                             if (p.getProd()==lista2.iterator().next().getProd()) {
+                                     nom = p.getNombre();
+                                 }
+                         }
                     }
+                 
                     String c = request.getAttribute("codigo").toString();
                  int cod = Integer.parseInt(c);
-                 out.print("<h3>Lista de Detalle: "+cod+"</h3>");
+                 
+                 
+                 out.print("<h3>Lista de Detalle: "+nom+"</h3>");
              %>
 
-
-             <%
-                 Control obj = new Control();
-             %>
 
              <h2 class="alert-default-info">Lista de Compras</h2>
 
              <a href="pagComida.jsp">Retornar</a><br>
 
-             <table class="table table-hover">
-                 <thead>
-                     <tr class="bg-dark"><th>CodigoDetalle<th>Codigo<th>Cantidad Compra<th>
-                 </thead>   
-             <%
-                  if (o.equals("1")) {
-                    for(DetalleCombo x:lista){
-                 out.print("<tr><td>"+x.getDetcom()+"<td>"+x.getCom()+"<td>"+x.getCantidad());
-                 }  
-                }else if (o.equals("2")) {
-                        for(DetalleProducto x:lista2){
-                 out.print("<tr><td>"+x.getDetprod()+"<td>"+x.getProd()+"<td>"+x.getCant());
-                }  
-                   }
-                 
-             %>    
+        <center>
+             <div style="max-width: 30%">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="bg-dark"><th>CodigoDetalle<th>Cantidad Compra<th>
+                    </thead>   
+                <%
+                     if (o.equals("1")) {
+                       for(DetalleCombo x:lista){
+                    out.print("<tr><td>"+x.getDetcom()+"<td>"+x.getCantidad());
+                    }  
+                   }else if (o.equals("2")) {
+                           for(DetalleProducto x:lista2){
+                    out.print("<tr><td>"+x.getDetprod()+"<td>"+x.getCant());
+                   }  
+                      }
+
+                %>    
+            </div>
+        </center>
     </body>
 </html>

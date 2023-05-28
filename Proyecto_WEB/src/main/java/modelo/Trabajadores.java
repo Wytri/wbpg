@@ -4,6 +4,13 @@
  */
 package modelo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 /**
  *
  * @author henry
@@ -22,6 +29,26 @@ public class Trabajadores {
         this.nom = nom;
         this.ape = ape;
         this.fh = fh;
+    }
+    
+    public Trabajadores(String nom, String ape, String fh) {
+        this.nom = nom;
+        this.ape = ape;
+        this.fh = fh;
+    }
+    
+    public int edad() throws ParseException{
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+            
+        Calendar cal = null;
+        Date date = (Date)formato.parse(fh); 
+        cal=Calendar.getInstance();
+        cal.setTime(date);
+            
+        Calendar fecha = new GregorianCalendar(); 
+        int annio = fecha. get(Calendar. YEAR);
+        
+        return annio - cal.get(Calendar.YEAR);
     }
 
     /**

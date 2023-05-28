@@ -29,17 +29,23 @@ public interface IControl {
     void addcli(Cliente c);
     void addpeli(Pelicula p);
     void addsala(Sala s);
+    void addtrabajador(Trabajadores s);
+    void addusuario(Usuarios s);
     
     void modasi(Asiento a);
     void modbol(Boleto b);
     void modcli(Cliente c);
     void modpeli(Pelicula p);
     void modsala(Sala s);
+    void modtrabajadores(Trabajadores t);
+    void modusuario(Usuarios u);
     
     void delasi(String a);
     void delbol(String b);
     void delcli(String c);
     void delpeli(String p);
     void delsala(String s);
+    void deltrab(String t);
+    void deluser(String u);
 }
 

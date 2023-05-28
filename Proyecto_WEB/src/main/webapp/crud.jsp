@@ -19,7 +19,10 @@
             <a href="pagComida.jsp">Venta de Comida</a><br>
 
             <a href="pagPeliculasAdd.jsp">Registro de Boletas</a><br>
-            <a href="pagClientes.jsp">Clientes</a>
+            <a href="pagClientes.jsp">Clientes</a><br>
+            
+            <a href="tablasbbdd.jsp">Trabajadores</a><br>
+            <a href="pagSala.jsp">Ver Salas Ocupadas</a>
         </center> 
     </body>
 </html>

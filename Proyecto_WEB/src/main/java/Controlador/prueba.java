@@ -24,6 +24,11 @@ public class prueba {
         for (DetalleComida d: c.listadetalleorden(400000)) {
             System.out.println(d.getCombo());
         }
+        
+        //c.addusuario(new Usuarios("T0012", "fer", "fer24"));
+        //c.deluser("T0012");
+        c.deluser("T0005");
+        c.deltrab("T0005");
     }
     
 }

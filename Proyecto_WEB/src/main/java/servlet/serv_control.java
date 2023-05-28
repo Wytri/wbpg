@@ -19,6 +19,7 @@ import modelo.Asiento;
 import modelo.Boleto;
 import modelo.Cliente;
 import modelo.Pelicula;
+import modelo.Trabajadores;
 import modelo.Usuarios;
 
 /**
@@ -48,7 +49,10 @@ public class serv_control extends HttpServlet {
             if (op==10) eliminarPeli(request, response);
             if (op==11) actualizarPeli(request, response);
             if (op==12) actualizacionPeli(request, response);
-//            if (op==3) mod(request, response);
+            
+            if (op==15) modificarTrabajadores(request, response);   
+            if (op==16) agregarTrabajadores(request, response);   
+            if (op==17) eliminarTrabajadores(request, response);   
     }
     
     Control obj = new Control();
@@ -242,8 +246,60 @@ public class serv_control extends HttpServlet {
         obj.modpeli(p);
         String pag="serv_control?opc=2&cod="+idCat;
         request.getRequestDispatcher(pag).forward(request, response);
-        }
+    }
     
+    protected void modificarTrabajadores(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        String cod=request.getParameter("codigo");  
+        String nom=request.getParameter("nombre");
+        String ape=request.getParameter("ape");
+        String fe=request.getParameter("fe");
+        
+        String usuario=request.getParameter("user");
+        String contra=request.getParameter("pss");
+        
+        Trabajadores t = new Trabajadores(cod, nom, ape, fe);
+        Usuarios u = new Usuarios(cod, usuario, contra);
+        
+        obj.modtrabajadores(t);
+        
+        obj.modusuario(u);
+        
+        String pag="/tablasbbdd.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
+    
+    protected void agregarTrabajadores(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        String cod=request.getParameter("codigo");  
+        String nom=request.getParameter("nombre");
+        String ape=request.getParameter("ape");
+        String fe=request.getParameter("fe");
+        
+        String usuario=request.getParameter("user");
+        String contra=request.getParameter("pss");
+        
+        Usuarios u = new Usuarios(cod, usuario, contra);
+        Trabajadores t = new Trabajadores(nom, ape, fe);
+        
+        obj.addtrabajador(t);
+        obj.addusuario(u);
+        
+        String pag="/tablasbbdd.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
+    
+    protected void eliminarTrabajadores(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        String co=request.getParameter("cod");  
+        
+        obj.deluser(co);
+        obj.deltrab(co);
+        
+        String pag="/tablasbbdd.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+        
+    }
     
 //    
 ////    protected void mod(HttpServletRequest request, HttpServletResponse response)
