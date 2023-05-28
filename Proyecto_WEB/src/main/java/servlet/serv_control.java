@@ -57,6 +57,9 @@ public class serv_control extends HttpServlet {
             if (op==16) agregarTrabajadores(request, response);   
             if (op==17) eliminarTrabajadores(request, response);   
             
+            if (op==18) añadirProducto(request, response);   
+            if (op==19) actualizarPro(request, response);
+            if (op==20) cambiarPro(request, response); 
     }
     
     Control obj = new Control();
@@ -361,6 +364,45 @@ public class serv_control extends HttpServlet {
         Combo p=new Combo(idcombo, nom, costo, des);
         
         obj.modCombos(p);
+        String pag="pagComida.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
+    void añadirProducto(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+
+        String nom=request.getParameter("txtnom");
+        double costo=Double.parseDouble(request.getParameter("txtcosto"));
+        String des=request.getParameter("txtdes");
+
+        Productos p=new Productos(nom, costo, des);
+        
+        obj.addProducto(p);
+        String pag="pagComida.jsp";
+        request.getRequestDispatcher(pag).forward(request,
+        response);
+    }
+    
+    protected void actualizarPro(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+        HttpSession ses=request.getSession();
+        int codProductos=Integer.parseInt(request.getParameter("cod")); 
+        ses.setAttribute("codPro", codProductos);
+        request.setAttribute("codigo", codProductos);
+        request.setAttribute("dato", obj.busProductos(codProductos));
+        String pag="/pagUpdateProductos.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
+    
+    void cambiarPro(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        
+        HttpSession ses=request.getSession();
+        int idpro=(int)ses.getAttribute("codPro");
+        
+        String nom=request.getParameter("txtnom");
+        double costo=Double.parseDouble(request.getParameter("txtcosto"));
+        String des=request.getParameter("txtdes");
+        Productos p=new Productos(idpro, nom, costo, des);
+        
+        obj.modProductos(p);
         String pag="pagComida.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
     }
