@@ -16,7 +16,8 @@
     </head>
     <body>
         <h1>Lista Comida JSP!</h1>
-        <a href="crud.jsp">Retornar</a>
+        <a href="crud.jsp">Retornar</a><br>
+        <a href="pagAddCombos.jsp">Adicionar</a><br>
         <%
             Control obj=new Control();
         %>
@@ -24,12 +25,13 @@
             <h2 class="alert-default-info">Lista de Combo</h2>
             <table class="table table-hover">
                     <thead>
-                    <tr class="bg-dark"><th>Codigo<th>Nombre<th>Descripcion<th>Ver
+                    <tr class="bg-dark"><th>Codigo<th>Nombre<th>Descripcion<th>Actualizar<th>Ver
                     </thead>   
                     <%
                         for(Combo x:obj.liscom()){
                     %>
                     <tr><td><%=x.getComb()%><td><%=x.getNom()%><td><%=x.getDescr()%>
+                        <td><a href="serv_control?opc=4&cod=<%=x.getComb()%>">Datos</a>
                         <td><a href="serv_control?opc=3&cod=<%=x.getComb()%>&o=1">Registro</a>
                     <%
                         }  

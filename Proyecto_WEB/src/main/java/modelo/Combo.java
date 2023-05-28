@@ -17,6 +17,14 @@ public class Combo {
     public Combo() {
     }
 
+    public Combo(String nom, double precio, String descr) {
+        this.nom = nom;
+        this.precio = precio;
+        this.descr = descr;
+    }
+    
+    
+
     public Combo(int comb, String nom, double precio, String descr) {
         this.comb = comb;
         this.nom = nom;
