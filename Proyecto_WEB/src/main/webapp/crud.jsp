@@ -22,7 +22,9 @@
             <a href="pagClientes.jsp">Clientes</a><br>
             
             <a href="tablasbbdd.jsp">Trabajadores</a><br>
-            <a href="pagSala.jsp">Ver Salas Ocupadas</a>
+            <a href="pagSala.jsp">Ver Salas Ocupadas</a><br>
+            
+            <a href="GraficoVentas.jsp">GRÁFICOS</a>
         </center> 
     </body>
 </html>
