@@ -20,7 +20,6 @@
         <h1>Ejercicio 3 - Actualizar Peliculas</h1>
         <%
             ArrayList<Pelicula> lista=(ArrayList)request.getAttribute("dato");
-            //Pelicula x=lista.get(0);
             HttpSession ses=request.getSession();
             String idpeli=(String)ses.getAttribute("codPeli");
             ses.setAttribute("idPelic", idpeli);

@@ -613,6 +613,111 @@ public class Control implements IControl{
         }
         return lis; 
     }
+    
+    public List<Combo> busCombos(int ID) {
+       List<Combo> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select * from Combos where IdCombo=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setInt(1, ID);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                Combo a=new Combo();
+                a.setComb(rs.getInt(1));
+                a.setNom(rs.getString(2));
+                a.setPrecio(rs.getDouble(3));
+                a.setDescr(rs.getString(4));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis;    
+    }
+    
+    public List<Productos> busProductos(int ID) {
+       List<Productos> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select * from Productos where IdProducto=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setInt(1, ID);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                Productos a=new Productos();
+                a.setProd(rs.getInt(1));
+                a.setNombre(rs.getString(2));
+                a.setPrecio(rs.getDouble(3));
+                a.setDescr(rs.getString(4));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis;    
+    }
+    
+    public void addCombo(Combo p) {
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="INSERT INTO Combos values (?,?,?)";
+            CallableStatement st=cn.prepareCall(sql);
+            
+            st.setString(1, p.getNom());
+            st.setDouble(2, p.getPrecio());
+            st.setString(3, p.getDescr());
+            st.executeUpdate();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+        }
+    }
+    
+    public void modCombos(Combo p) {
+        Connection cn=SQLConexion.getConexion();
+        try {    
+            int id=p.getComb();
+            String sql="UPDATE Combos SET NombreCombo=?, Precio=?, Descripcion=? WHERE IdCombo="+id;
+            PreparedStatement ps=cn.prepareStatement(sql);
+            
+            ps.setString(1, p.getNom());
+            ps.setDouble(2, p.getPrecio());
+            ps.setString(3, p.getDescr());
+            ps.executeUpdate();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+        }
+    }
+    
+    public void modProductos(Productos p) {
+        Connection cn=SQLConexion.getConexion();
+        try {    
+            int id=p.getProd();
+            String sql="UPDATE Productos SET NombreProducto=?, Precio=?, Descripcion=? WHERE IdProducto="+id;
+            PreparedStatement ps=cn.prepareStatement(sql);
+            
+            ps.setString(1, p.getNombre());
+            ps.setDouble(2, p.getPrecio());
+            ps.setString(3, p.getDescr());
+            ps.executeUpdate();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+        }
+    }
 
     @Override
     public List<Productos> lisprod() {
@@ -638,6 +743,24 @@ public class Control implements IControl{
         }
         return lis; 
     }
+    
+    public void addProducto(Productos p) {
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="INSERT INTO Productos values (?,?,?)";
+            CallableStatement st=cn.prepareCall(sql);
+            
+            st.setString(1, p.getNombre());
+            st.setDouble(2, p.getPrecio());
+            st.setString(3, p.getDescr());
+            st.executeUpdate();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+        }
+    }
+    
 
     @Override
     public List<DetalleCombo> lisdetcom(int cod) {
