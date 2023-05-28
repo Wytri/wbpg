@@ -27,8 +27,16 @@ public class prueba {
         
         //c.addusuario(new Usuarios("T0012", "fer", "fer24"));
         //c.deluser("T0012");
-        c.deluser("T0005");
-        c.deltrab("T0005");
+        //c.deluser("T0005");
+        //c.deltrab("T0005");
+        
+//        for (grafico x: c.graficopelicula()) {
+//            System.out.println(x.getNombre()+x.getCantidad()+x.getTotal());
+//        }
+
+        for (grafico x: c.graficomesa(2023)) {
+            System.out.println(x.getNombre()+x.getCantidad()+x.getTotal());
+        }
     }
     
 }

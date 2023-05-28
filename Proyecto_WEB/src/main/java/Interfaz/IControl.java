@@ -47,5 +47,15 @@ public interface IControl {
     void delsala(String s);
     void deltrab(String t);
     void deluser(String u);
+    
+    List<grafico> graficopelicula();
+    List<grafico> graficocategoria();
+    List<grafico> graficocombo();
+    List<grafico> graficoproducto();
+    List<grafico> graficosala();
+    List<grafico> graficomes();
+    List<grafico> graficoannio();
+    
+    List<grafico> graficomesa(int an);
 }
 
