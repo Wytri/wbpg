@@ -70,7 +70,7 @@
                     </select><br>
             
                     <input type="text" placeholder="Pago" id="txtpago" name="txtpago" class="campo" value="<%=costo%>"><br>             
-                    <input type="text" placeholder="Fecha" id="txtfecha" name="txtfecha" class="campo" required><br>
+                    <input type="text" placeholder="Edad" id="txtedad" name="txtedad" class="campo" required><br>
                     <input type="email" placeholder="Correo" id="txtcorreo" name="txtcorreo" class="campo" required><br>
                     <input type="tel" placeholder="Telefono" id="txttelefono" name="txttelefono" class="campo" required><br>
                     <input type="text" placeholder="DNI" id="txtdni" name="txtdni" class="campo" required>            
