@@ -17,6 +17,14 @@ public class Productos {
     public Productos() {
     }
 
+    public Productos(String nombre, double precio, String descr) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.descr = descr;
+    }
+    
+    
+
     public Productos(int prod, String nombre, double precio, String descr) {
         this.prod = prod;
         this.nombre = nombre;
