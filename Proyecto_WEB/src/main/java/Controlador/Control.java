@@ -1241,6 +1241,57 @@ public class Control implements IControl{
         return lis;
     }
     
+      //listado de todas las funciones
+    public List<Funciones> lisfun() {
+        List<Funciones> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select * from Funciones";
+            PreparedStatement st=cn.prepareStatement(sql);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                Funciones f=new Funciones();
+                f.setFuncion(rs.getInt(1));
+                f.setInicio(rs.getString(2));
+                f.setPeli(rs.getString(3));
+                f.setSala(rs.getString(4));
+                lis.add(f);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis;    
+    }
+    
+    
+    //busca el # asiento ocupados por función
+        public List<Detalle> lisasifun(int cod) {
+        List<Detalle> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select * from Detalle where IdFuncion=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setInt(1, cod);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                Detalle a=new Detalle();
+                a.setDetalle(rs.getInt(1));
+                a.setFuncion(rs.getInt(2));
+                a.setAsi(rs.getInt(3));
+                a.setOrden(rs.getInt(3));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis;    
+    }
 }
            
                 

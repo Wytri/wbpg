@@ -106,52 +106,68 @@
             <h1>Ejercicio 1 - Listar Salas (DEPENDINETE)!</h1>
              <%
                 Control obj = new Control();
-                String code="",coda="";
-                if(request.getParameter("cbe")!=null)
-                code=request.getParameter("cbe");
 
-                if(request.getParameter("cba")!=null)
-                coda=request.getParameter("cba");
+                int coda=0;
+                
+                if(request.getParameter("listFun")!=null)
+                coda=Integer.parseInt(request.getParameter("listFun"));
              %>   
 
 
             <h2 class="alert-default-info">Lista de Salas</h2>
 
-            <a href="crud.jsp">Retornar</a><br>
+            
         <center>
             <form action="" name="fr">
-                <select name="listCla" required>
+                
+            <select name="listFun" required>
                     <option value="">Elegir</option>
                     <%
-                       String sala="";
-                       for (Sala x: obj.lisala()) {
-                       if(x.getSala().equals(code))
-                            out.print("<option value="+x.getSala()+" selected>"+x.getSala());
+                       String xd="";
+                       for (Funciones f: obj.lisfun()) {
+                       if(f.getFuncion()==coda)
+                            out.print("<option value="+f.getFuncion()+" selected>"+f.getFuncion()+" "+f.getInicio());
                         else
-                            out.print("<option value="+x.getSala()+">"+x.getSala());
-                  }                  
+                            out.print("<option value="+f.getFuncion()+">"+f.getFuncion()+" "+f.getInicio());
+                        }                  
                 %>    
                 </select>
                 <input type="submit">
+                
             </form><br>
                 
                 <%
-                    if (request.getParameter("listCla")!=null) {
-                         String c = request.getParameter("listCla");
+                    if (request.getParameter("listFun")!=null) {
+                         int c = Integer.parseInt(request.getParameter("listFun"));
                          
                         int[] asientos = new int[20];
+                        String sala="";
+                        for (Funciones ff: obj.lisfun()) {
+                            for (Detalle pas : obj.lisasifun(c)) {
+                                if (pas.getFuncion()== ff.getFuncion()) {
+                                    sala = ff.getSala();
+                                    
+                                }
+                            }
+                        }
+                        out.print(sala);
+                            out.print("<br><br>");
                         for (int i = 0; i < asientos.length; i++) {
                             asientos[i] = i + 1;
                         }
 
                         for (int asiento : asientos) {
                             boolean ocupado = false;
-                            for (Asiento pas : obj.lisasibus(c)) {
-                                if (pas.getAsiento() == asiento) {
+                            for (Detalle pas : obj.lisasifun(c)) {
+                                if (pas.getAsi()== asiento) {
                                     ocupado = true;
                                     break;
                                 }
                             }
+                            
+
+                            
+                            
                             if (asiento==6 || asiento==11 || asiento==16) {
                                     out.print("<br><br>");
                                 }
@@ -174,6 +190,7 @@
                         }
                     }
                 %>   
-        </center>        
+        </center>      
+    <a href="crud.jsp">Retornar</a><br>
     </body>
 </html>
