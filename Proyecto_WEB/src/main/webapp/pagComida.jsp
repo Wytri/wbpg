@@ -27,7 +27,7 @@
             <table class="table table-hover">
                     <thead>
                     <tr class="bg-dark"><th>Codigo<th>Nombre<th>Descripcion<th>Actualizar<th>Ver
-                    </thead>   
+                    </thead>
                     <%
                         for(Combo x:obj.liscom()){
                     %>
