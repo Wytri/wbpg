@@ -23,6 +23,8 @@ public interface IControl {
     List<Detalle> lisdeta(int cod);
     List<Pelicula> listadetafun(int cod);
     List<DetalleComida> listadetalleorden(int cod);
+    List<Funciones> lisfun();
+    List<Detalle> lisasifun(int cod);
     
     void addasi(Asiento a);
     void addbol(Boleto b);
