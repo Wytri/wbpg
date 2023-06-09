@@ -21,6 +21,28 @@
         <%
             HttpSession ses=request.getSession();
             ArrayList<Pelicula> lista=(ArrayList)request.getAttribute("dato");
+            String cod=(String)request.getParameter("cod");
+
+            int tampag=2;
+            int canReg=lista.size();
+            int inicio=0, fin, numPag=canReg/tampag+1;
+            for(int p=1; p<=numPag;p++){
+                %>
+                <a href="serv_control?opc=2&cod=<%=cod%>&pa=<%=p%>"><%=p%></a>
+        <%
+            }
+            int pagina;
+            if(request.getParameter("pa")!=null){
+            pagina=Integer.parseInt(request.getParameter("pa"));
+            if(pagina==1)
+            inicio=0;
+            else
+            inicio=(pagina-1)*tampag;
+            }
+            fin=inicio+tampag;
+            if(fin>canReg) fin=canReg;
+           
+            
             String cate = request.getAttribute("codigo").toString();
             ses.setAttribute("codCate", cate);
             out.print("<h3>Lista de Peliculas de la Categoria: "+cate+"</h3>");
@@ -47,7 +69,9 @@
                 <tr class="bg-dark" style="text-align: center;"><th>Codigo<th>Nombre<th>Año<th>Duracion<th>Costo<th>Clasificacion<th>Sinopsis<th>Imagen<th>Actualizar<th>Eliminar</tr>
             </thead>   
         <%
-            for(Pelicula x:lista){
+            /*for(Pelicula x:lista){*/
+            for(int f=inicio; f<fin; f++){
+            Pelicula x=lista.get(f);
             out.print("<tr style='text-align: center;'><td>"+x.getIdpeli()+"<td>"+x.getNom()+"<td>"+x.getAnnio()+"<td>"+x.getDuracion()+"<td>"+x.getCosto()+"<td>"+x.getClasificacio()+"<td style='text-align: left;'>"+x.getSinop());
             %>
             <td><img style="max-width: 70%" src="imagenes/<%=x.getNom()%>.jpg" alt="alt"/>

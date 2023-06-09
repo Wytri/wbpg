@@ -37,7 +37,7 @@
             <input type="submit">
         </form>
         
-        <h2>Graficar Ventas por Pelicula</h2>
+        <h2>Graficar por Opcion</h2>
         <form action="GRAF2.jsp" target="ventana">
             <select name="cba">
                 <option value="" selected>Selecciona Metodo</option>
