@@ -10,21 +10,55 @@
     <head>
         <link href="css/adminlte.min.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/CSS_CRUD.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
     </head>
     <body>
-        <center>
-            <h1>Listar Base de Datos</h1>
-            <a href="pagCategorias.jsp">Categoria de Peliculas</a><br>
-            <a href="pagComida.jsp">Venta de Comida</a><br>
+        <center>    
+        <div class="todo">
+                <h1>Bienvenido Administrador(a)</h1><br>
+                <table class="tabla_op" cellpadding="10" cellspacing="20">
 
-            <a href="pagPeliculasAdd.jsp">Registro de Boletas</a><br>
-            <a href="pagClientes.jsp">Clientes</a><br>
-            
-            <a href="tablasbbdd.jsp">Trabajadores</a><br>
-            <a href="pagSala.jsp">Ver Salas Ocupadas</a><br>
-            
-            <a href="GraficoVentas.jsp">GRÁFICOS</a>
+                    <td onmouseover="bgColor='#bf0404'" onmouseout="bgColor='black'">
+                        <a href="pagCategorias.jsp">
+                            <img src="img_crud/peliculas.jpg" class="ajustar_img"><br>
+                            Categoria de Peliculas</a></td>
+
+                    <td onmouseover="bgColor='#bf0404'" onmouseout="bgColor='black'">
+                        <a href="pagComida.jsp">
+                            <img src="img_crud/canchita.jpg" class="ajustar_img"><br>
+                            Venta de Comida</a></td>
+    
+                    <td onmouseover="bgColor='#bf0404'" onmouseout="bgColor='black'">
+                        <a href="pagPeliculasAdd.jsp">
+                            <img src="img_crud/boletos.jpg" class="ajustar_img"><br>
+                            Registro de Boletas</a></td>
+
+                    <tr></tr>
+
+                    <td onmouseover="bgColor='#bf0404'" onmouseout="bgColor='black'">
+                        <a href="pagClientes.jsp">
+                            <img src="img_crud/clientes.jpg" class="ajustar_img"><br>
+                            Clientes</a></td>
+    
+                    <td onmouseover="bgColor='#bf0404'" onmouseout="bgColor='black'">
+                        <a href="tablasbbdd.jsp">
+                            <img src="img_crud/empleados.jpg" class="ajustar_img"><br>
+                            Trabajadores</a></td>
+
+                    <td onmouseover="bgColor='#bf0404'" onmouseout="bgColor='black'">
+                        <a href="pagSala.jsp">
+                            <img src="img_crud/salas.jpg" class="ajustar_img"><br>
+                            Ver Salas Ocupadas</a></td>
+
+                    <tr></tr>
+                    <td onmouseover="bgColor='#bf0404'" onmouseout="bgColor='black'">
+                        <a href="GraficoVentas.jsp">
+                            <img src="img_crud/estadistica2.jpg" class="ajustar_img"><br>
+                            GRÁFICOS</a></td>
+                </table>
+            </div>
+
         </center> 
     </body>
 </html>
