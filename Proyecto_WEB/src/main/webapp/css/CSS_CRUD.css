@@ -1,0 +1,47 @@
+html {
+    /* retrasa el desplazamiento del scrooll */
+    scroll-behavior: smooth;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    /* Paleta de colores */
+    /*Link de la paleta
+    https://coolors.co/palette/03071e-370617-6a040f-9d0208-d00000-dc2f02-e85d04-f48c06-faa307-ffba08
+    */
+    --color-rojo: #D00000;
+    --color-negro: #000;
+    --color-blanco: #fff;
+    --color-grisclaro: #c4c4c4;
+    --color-grisoscuro: #454545;
+}
+
+h1   {
+    color: var(--color-blanco);
+    text-align: center;
+}
+
+.tabla_op td   {
+    text-align: center;
+    padding: 20px 0px;
+}
+
+.todo {
+    background-color: var(--color-negro);
+}
+
+.tabla_op {
+    width: 80%;
+    
+    background-color: var(--color-negro);
+}
+
+.ajustar_img {
+    border-radius: 20px;
+    width: 300px;
+    height: 200px;
+}

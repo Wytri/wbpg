@@ -9,7 +9,8 @@ String url ="jdbc:sqlserver://localhost;database=cine";
 //String usr = "usersql"; 
 String usr = "sa"; 
 String psw = "1234"; 
-con = DriverManager.getConnection(url,usr,psw); } 
+con = DriverManager.getConnection(url,usr,psw); 
+ System.out.println("CONEXION OK :)");} 
 catch (ClassNotFoundException ex) { System.out.println("No hay Driver!!"); } 
 catch (SQLException ex) 
 { System.out.println("Error con la BD"); }
