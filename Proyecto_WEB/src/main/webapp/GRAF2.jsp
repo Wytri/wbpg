@@ -37,6 +37,7 @@
   </style>
   <body>
       <%
+            boolean condicion = false;
             Control obj = new Control();
             String met = request.getParameter("cba");
             String tipo = request.getParameter("cbc");
@@ -93,19 +94,138 @@
     </div>
   </body>
   <script>
+      
+    //var backgroundColors = ["rgba(255, 99, 132, 0.6)", "rgba(54, 162, 235, 0.6)", "rgba(255, 206, 86, 0.6)", "rgba(75, 192, 192, 0.6)", "rgba(153, 102, 255, 0.6)", "rgba(255, 159, 64, 0.6)"];
+    
+    function getRandomColor() {
+        var r = Math.floor(Math.random() * 255);
+        var g = Math.floor(Math.random() * 255);
+        var b = Math.floor(Math.random() * 255);
+        var a = 0.6;
+        return "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
+    }
+    
+    
+    function getRandomColorB() {
+        var r = Math.floor(Math.random() * 255);
+        var g = Math.floor(Math.random() * 255);
+        var b = Math.floor(Math.random() * 255);
+        var a = 1;
+        return "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
+    }
+
+    var backgroundColors = [];
+    var backgroundColorsB = [];
+
+    
+    for (var i = 0; i < <%=data%>.length; i++) {
+        backgroundColors.push(getRandomColor());
+        backgroundColorsB.push(getRandomColorB());
+    }
+    
+       
+    //si es lineal
+    var borderWidth = 0;
+    var leyenda = false;
+    
+    <% if (gtipo.equals("line")) { %>
+        borderWidth = 1;
+        leyenda = true;
+      <% } else { %>
+        borderWidth = 0;
+        leyenda = false;
+      <% } %>
+          
+    //part
+    var img = new Image();
+img.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAF3gJpXN6JvwAAAABJRU5ErkJggg==";
+      
     var ctx = document.getElementById("myChart").getContext("2d");
     var myChart = new Chart(ctx, {
+        <% if (tipo.equals("lines")) { 
+            tipo = "line";
+            condicion = true;
+        %>
         type: "<%=tipo%>",
+        <% } else {
+            condicion = false;
+        %>
+        type: "<%=tipo%>",
+        <% } %>
       data: {
-        labels: <%=labels%>,
+        //labels: <%=labels%>,
+        labels: <%=labels%>.map(function(label) { return label.toString(); }),
         datasets: [
           {
-              label: "Venta por <%=gtipo%>",
+            label: "<%=gtipo%>",
             data: <%=data%>,
-            backgroundColor: "rgba(153,205,1,0.6)",
+            backgroundColor: backgroundColors,
+            //"rgba(153,205,1,0.6)",
+            //
+            borderColor: backgroundColorsB,
+            borderWidth: borderWidth,
+            //"rgba(255, 99, 132, 1)",
+            //borderWidth: 1,
+            <% if (condicion == true) { %>
+                fill: false,
+            <% } else { %>
+                fill: true,
+            <% } %>
+            //fill: true, // Establece la opción fill en true para pintar el área del gráfico
+            //fill: false,
           },
         ],
       },
-    });
+      //mostrar desde 0
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            min: 0, // Establece el valor mínimo del eje Y en cero
+            fontSize: 20
+          }
+        }],
+        xAxes: [{
+            ticks: {
+              beginAtZero: true,
+              min: 0, // Establece el valor mínimo del eje x en cero
+              fontSize: 20
+            }
+          }]
+      },
+      legend: {
+        labels: {
+      <% if (tipo.equals("pie") || tipo.equals("doughnut") || tipo.equals("polarArea")) { %>
+      <% } else { %>
+        display: true,
+          boxWidth: 0,
+      <% } %>
+        fontSize: 23,
+        }
+      },
+
+      elements: {
+      line: {
+        tension: 0.4,
+      },
+      point: {
+        radius: 0,
+      },
+    },
+    layout: {
+      padding: {
+        left: 20,
+        right: 20,
+        top: 20,
+        bottom: 20,
+      },
+    },
+    responsive: true,
+    //maintainAspectRatio: false,
+    backgroundImage: img,
+    backgroundRepeat: "repeat-x",
+  },
+});
   </script>
 </html>

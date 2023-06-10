@@ -35,6 +35,7 @@
   </style>
   <body>
       <%
+            boolean condicion = false;
             Control obj = new Control();
             String tipo = request.getParameter("cbc");
             String labels="",data="";
@@ -55,19 +56,116 @@
     </div>
   </body>
   <script>
+    //color
+    function getRandomColor() {
+        var r = Math.floor(Math.random() * 255);
+        var g = Math.floor(Math.random() * 255);
+        var b = Math.floor(Math.random() * 255);
+        var a = 0.6;
+        return "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
+    }
+    
+    
+    function getRandomColorB() {
+        var r = Math.floor(Math.random() * 255);
+        var g = Math.floor(Math.random() * 255);
+        var b = Math.floor(Math.random() * 255);
+        var a = 1;
+        return "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
+    }
+
+    var backgroundColors = [];
+    var backgroundColorsB = [];
+
+    
+    for (var i = 0; i < <%=data%>.length; i++) {
+        backgroundColors.push(getRandomColor());
+        backgroundColorsB.push(getRandomColorB());
+    }
+    
+   
+   /**
+    for (var i = 0; i < <%=data%>.length; i++) {
+        backgroundColors.push('rgba(' + i*40 + ',' + i*80 + ',' + i*120 + ', 0.6)');
+    }
+    */
+       
+    //si es lineal
+    var borderWidth = 0;
+    var leyenda = false;
+    
+    <% if (tipo.equals("line")) { %>
+        borderWidth = 1;
+        leyenda = true;
+      <% } else { %>
+        borderWidth = 0;
+        leyenda = false;
+      <% } %>
+      
     var ctx = document.getElementById("myChart").getContext("2d");
     var myChart = new Chart(ctx, {
+        <% if (tipo.equals("lines")) { 
+            tipo = "line";
+            condicion = true;
+        %>
         type: "<%=tipo%>",
+        <% } else {
+            condicion = false;
+        %>
+        type: "<%=tipo%>",
+        <% } %>
       data: {
         labels: <%=labels%>,
         datasets: [
           {
               label: "Venta por mes <%=an%>",
             data: <%=data%>,
-            backgroundColor: "rgba(153,205,1,0.6)",
+            backgroundColor: backgroundColors,
+            //"rgba(153,205,1,0.6)",
+            //
+            borderColor: backgroundColorsB,
+            borderWidth: borderWidth,
+            //"rgba(255, 99, 132, 1)",
+            //borderWidth: 1,
+            <% if (condicion == true) { %>
+                fill: false,
+            <% } else { %>
+                fill: true,
+            <% } %>
+            //fill: false,
           },
         ],
       },
-    });
+      //mostrar desde 0
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            min: 0, // Establece el valor mínimo del eje Y en cero
+            fontSize: 20
+          }
+        }],
+        xAxes: [{
+            ticks: {
+              beginAtZero: true,
+              min: 0, // Establece el valor mínimo del eje x en cero
+              fontSize: 20
+            }
+          }]
+      },
+      legend: {
+        labels: {
+      <% if (tipo.equals("pie") || tipo.equals("doughnut") || tipo.equals("polarArea")) { %>
+      <% } else { %>
+        display: true,
+          boxWidth: 0,
+      <% } %>
+        fontSize: 23,
+        }
+      },
+      
+  },
+});
   </script>
 </html>
