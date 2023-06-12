@@ -126,7 +126,30 @@ public class RegistroG {
     public void setTel(String tel) {
         this.tel = tel;
     }
-    
+    /*
+    drop procedure test
+
+create procedure test(
+@idPelicula varchar(10),@idSala varchar(10),@idAsiento varchar(10),@TipoA varchar(10),@idCliente varchar(10), @NOMBRE VARCHAR(25), @APELLIDO VARCHAR(25), @birth varchar(25), @correo varchar(100), @tel varchar(9) 
+)as
+declare @idFuncion varchar(10)=(select f.IdFuncion from Funciones f where(f.IdPelicula=@idPelicula));
+declare @idDetalle varchar(10)=(select (max(IdDetalle)+1) from Detalle);
+declare @idOrdenes varchar(10)=(select (max(IdOrden)+1) from Ordenes o);
+declare @Total int = 0;
+insert into Cliente values(@idCliente,@NOMBRE, @APELLIDO, @birth, @correo, @tel)
+insert into Asiento values(@idAsiento,@TipoA,@idSala)
+insert into Ordenes	values(@idOrdenes,null,null,@Total)
+declare @last varchar(10)=(select (max(IdOrden)) from Ordenes o)
+insert into Detalle values(@idDetalle,@idFuncion,@idAsiento,@last)
+go
+
+execute test 'P0001','S0001','3','VIP','13','test','apellido','2000-02-02','test@gmail.com','11111111'
+select * from Cliente
+select * from Asiento
+select * from Ordenes
+select * from Detalle
+select * from Pelicula
+    */
     
  
 }
