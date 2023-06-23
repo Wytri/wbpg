@@ -19,36 +19,29 @@
         int cuenta=0;
         %>
     <center>
-        <h1 style="color: white; font-family: Arial;">Tienda Virtual</h1>
-            
-        <table border="2">
-            
-            <tr>
-                
-                <%
-                    for(Productos x: obj.lisprod()){
-                    
-                    %>
-                    <td>
-            <center>
-                            <img src="imagenes/<%=x.getNombre()%>.jpg" width="200" height="200"/>
-                            <div style="color: white;font-family: Arial;"><%=x.getNombre()%></div>
-                            <div style="color: white;font-family: Arial;">Apartir de:</div>
-                            <div style="color: white;font-family: Arial;">S/ <%=x.getPrecio()%></div>
-                            </center>
-                            <a class="columna aa" href="tienda?opc=1&id=<%=x.getProd()%>">
-                            <span style="color: white; font-family: Arial;">COMPRAR</span>
-                            <div style="background-color: #0056b3" class="liquido"></div>
+            <br>
+            <h1 style="color: white; font-family: Arial;">TIENDA VIRTUAL</h1>
+            <form action="" name="fr">
+                <div class="fila">
+                    <div class="columna">
+                        <div class="columna">
+                            <a href="pagTiendaProductos.jsp" class="columna">
+                                <span>PRODUCTOS</span>
+                                <div style="background-color: #0056b3" id="emp" class="liquido"></div>
                             </a>
-                        
-                            
-                <%
-                    cuenta++;
-                    if(cuenta%4==0)out.print("<tr>");
-                    }
-                %>
-            </tr>
-        </table>
+                        </div>
+                
+                
+                
+                        <div class="columna">
+                            <a href="pagTiendaCombos.jsp" class="columna">
+                                <span>COMBOS</span>
+                                <div style="background-color: #0056b3" id="emp" class="liquido"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
             </center>
     </body>
 </html>

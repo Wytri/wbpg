@@ -23,7 +23,7 @@
         %>
     <center>
         <h2>Compra</h2>
-        <a href="pagTiendaVirtual.jsp">Retornar</a><br>
+        <a href="pagTiendaProductos.jsp">Retornar</a><br>
         <a href="Login.jsp">Hacer efectiva la compra</a>
         <form name="fr">
         <table cellpadding="10" cellspacing="10" border="2" class="table table-hover">
