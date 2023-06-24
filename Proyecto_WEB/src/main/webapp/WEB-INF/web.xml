@@ -12,6 +12,10 @@
         <servlet-name>tienda</servlet-name>
         <servlet-class>servlet.tienda</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>serlogin</servlet-name>
+        <servlet-class>servlet.serlogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servlet_control</servlet-name>
         <url-pattern>/servlet_control</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>tienda</servlet-name>
         <url-pattern>/tienda</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>serlogin</servlet-name>
+        <url-pattern>/serlogin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -563,6 +563,29 @@ public class Control implements IControl{
         return lis; 
     
     }
+    
+    public Usuarios busUsuarios(String ID) {
+        Usuarios a=null;
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select * from Usuarios where usuarios_nombre=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setString(1, ID);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                a=new Usuarios();
+                a.setId(rs.getString(1));
+                a.setUser(rs.getString(2));
+                a.setPssw(rs.getString(3));
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return a;    
+    }
 
     @Override
     public List<Trabajadores> listra() {

@@ -72,13 +72,13 @@ public class tienda extends HttpServlet {
         c.setCantidad(cant);
         List<CompraProducto> lista;
         
-        if(ses.getAttribute("canasta")==null) lista=new ArrayList();
+        if(ses.getAttribute("canasta1")==null) lista=new ArrayList();
         
         else
-            lista=(ArrayList<CompraProducto>)ses.getAttribute("canasta");
+            lista=(ArrayList<CompraProducto>)ses.getAttribute("canasta1");
             
         lista.add(c);
-        ses.setAttribute("canasta", lista);
+        ses.setAttribute("canasta1", lista);
         String pag="/pagCompraProductos.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
     }
@@ -88,9 +88,9 @@ public class tienda extends HttpServlet {
         int id=Integer.parseInt(request.getParameter("ind"));
         HttpSession ses=request.getSession();
 
-        List<CompraProducto> lista=(ArrayList<CompraProducto>)ses.getAttribute("canasta");
+        List<CompraProducto> lista=(ArrayList<CompraProducto>)ses.getAttribute("canasta1");
         lista.remove(id);
-        ses.setAttribute("canasta", lista);
+        ses.setAttribute("canasta1", lista);
         String pag="/pagCompraProductos.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
     }
@@ -108,26 +108,26 @@ public class tienda extends HttpServlet {
             throws ServletException, IOException {
         int cod=Integer.parseInt(request.getParameter("coda"));
         int cant=Integer.parseInt(request.getParameter("cantidad"));
-        Productos a=obj.busProductos(cod).get(0);
-        CompraProducto c=new CompraProducto();
+        Combo a=obj.busCombos(cod).get(0);
+        CompraCombo c=new CompraCombo();
         HttpSession ses=request.getSession();
         //pasar el articulo seleccionado a compra para luego añadirlo al carrito
-        c.setNombre(a.getNombre());
+        c.setNom(a.getNom());
         c.setDescr(a.getDescr());
-        c.setProd(cod);
+        c.setComb(cod);
         c.setDescr(a.getDescr());
         c.setPrecio(a.getPrecio());
         c.setCantidad(cant);
-        List<CompraProducto> lista;
+        List<CompraCombo> lista;
         
-        if(ses.getAttribute("canasta")==null) lista=new ArrayList();
+        if(ses.getAttribute("canasta2")==null) lista=new ArrayList();
         
         else
-            lista=(ArrayList<CompraProducto>)ses.getAttribute("canasta");
+            lista=(ArrayList<CompraCombo>)ses.getAttribute("canasta2");
             
         lista.add(c);
-        ses.setAttribute("canasta", lista);
-        String pag="/pagCompraProductos.jsp";
+        ses.setAttribute("canasta2", lista);
+        String pag="/pagCompraCombos.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
     }
     
@@ -136,10 +136,10 @@ public class tienda extends HttpServlet {
         int id=Integer.parseInt(request.getParameter("ind"));
         HttpSession ses=request.getSession();
 
-        List<CompraProducto> lista=(ArrayList<CompraProducto>)ses.getAttribute("canasta");
+        List<CompraProducto> lista=(ArrayList<CompraProducto>)ses.getAttribute("canasta2");
         lista.remove(id);
-        ses.setAttribute("canasta", lista);
-        String pag="/pagCompraProductos.jsp";
+        ses.setAttribute("canasta2", lista);
+        String pag="/pagCompraCombos.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
