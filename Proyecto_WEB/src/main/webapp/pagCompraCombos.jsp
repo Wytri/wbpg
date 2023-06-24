@@ -18,12 +18,12 @@
     <body background="imagenes/FONDOTRI.GIF">
         <%
         HttpSession ses=request.getSession();
-        List<CompraProducto> lista;
-        lista=(ArrayList<CompraProducto>)ses.getAttribute("canasta1");
+        List<CompraCombo> lista;
+        lista=(ArrayList<CompraCombo>)ses.getAttribute("canasta2");
         %>
     <center>
         <h2>Compra</h2>
-        <a href="pagTiendaProductos.jsp">Retornar</a><br>
+        <a href="pagTiendaCombos.jsp">Retornar</a><br>
         <a href="LoginTienda.jsp">Hacer efectiva la compra</a>
         <form name="fr">
         <table cellpadding="10" cellspacing="10" border="2" class="table table-hover">
@@ -31,17 +31,17 @@
             <%
                 int indice=0;
                 double suma=0;
-                for(CompraProducto x:lista){
+                for(CompraCombo x:lista){
                 double total=x.getCantidad()*x.getPrecio();
                 suma+=total;
                 %>
                 <tr>
-                    <td><img src="imagenes/<%=x.getNombre()%>.jpg" width="100" height="100"/>
-                    <td><%=x.getNombre()%>
+                    <td><img src="imagenes/<%=x.getNom()%>.jpg" width="100" height="100"/>
+                    <td><%=x.getNom()%>
                     <td><%=x.getPrecio()%>€
                     <td><%=x.getCantidad()%>
                     <td>S/ <%=total%>
-                    <td><center><a href="tienda?opc=3&ind=<%=indice%>">
+                    <td><center><a href="tienda?opc=10&ind=<%=indice%>">
                         <img width="40" height="40" src="imagenes/borrar.png"/></a></center>
             <%
                 indice++;
