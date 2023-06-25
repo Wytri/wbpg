@@ -35,7 +35,7 @@
                     <div class="fila">
                         <form action="pagRegistrar.jsp" method="post" name="fr">
                         <table border=1 class="caja">
-                            <select class="campo" id="lstsala" name="lstsala" required onclick="cambio()">
+                            <select class="campo" id="lstsala" name="lstsala" required onclick="">
                         <option value="S0001" selected>S0001</option>
                         <option value="S0002">S0002</option>
                         <option value="S0003">S0003</option>

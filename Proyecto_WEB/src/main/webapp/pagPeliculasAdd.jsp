@@ -43,7 +43,7 @@
                                     <td><%=x.getNomp()%></td>
                                     <td><%=x.getDur()%></td>
                                     <td><%=x.getCost()%></td>
-                                    <td><a href="pagSalas.jsp?cod=<%=x.getCodp()%>&costo=<%=x.getCost()%>">Adicionar</a></td>
+                                    <td><a href="pagRegistrar.jsp?cod=<%=x.getCodp()%>&costo=<%=x.getCost()%>">Adicionar</a></td>
                                 </tr>
                                 <%
                                     }
