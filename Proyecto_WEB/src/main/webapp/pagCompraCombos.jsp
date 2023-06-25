@@ -24,7 +24,7 @@
     <center>
         <h2>Compra</h2>
         <a href="pagTiendaCombos.jsp">Retornar</a><br>
-        <a href="LoginTienda.jsp">Hacer efectiva la compra</a>
+        <a href="pagConfirmaProductos.jsp">Hacer efectiva la compra</a>
         <form name="fr">
         <table cellpadding="10" cellspacing="10" border="2" class="table table-hover">
             <tr><th>Artículos<th>Descripcion<th>Precio Unitario<th>Cantidad<th>Importe Total<th>

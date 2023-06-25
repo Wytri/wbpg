@@ -243,6 +243,98 @@ public class Control implements IControl{
         return lis;    
     }
     
+    public void crearDetalleCombo(int id, int cant){
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="insert into DetalleCombos (IdCombo, Cantidad) values (?,?)";
+            CallableStatement st=cn.prepareCall(sql);
+            st.setInt(1, id);
+            st.setInt(2, cant);
+            st.executeUpdate();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+        }
+    }
+    
+    public DetalleCombo busDetCombo(){
+        DetalleCombo a=null;
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select TOP 1 * from DetalleCombos ORDER BY IdDetalleCombo DESC";
+            PreparedStatement st=cn.prepareStatement(sql);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                a=new DetalleCombo();
+                a.setDetcom(rs.getInt(1));
+                a.setCom(rs.getInt(2));
+                a.setCantidad(rs.getInt(3));
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return a;
+    }
+    
+    
+    public void crearDetalleProducto(int id, int cant){
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="insert into DetalleProducto (IdProducto, Cantidad) values (?,?)";
+            CallableStatement st=cn.prepareCall(sql);
+            st.setInt(1, id);
+            st.setInt(2, cant);
+            st.executeUpdate();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+        }
+    }
+    
+    public DetalleProducto busDetProdu(){
+        DetalleProducto a=null;
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select TOP 1 * from DetalleProducto ORDER BY IdDetalleProducto DESC";
+            PreparedStatement st=cn.prepareStatement(sql);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                a=new DetalleProducto();
+                a.setDetprod(rs.getInt(1));
+                a.setProd(rs.getInt(2));
+                a.setCant(rs.getInt(3));
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return a;
+    }
+    
+    public void addOrden(Ordenes o){
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="insert into Ordenes values (?,?,?,?)";
+            CallableStatement st=cn.prepareCall(sql);
+            st.setInt(1, o.getOrden());
+            st.setInt(2, o.getDetcom());
+            st.setInt(3, o.getDetprod());
+            st.setDouble(4, o.getTotal());
+            st.executeUpdate();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+        }
+    }
+    
     /////////////////////////////HORARIOOOOOOOOOOOOOOOOOS//////////////////////////////////////////////
     public Funciones Horario(String ID) {
        Funciones a=null;

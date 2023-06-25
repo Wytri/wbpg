@@ -23,6 +23,12 @@ public class Ordenes {
         this.detprod = detprod;
         this.total = total;
     }
+
+    public Ordenes(int orden, int detcom, double total) {
+        this.orden = orden;
+        this.detcom = detcom;
+        this.total = total;
+    }
     
     
 
