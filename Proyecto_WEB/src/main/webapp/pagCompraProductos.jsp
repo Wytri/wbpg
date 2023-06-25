@@ -4,6 +4,7 @@
     Author     : jefri
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,13 +19,14 @@
     <body background="imagenes/FONDOTRI.GIF">
         <%
         HttpSession ses=request.getSession();
+        DecimalFormat df = new DecimalFormat("#.00");
         List<CompraProducto> lista;
         lista=(ArrayList<CompraProducto>)ses.getAttribute("canasta1");
         %>
     <center>
         <h2>Compra</h2>
         <a href="pagTiendaProductos.jsp">Retornar</a><br>
-        <a href="LoginTienda.jsp">Hacer efectiva la compra</a>
+        <a href="pagConfirmaProductos.jsp">Hacer efectiva la compra</a>
         <form name="fr">
         <table cellpadding="10" cellspacing="10" border="2" class="table table-hover">
             <tr><th>Artículos<th>Descripcion<th>Precio Unitario<th>Cantidad<th>Importe Total<th>

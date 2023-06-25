@@ -39,7 +39,7 @@ public class tienda extends HttpServlet {
         if(op==2)Carrito(request, response);
         if(op==3)Borrar(request, response);
 //        if(op==4)Login(request, response);
-//        if(op==5)graba(request, response);
+        if(op==5)graba(request, response);
 //        if(op==6)anula(request, response);
 //        if(op==7)Registrar(request, response);
         if(op==8)DetalleCombo(request, response);
@@ -93,6 +93,88 @@ public class tienda extends HttpServlet {
         ses.setAttribute("canasta1", lista);
         String pag="/pagCompraProductos.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
+    }
+    
+    protected void graba(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        HttpSession ses=request.getSession();
+        Control obj=new Control();
+        String h=request.getParameter("sum");
+        System.out.println(h);
+        double total=Double.parseDouble(request.getParameter("sum"));
+        int a = 0,b = 0,c;
+        String pag="/pagConfirma.jsp";
+        int idDetalle; //Tablas Detalles
+        int idOrden; //Tablas Ordenes
+        List<CompraProducto> lista=(ArrayList)ses.getAttribute("canasta1");
+        double sm=0;
+        if(lista!=null){
+        for(CompraProducto x:lista){
+        sm += x.total();
+        a++;
+        }
+        }
+        List<CompraCombo> lista2=(ArrayList)ses.getAttribute("canasta2");
+        double smC=0;
+        if(lista2!=null){
+        for(CompraCombo x:lista2){
+        smC+= x.total();
+        b++;
+        }
+        }
+        if(a>b){
+            c=a;
+        }
+        else{
+            c=b;
+        }
+        
+        //graba detalle
+        /*for(CompraProducto x:lista){
+            obj.crearDetalleProducto(x.getProd(), x.getCantidad());
+        }*/
+        idOrden=400005;
+        for (int i = 0; i < c; i++) {
+            if(lista!=null & lista2!=null){
+            if(lista.get(i)!=null & lista2.get(i)!=null){
+                obj.crearDetalleProducto(lista.get(i).getProd(), lista.get(i).getCantidad());
+                obj.crearDetalleCombo(lista2.get(i).getComb(), lista2.get(i).getCantidad());
+                int pro=obj.busDetProdu().getDetprod();
+                System.out.println(pro);
+                int com=obj.busDetCombo().getDetcom();
+                System.out.println(com);
+                Ordenes o=new Ordenes(idOrden, com, pro, total);
+                System.out.println(o.getOrden());
+                obj.addOrden(o);
+            }
+            else if(lista.get(i)==null){
+                obj.crearDetalleCombo(lista2.get(i).getComb(), lista2.get(i).getCantidad());
+                int com=obj.busDetCombo().getDetcom();
+                System.out.println(com);
+                Ordenes o=new Ordenes(idOrden, com, 0, total);
+                System.out.println(o.getOrden());
+                obj.addOrden(o);
+            }
+            
+            }
+            else if(lista2!=null){
+                obj.crearDetalleCombo(lista2.get(i).getComb(), lista2.get(i).getCantidad());
+                int com=obj.busDetCombo().getDetcom();
+                System.out.println(com);
+                Ordenes o=new Ordenes(idOrden, com, 0, total);
+                System.out.println(o.getOrden());
+                obj.addOrden(o);
+            }
+        }
+        /*
+        ses.setAttribute("canasta1", null);
+        ses.setAttribute("canasta2", null);
+        ses.setAttribute("total", sm);
+        ses.setAttribute("total", smC);*/
+        pag="/pagTiendaVirtual.jsp";
+        
+
+        
+        getServletContext().getRequestDispatcher(pag).forward(request, response);
     }
     
     protected void DetalleCombo(HttpServletRequest request, HttpServletResponse response)
