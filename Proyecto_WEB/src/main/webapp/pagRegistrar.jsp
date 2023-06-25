@@ -1,7 +1,7 @@
 <%@page import="modelo.Asiento"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Controlador.Control"%>
-<%@page import="modelo.Pelicula"%>
+<%@page import="modelo.*"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,13 +13,16 @@
         <center>
         <%
             HttpSession ses=request.getSession();
-            String codPeli=(String)ses.getAttribute("codPeli");
+            String codPeli=request.getParameter("cod");
             String idsala=request.getParameter("lstsala");
-            double costo=(double)ses.getAttribute("costo");
+            double costo=Double.parseDouble(request.getParameter("costo"));
             ses.setAttribute("idsala", idsala);
+            ses.setAttribute("codPeli", codPeli);
+            ses.setAttribute("costo", costo);
             Control obj = new Control();
             
             String coso ="";
+            
             for(Pelicula x:obj.buscarP(codPeli)){
             out.print("<tr><td>"+x.getNom());
             coso=x.getNom();
@@ -33,26 +36,35 @@
                 <input type="text" placeholder="Nombre" id="txtnombres" name="txtnombres" class="campo" required><br>
                 <input type="text" placeholder="Apellidos" id="txtapellidos" name="txtapellidos" class="campo" required><br>
                 
-
-                    <select id="tasiento" name="tasiento" required>
+                    <select class="campo" id="lstsala" name="lstsala" required onclick="cambio()">
+                        <%
+                        for(Funciones x: obj.lisSalaF(codPeli)){
+                        %>
+                        <option value="<%=x.getSala()%>"><%=x.getSala()%></option>
+                        <%
+                            }
+                        %>
+                        </select>
+                <br><select id="tasiento" name="tasiento" required>
                     <option value="0" selected hidden>Escoger Asiento</option>
                     <%
                     int z=0;
                     int con=0;
                     boolean t=false;
-
-                    for(Asiento x: obj.lisasibus(idsala)){
+                    String sala=request.getParameter("lstsala");
+                    
+                    for(Asiento x: obj.lisasibus(sala)){
                         z++;
                     }
 
                     int vec []= new int [z];
                     
-                    for(Asiento x: obj.lisasibus(idsala)){
+                    for(Asiento x: obj.lisasibus(sala)){
                         vec[con]=x.getAsiento();
                         con++;
                     }
 
-                    for (int x=1; x<=20; x++){
+                    for (int x=1; x<=30; x++){
                         t=false;
                         for(int n=0;n<vec.length;n++){
                             if(x==vec[n]){
@@ -68,9 +80,9 @@
                     }
                             %>
                     </select><br>
-            
-                    <input type="text" placeholder="Pago" id="txtpago" name="txtpago" class="campo" value="<%=costo%>"><br>             
-                    <input type="text" placeholder="Fecha" id="txtfecha" name="txtfecha" class="campo" required><br>
+                    <input type="text" placeholder="Horario" id="txtHorario" name="txtHorario" class="campo" value="" readonly=""><br>
+                    <input type="text" placeholder="Pago" id="txtpago" name="txtpago" class="campo" value="<%=costo%>" readonly=""><br>             
+                    <input type="date" id="txtfecha" name="txtfecha" class="campo" required><br>
                     <input type="email" placeholder="Correo" id="txtcorreo" name="txtcorreo" class="campo" required><br>
                     <input type="tel" placeholder="Telefono" id="txttelefono" name="txttelefono" class="campo" required><br>
                     <input type="text" placeholder="DNI" id="txtdni" name="txtdni" class="campo" required>            

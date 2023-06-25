@@ -218,6 +218,54 @@ public class Control implements IControl{
         return lis;    
     }
     
+    public List<Funciones> lisSalaF(String ID) {
+       List<Funciones> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select * from Funciones f where f.IdPelicula=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setString(1, ID);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                Funciones a=new Funciones();
+                a.setFuncion(rs.getInt(1));
+                a.setInicio(rs.getString(2));
+                a.setPeli(rs.getString(3));
+                a.setSala(rs.getString(4));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis;    
+    }
+    
+    /////////////////////////////HORARIOOOOOOOOOOOOOOOOOS//////////////////////////////////////////////
+    public Funciones Horario(String ID) {
+       Funciones a=null;
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select HoraInicio from Funciones where IdFuncion=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setString(1, ID);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                a=new Funciones();
+                a.setInicio(rs.getString(1));
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return a;
+    }
+    ///////////////////////////////////////////////////////////////////////////
+    
     //buscar especifico
     public List<Pelicula> buspel(String ID) {
        List<Pelicula> lis=new ArrayList();
