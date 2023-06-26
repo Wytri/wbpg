@@ -132,44 +132,58 @@ public class tienda extends HttpServlet {
         /*for(CompraProducto x:lista){
             obj.crearDetalleProducto(x.getProd(), x.getCantidad());
         }*/
-        idOrden=400005;
+        idOrden=400001;
         for (int i = 0; i < c; i++) {
             if(lista!=null & lista2!=null){
-            if(lista.get(i)!=null & lista2.get(i)!=null){
+            if(lista.size()>i & lista2.size()>i){
                 obj.crearDetalleProducto(lista.get(i).getProd(), lista.get(i).getCantidad());
                 obj.crearDetalleCombo(lista2.get(i).getComb(), lista2.get(i).getCantidad());
                 int pro=obj.busDetProdu().getDetprod();
-                System.out.println(pro);
+                System.out.println("2 compras");
                 int com=obj.busDetCombo().getDetcom();
-                System.out.println(com);
                 Ordenes o=new Ordenes(idOrden, com, pro, total);
-                System.out.println(o.getOrden());
                 obj.addOrden(o);
             }
-            else if(lista.get(i)==null){
+            else if(lista2.size()>i){
                 obj.crearDetalleCombo(lista2.get(i).getComb(), lista2.get(i).getCantidad());
                 int com=obj.busDetCombo().getDetcom();
-                System.out.println(com);
                 Ordenes o=new Ordenes(idOrden, com, 0, total);
-                System.out.println(o.getOrden());
-                obj.addOrden(o);
+                System.out.println("Solo combo");
+                obj.addOrdenSinPro(o);
             }
-            
+            else if(lista.size()>i){
+                obj.crearDetalleProducto(lista.get(i).getProd(), lista.get(i).getCantidad());
+                int pro=obj.busDetProdu().getDetprod();
+                Ordenes o=new Ordenes(idOrden, 0, pro, total);
+                System.out.println("Solo Producto");
+                obj.addOrdenSinCom(o);
+                }
             }
             else if(lista2!=null){
                 obj.crearDetalleCombo(lista2.get(i).getComb(), lista2.get(i).getCantidad());
                 int com=obj.busDetCombo().getDetcom();
-                System.out.println(com);
+                System.out.println("Lista vacía de Combo");
                 Ordenes o=new Ordenes(idOrden, com, 0, total);
-                System.out.println(o.getOrden());
-                obj.addOrden(o);
+                obj.addOrdenSinPro(o);
+            }
+            else if(lista!=null){
+                obj.crearDetalleProducto(lista.get(i).getProd(), lista.get(i).getCantidad());
+                int pro=obj.busDetProdu().getDetprod();
+                Ordenes o=new Ordenes(idOrden, 0, pro, total);
+                System.out.println("Lista vacía de producto");
+                obj.addOrdenSinCom(o);
+            }
+            else{
+                Ordenes o=new Ordenes(idOrden, 0, 0, total);
+                System.out.println("Lista donde no compró nada");
+                obj.addOrdenVacia(o);
             }
         }
-        /*
+        
         ses.setAttribute("canasta1", null);
         ses.setAttribute("canasta2", null);
-        ses.setAttribute("total", sm);
-        ses.setAttribute("total", smC);*/
+        //ses.setAttribute("total", sm);
+        //ses.setAttribute("total", smC);
         pag="/pagTiendaVirtual.jsp";
         
 

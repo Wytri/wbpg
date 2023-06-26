@@ -38,7 +38,7 @@
         <%
         if(lista!=null){
         for(CompraProducto cp:lista){
-        suma+=cp.getPrecio();
+        suma=suma+(cp.getPrecio()*cp.getCantidad());
         out.print("<tr><td>"+cp.getProd()+"<td>"+cp.getNombre()+"<td><center>"+cp.getCantidad()+"</center><td><center>"+cp.total()+"</center>");
         }
             }
@@ -51,7 +51,7 @@
         <%
         if(lista2!=null){
         for(CompraCombo cp:lista2){
-        suma+=cp.getPrecio();
+        suma=suma+(cp.getPrecio()*cp.getCantidad());
         out.print("<tr><td>"+cp.getComb()+"<td>"+cp.getNom()+"<td><center>"+cp.getCantidad()+"</center><td><center>"+cp.total()+"</center>");
         }
             }
