@@ -335,6 +335,53 @@ public class Control implements IControl{
         }
     }
     
+    public void addOrdenSinCom(Ordenes o){
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="insert into Ordenes (IdOrden,IdDetalleProducto,total) values (?,?,?)";
+            CallableStatement st=cn.prepareCall(sql);
+            st.setInt(1, o.getOrden());
+            st.setInt(2, o.getDetprod());
+            st.setDouble(3, o.getTotal());
+            st.executeUpdate();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+        }
+    }
+    
+    public void addOrdenSinPro(Ordenes o){
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="insert into Ordenes (IdOrden,IdDetalleCombo,total) values (?,?,?)";
+            CallableStatement st=cn.prepareCall(sql);
+            st.setInt(1, o.getOrden());
+            st.setInt(2, o.getDetcom());
+            st.setDouble(3, o.getTotal());
+            st.executeUpdate();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+        }
+    }
+    
+    public void addOrdenVacia(Ordenes o){
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="insert into Ordenes (IdOrden,total) values (?,?)";
+            CallableStatement st=cn.prepareCall(sql);
+            st.setInt(1, o.getOrden());
+            st.setDouble(2, o.getTotal());
+            st.executeUpdate();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+        }
+    }
+    
     /////////////////////////////HORARIOOOOOOOOOOOOOOOOOS//////////////////////////////////////////////
     public Funciones Horario(String ID) {
        Funciones a=null;
