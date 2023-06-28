@@ -30,7 +30,7 @@
                                 <th>Nombre</th>
                                 <th>Duración</th>
                                 <th>Costo</th>
-                                <th>Boletos</th>
+                                <th>Funciones</th>
                             </thead>
                             <tbody>
                                 <%
@@ -43,7 +43,8 @@
                                     <td><%=x.getNomp()%></td>
                                     <td><%=x.getDur()%></td>
                                     <td><%=x.getCost()%></td>
-                                    <td><a href="pagRegistrar.jsp?cod=<%=x.getCodp()%>&costo=<%=x.getCost()%>">Adicionar</a></td>
+
+                                    <td><a href="serv_control?opc=21&codP=<%=x.getCodp()%>">Entrar</a></td>
                                 </tr>
                                 <%
                                     }

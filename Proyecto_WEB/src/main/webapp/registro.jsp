@@ -11,7 +11,7 @@
     <body>
         <h3>Quiero hacer mi Registro</h3>
         <%
-            String idsala=request.getParameter("lstsala");
+            String idsala="S0001";
         %>
         <form action="serv_control" method="post" name="fr">
             <table border=1 class="caja">

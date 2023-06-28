@@ -53,6 +53,11 @@
 
                     <tr></tr>
                     <td onmouseover="bgColor='#bf0404'" onmouseout="bgColor='black'">
+                        <a href="pagTiendaVirtual.jsp">
+                            <img src="img_crud/Tienda_Virtual.jpg" class="ajustar_img"><br>
+                            Tienda virtual</a></td>
+                            
+                    <td onmouseover="bgColor='#bf0404'" onmouseout="bgColor='black'">
                         <a href="GraficoVentas.jsp">
                             <img src="img_crud/estadistica2.jpg" class="ajustar_img"><br>
                             GRÁFICOS</a></td>

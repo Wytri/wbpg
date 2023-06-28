@@ -23,6 +23,13 @@ public class Prueba1 {
         //    Pelicula next = iterator.next();
         //    System.out.println(next.getNom());
         //}
+        
+        int[] selected = new int[30];
+        for(int i=0;i<=29;i++){
+            if(selected[i]==0){
+                System.out.println(""+i);
+            }
+        } 
         SQLConexion.getConexion();
     }
     

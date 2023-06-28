@@ -8,8 +8,7 @@ import Controlador.Control;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -60,6 +59,10 @@ public class serv_control extends HttpServlet {
             if (op==18) añadirProducto(request, response);   
             if (op==19) actualizarPro(request, response);
             if (op==20) cambiarPro(request, response); 
+            
+            if (op==21) codpeliAfunc(request, response);
+            if (op==22) codFunAseat(request, response);
+            if (op==23) Asibol(request, response);
     }
     
     Control obj = new Control();
@@ -406,7 +409,44 @@ public class serv_control extends HttpServlet {
         String pag="pagComida.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
     }
+    
+    void codpeliAfunc(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        
+        HttpSession ses=request.getSession();
+        String codP= request.getParameter("codP");
+        ArrayList<Pelicula> listUnPe= (ArrayList<Pelicula>) obj.lispeUni(codP);
+        
+        ses.setAttribute("ListUnaPeli", listUnPe);
+        request.setAttribute("datoF", obj.lisSalaF(codP));
+        
+        String pag="pagFuncPeli.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
+    
+    void codFunAseat(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        
+        HttpSession ses=request.getSession();
+        int codD = Integer.parseInt(request.getParameter("codF"));
+        ArrayList<Funciones> lisfunpeli = (ArrayList)obj.lisfunCOD(codD);
+        
+        ses.setAttribute("lisfunpeli", lisfunpeli);
+        request.setAttribute("listAsi", obj.lisasifun(codD));
+        
+        String pag="pagRegistro_asiento.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
 
+    
+        void Asibol(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        
+        HttpSession ses=request.getSession();
+        String nombre = request.getParameter("nombre");    
+        int[] Asi_bol=obj.Asientos_bol(nombre);
+        ses.setAttribute("Asi_bol", Asi_bol);
+        
+        String pag="crud.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
