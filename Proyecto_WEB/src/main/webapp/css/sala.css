@@ -10,7 +10,7 @@ html {
     https://coolors.co/palette/03071e-370617-6a040f-9d0208-d00000-dc2f02-e85d04-f48c06-faa307-ffba08
     */
     --color-rojo: #D00000;
-    --color-negro: #000;
+    --color-negro: #14324B;
     --color-blanco: #fff;
     --color-grisclaro: #c4c4c4;
     --color-grisoscuro: #454545;
@@ -41,7 +41,6 @@ body{
 .contenedor{
     perspective: 1000px;
     padding-bottom: 30px;
-
 }
 
 .asiento{
@@ -123,6 +122,12 @@ body{
     margin: 15px 0;
     transform: rotateX(-48deg);
     box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+}
+
+.contenedorT{
+    display: flex;
+    flex-direction: row;    
+    padding:50px;
 }
 
 
