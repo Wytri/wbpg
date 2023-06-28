@@ -21,9 +21,18 @@ public class prueba {
             System.out.println(d.boleta);
         }
         
-        for (DetalleComida d: c.listadetalleorden(400000)) {
-            System.out.println(d.getCombo());
+        for (Detalle pas : c.lisasifun(10001)) {
+            System.out.println(pas.getFuncion()+" "+pas.getSala()+" "+pas.getAsi());
         }
+//        
+//        for (DetalleComida d: c.listadetalleorden(400000)) {
+//            System.out.println(d.getCombo());
+//        }
+//        
+//        
+        Funciones fecha = c.Horario("10000");
+        System.out.println(String.valueOf(fecha.getInicio()));
+        
         
         //c.addusuario(new Usuarios("T0012", "fer", "fer24"));
         //c.deluser("T0012");
@@ -34,9 +43,9 @@ public class prueba {
 //            System.out.println(x.getNombre()+x.getCantidad()+x.getTotal());
 //        }
 
-        for (grafico x: c.graficomesa(2023)) {
-            System.out.println(x.getNombre()+x.getCantidad()+x.getTotal());
-        }
+//        for (grafico x: c.graficomesa(2023)) {
+//            System.out.println(x.getNombre()+x.getCantidad()+x.getTotal());
+//        }
     }
     
 }

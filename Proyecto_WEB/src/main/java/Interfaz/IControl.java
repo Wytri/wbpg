@@ -17,13 +17,15 @@ public interface IControl {
     List<Trabajadores> listra();
     List<Combo> liscom();
     List<Productos> lisprod();
+    List<Funciones> lisfun();
+    List<Pelicula> lispeUni(String ID);
     List<DetalleCombo> lisdetcom(int cod);
     List<DetalleProducto> lisdetpre(int cod);
     List<Boleto> lisboleta(int cod);
     List<Detalle> lisdeta(int cod);
     List<Pelicula> listadetafun(int cod);
     List<DetalleComida> listadetalleorden(int cod);
-    List<Funciones> lisfun();
+    List<Funciones> lisfunCOD(int cod);
     List<Detalle> lisasifun(int cod);
     
     void addasi(Asiento a);
@@ -49,6 +51,8 @@ public interface IControl {
     void delsala(String s);
     void deltrab(String t);
     void deluser(String u);
+    
+    int[] Asientos_bol(String nombre);
     
     List<grafico> graficopelicula();
     List<grafico> graficocategoria();

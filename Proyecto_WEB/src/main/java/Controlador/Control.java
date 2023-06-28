@@ -188,7 +188,7 @@ public class Control implements IControl{
         return lis; 
     }
     
-    //buscar especifico
+    //buscar pelicula por categoria
     public List<Pelicula> lispeli(String ID) {
        List<Pelicula> lis=new ArrayList();
         Connection cn=SQLConexion.getConexion();
@@ -1452,6 +1452,7 @@ public class Control implements IControl{
     }
     
       //listado de todas las funciones
+    @Override
     public List<Funciones> lisfun() {
         List<Funciones> lis=new ArrayList();
         Connection cn=SQLConexion.getConexion();
@@ -1478,6 +1479,7 @@ public class Control implements IControl{
     
     
     //busca el # asiento ocupados por función
+    @Override
         public List<Detalle> lisasifun(int cod) {
         List<Detalle> lis=new ArrayList();
         Connection cn=SQLConexion.getConexion();
@@ -1502,6 +1504,87 @@ public class Control implements IControl{
         }
         return lis;    
     }
+        
+    //buscar pelicula por ID
+    @Override
+    public List<Pelicula> lispeUni(String ID) {
+       List<Pelicula> lis = new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select * from Pelicula where Pelicula_id=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setString(1, ID);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                Pelicula a=new Pelicula();
+                a.setIdpeli(rs.getString(1));
+                a.setIdcad(rs.getString(2));
+                a.setNom(rs.getString(3));
+                a.setAnnio(rs.getInt(4));
+                a.setDuracion(rs.getDouble(5));
+                a.setCosto(rs.getDouble(6));
+                a.setClasificacio(rs.getString(7));
+                a.setSinop(rs.getString(8));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis;    
+    }
+    
+        //busca el # asiento ocupados por función
+        @Override
+        public List<Funciones> lisfunCOD(int cod) {
+        List<Funciones> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select * from Funciones where IdFuncion=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setInt(1, cod);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                Funciones f=new Funciones();
+                f.setFuncion(rs.getInt(1));
+                f.setInicio(rs.getString(2));
+                f.setPeli(rs.getString(3));
+                f.setSala(rs.getString(4));
+                lis.add(f);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis;    
+    }
+        
+    @Override
+    public int[] Asientos_bol(String nombre){
+        String[] lista = nombre.split(",",-1);
+        
+          int[] selected = new int[lista.length]; 
+          
+          for (int i = 0; i < lista.length; i++) {
+            if(i==0){
+                selected[i]=Integer.parseInt(lista[i].substring(1,lista[i].length()));
+            }else{
+                if(i==lista.length-1){
+                    selected[i]=Integer.parseInt(lista[i].substring(0,lista[i].length()-1));
+                }else{
+                    selected[i]=Integer.parseInt(lista[i]);
+                }
+            }
+                  
+          }
+          
+        return selected;
+    }
+        
 }
            
                 

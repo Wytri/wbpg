@@ -1,0 +1,128 @@
+html {
+    /* retrasa el desplazamiento del scrooll */
+    scroll-behavior: smooth;
+}
+
+/* Declaracion de variable */
+:root{
+    /* Paleta de colores */
+    /*Link de la paleta
+    https://coolors.co/palette/03071e-370617-6a040f-9d0208-d00000-dc2f02-e85d04-f48c06-faa307-ffba08
+    */
+    --color-rojo: #D00000;
+    --color-negro: #000;
+    --color-blanco: #fff;
+    --color-grisclaro: #c4c4c4;
+    --color-grisoscuro: #454545;
+    --coloro-celesteclaro: #D0DFF2;
+    --color-naranja: #F48C06;
+    --color-degr: #FAA307;
+    --color-azulmarino: #242333;
+    --color-verde: #2eb81b;
+    
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--color-negro);
+    color: var(--color-blanco);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+}
+
+
+.contenedor{
+    perspective: 1000px;
+    padding-bottom: 30px;
+
+}
+
+.asiento{
+    background-color: var(--color-grisclaro);
+    text-align: center;
+    color: var(--color-negro);
+    height: 45px;
+    width: 45px;
+    margin: 3px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-size: 25px;
+}
+
+.asiento.seleccionado{
+    background-color: var(--color-verde);
+}
+
+.asiento.ocupado{
+    background-color: var(--color-rojo);
+}
+
+.asiento:nth-of-type(2){
+    margin-right: 18px;
+}
+
+.asiento:nth-last-of-type(2){
+    margin-left: 18px;
+}
+
+.asiento:not(.ocupado):hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.sala .asiento:not(.ocupado):hover{
+    cursor: default;
+    transform: scale(1);
+}
+
+.sala{
+    background: rgba(0, 0, 0, 0.1);
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: var(--color-grisclaro);
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sala li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;    
+}
+
+.sala li small{
+    margin-left: 2px;
+}
+
+.fila{
+    display: flex;
+}
+
+.pantalla{
+    display: flex;
+    flex-direction: row;
+    align-items: center;    
+    justify-content: center;
+    font-size: 30px;
+
+
+    background-color: var(--color-blanco);
+    color: var(--color-negro);
+
+    height: 150px;
+    width: 100%;
+    margin: 15px 0;
+    transform: rotateX(-48deg);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+}
+
+
