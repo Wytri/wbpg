@@ -10,8 +10,11 @@ html {
     https://coolors.co/palette/03071e-370617-6a040f-9d0208-d00000-dc2f02-e85d04-f48c06-faa307-ffba08
     */
     --color-rojo: #D00000;
-    --color-negro: #14324B;
+    --color-negro: #000000;
+    --color-mazul: #14324B;
+    --color-hazul: #004A8C;
     --color-blanco: #fff;
+    --color-grisclaroP: #F6F6F6;
     --color-grisclaro: #c4c4c4;
     --color-grisoscuro: #454545;
     --coloro-celesteclaro: #D0DFF2;
@@ -19,6 +22,7 @@ html {
     --color-degr: #FAA307;
     --color-azulmarino: #242333;
     --color-verde: #2eb81b;
+    --color-Cele:#E7ECF0;
     
 }
 
@@ -28,8 +32,33 @@ html {
     box-sizing: border-box;
 }
 
+nav{    
+    float: left;
+    background: var(--color-hazul); 
+    
+}
+
+nav ul{
+    list-style: none;
+    overflow: hidden;
+}
+
+nav ul li{
+    float: left;
+    padding-left: 166px;
+    padding-right: 166px;
+    align-content: space-between;
+}
+
+nav ul li h1{
+    display: block;
+    padding: 20px;
+    color: var(--color-blanco);
+    text-decoration: none;
+}
+
 body{
-    background-color: var(--color-negro);
+    background-color: var(--color-blanco);
     color: var(--color-blanco);
     display: flex;
     flex-direction: column;
@@ -41,6 +70,11 @@ body{
 .contenedor{
     perspective: 1000px;
     padding-bottom: 30px;
+    color: var(--color-hazul); 
+}
+
+h3 {
+    color: var(--color-hazul);
 }
 
 .asiento{
@@ -128,6 +162,14 @@ body{
     display: flex;
     flex-direction: row;    
     padding:50px;
+    
+    background: var(--color-Cele);
+}
+.contenedorW{
+    background: var(--color-grisclaroP);
+    color: var(--color-mazul);
+    margin-right: 10px; 
+    margin-left: 10px;
 }
 
 .contenedorT img{
