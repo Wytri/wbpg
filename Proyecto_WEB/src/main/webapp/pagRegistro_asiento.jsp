@@ -14,10 +14,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/sala.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
+        <nav>
+            <ul>
+                <li><h1>Atras</h1></li>
+                <li><h1>1.Selecciona tu asiento</h1></li>
+                <li><h1>X</h1></li>
+            </ul>
+
+        </nav>
     </head>
     <body>
         <div class="contenedorT">
-            <div class="contenedor">
+            <div class="contenedorW">
                     <%
             HttpSession ses=request.getSession();
             ArrayList<Detalle> listAsi=(ArrayList)request.getAttribute("listAsi");
@@ -28,14 +36,17 @@
             String ids="";
             for(Pelicula p: listUnPe){
             %>
-                <img src="imagenes/LaPuta El castillo en el cielo.jpg" alt="alt"/>
+            <center>
+                <img src="imagenes/<%=p.nom%>.jpg" alt="alt"/>
+            </center>
             <br><br><h1><%=p.nom%></h1>
             <%
             at=p.costo;
             }
             for (Funciones F: lisfunpeli) {
             %>
-            <h2><%=F.inicio%></h2><br><br>
+            <br><h1><%=F.inicio%></h1>
+            <br><h1><%=F.sala%></h1><br><br>
             <%
                 ids=F.sala;
             }
@@ -99,7 +110,7 @@
                     <tr><td><input type="submit">
                         </table>
                     </form>
-            </center>
+        </center><!<!-- desde aqui -->
     </div>
     <div class="contenedor">
           <ul class="sala">
