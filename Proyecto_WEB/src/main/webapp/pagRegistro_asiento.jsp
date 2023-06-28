@@ -17,7 +17,7 @@
     </head>
     <body>
         <div class="contenedorT">
-                <div class="contenedor">
+            <div class="contenedor">
                     <%
             HttpSession ses=request.getSession();
             ArrayList<Detalle> listAsi=(ArrayList)request.getAttribute("listAsi");
@@ -28,6 +28,7 @@
             String ids="";
             for(Pelicula p: listUnPe){
             %>
+                <img src="imagenes/LaPuta El castillo en el cielo.jpg" alt="alt"/>
             <br><br><h1><%=p.nom%></h1>
             <%
             at=p.costo;
