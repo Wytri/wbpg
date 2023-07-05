@@ -20,6 +20,7 @@
                 <li>.</li>
             </ul>
         </nav>
+    </head>
     <body>
         <div class="contenedorW">
         <center>
