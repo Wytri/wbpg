@@ -16,11 +16,10 @@
         <title>JSP Page</title>
         <nav>
             <ul>
-                <li><h1>Atras</h1></li>
+                <li><h1><a href="crud.jsp">salir</a></h1></li>
                 <li><h1>1.Selecciona tu asiento</h1></li>
-                <li><h1>X</h1></li>
+                <li>.</li>
             </ul>
-
         </nav>
     </head>
     <body>
@@ -52,24 +51,14 @@
             }
         %>
         <center>
-                <h1>Ingrese sus datos</h1>
                     <form action="serv_control" method="post" name="fr">
                         <table border=1 class="caja">
-                            <input type="hidden" name="tcos" value="<%=at%>">
-                            <input type="hidden" name="tcod" value="<%=at%>">
-                            <input type="hidden" name="tipo" value="4">
-                            <tr><td>Ingrese su documento de identidad<td><input type="text" placeholder="DNI" id="txtdni" name="txtdni" class="campo" required> 
-                            <tr><td>Ingrese su nombre<td><input type="text" placeholder="Nombre" id="txtnombres" name="txtnombres" class="campo" required><br>
-                            <tr><td>Ingrese su apellido<td><input type="text" placeholder="Apellidos" id="txtapellidos" name="txtapellidos" class="campo" required><br>
-                            <tr><td>Fecha de nacimiento<td><input type="date" id="txtfecha" name="txtfecha" class="campo" required><br>
-                            <tr><td>Direccion de correo<td><input type="email" placeholder="Correo" id="txtcorreo" name="txtcorreo" class="campo" required><br>
-                            <tr><td>Telefono celular<td><input type="tel" placeholder="Telefono" id="txttelefono" name="txttelefono" class="campo" required><br>
                                     <%--tipo de asiento--%>
                             <tr><td>Tipo de Asiento<td><input type="radio" value="1" name="op"
-                            onclick="calculo(1)">Niño
-                            <input type="radio" value="2" name="op" onclick="calculo(2)">Estudiante
+                            onclick="calculo(1)">VIP
+                            <input type="radio" value="2" name="op" onclick="calculo(2)">Estandar
                             <input type="radio" value="3" name="op"
-                            onclick="calculo(3)">Adulto
+                            onclick="calculo(3)">Regular
                             <tr><td>costo de la peli<td><%=at%>
                             <tr><td>Seleccione su asiento
                                     <td>
@@ -175,14 +164,6 @@
                 }
             %>
             
-            <h3>Asientos escogidos: <div id="arr"></div> </h3>
-            <br><br>
-            
-
-                <input type="submit" onclick="rpst()" value="COMPRAR">
-            
-            <a href="crud.jsp">retornar</a>              
-        </div>
     </div> 
         </div>
             
