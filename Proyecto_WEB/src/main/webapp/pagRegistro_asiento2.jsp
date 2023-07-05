@@ -16,7 +16,7 @@
         <nav>
             <ul>
                 <li><h1><a href="crud.jsp">salir</a></h1></li>
-                <li><h1>1.Selecciona tu asiento</h1></li>
+                <li><h1>2.Ingrese sus Datos</h1></li>
                 <li>.</li>
             </ul>
         </nav>
