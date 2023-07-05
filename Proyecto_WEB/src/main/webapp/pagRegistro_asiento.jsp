@@ -30,6 +30,7 @@
             ArrayList<Detalle> listAsi=(ArrayList)request.getAttribute("listAsi");
             ArrayList<Pelicula> listUnPe=(ArrayList)ses.getAttribute("ListUnaPeli");
             ArrayList<Funciones> lisfunpeli = (ArrayList)ses.getAttribute("lisfunpeli");
+            
             Control obj = new Control();
             double at=0;
             String ids="";

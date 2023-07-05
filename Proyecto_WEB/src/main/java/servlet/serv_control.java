@@ -63,6 +63,7 @@ public class serv_control extends HttpServlet {
             if (op==21) codpeliAfunc(request, response);
             if (op==22) codFunAseat(request, response);
             if (op==23) Asibol(request, response);
+            if (op==24) metodoFinal(request, response);
     }
     
     Control obj = new Control();
@@ -416,6 +417,10 @@ public class serv_control extends HttpServlet {
         String codP= request.getParameter("codP");
         ArrayList<Pelicula> listUnPe= (ArrayList<Pelicula>) obj.lispeUni(codP);
         
+        //session para el registro de cliente
+        ses.setAttribute("codigoPelicula", listUnPe.get(0).getIdpeli());
+        ////////////////////////////////////////////////
+        
         ses.setAttribute("ListUnaPeli", listUnPe);
         request.setAttribute("datoF", obj.lisSalaF(codP));
         
@@ -428,6 +433,11 @@ public class serv_control extends HttpServlet {
         HttpSession ses=request.getSession();
         int codD = Integer.parseInt(request.getParameter("codF"));
         ArrayList<Funciones> lisfunpeli = (ArrayList)obj.lisfunCOD(codD);
+        
+        //session para registro de cliente
+        ses.setAttribute("codigoFuncion", lisfunpeli.get(0).getFuncion());
+        ses.setAttribute("codigoSala", lisfunpeli.get(0).getSala());
+        ////////////////////////////////////////////////
         
         ses.setAttribute("lisfunpeli", lisfunpeli);
         request.setAttribute("listAsi", obj.lisasifun(codD));
@@ -446,6 +456,15 @@ public class serv_control extends HttpServlet {
         
         String pag="crud.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
+    }
+        
+        void metodoFinal(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        String idAsiento= request.getParameter("tasiento");
+        HttpSession ses=request.getSession();
+        //session para registro de cliente
+        ses.setAttribute("idAsiento", idAsiento);
+        ////////////////////////////////////////////////
+        
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
