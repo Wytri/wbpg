@@ -199,7 +199,7 @@ Selector de estilo CLASS
 	align-items: center;
 	background: #23242a;
 	position: relative;
-	width: 340px;
+	width: 320px;
 	height: 460px;
 	border-radius: 18px;
 	overflow: hidden;
@@ -209,7 +209,7 @@ Selector de estilo CLASS
 	position: absolute;
 	inset: 4px;
 	background-color: #222;
-	padding: 20px 20px;
+	padding: 20px 4px;
 	border-radius: 4%;
 	z-index: 2;
 	display: flex;
@@ -221,8 +221,8 @@ Selector de estilo CLASS
 	position: absolute;
 	top: -50%;
 	left: -50%;
-	width: 380px;
-	height: 420px;
+	width: 360px;
+	height: 400px;
 	background: linear-gradient(0deg,transparent,
 	transparent,#45f3ff,#45f3ff,#45f3ff);
 	z-index: 1;
@@ -236,8 +236,8 @@ Selector de estilo CLASS
 	position: absolute;
 	top: -50%;
 	left: -50%;
-	width: 380px;
-	height: 420px;
+	width: 360px;
+	height: 400px;
 	background: linear-gradient(0deg,transparent,
 	transparent,#45f3ff,#45f3ff,#45f3ff);
 	z-index: 1;
@@ -259,8 +259,8 @@ Selector de estilo CLASS
 	position: absolute;
 	top: -50%;
 	left: -50%;
-	width: 380px;
-	height: 420px;
+	width: 360px;
+	height: 400px;
 	background: linear-gradient(0deg,transparent,
 	transparent,#ff2770,#ff2770,#ff2770);
 	z-index: 1;
@@ -275,8 +275,8 @@ Selector de estilo CLASS
 	position: absolute;
 	top: -50%;
 	left: -50%;
-	width: 380px;
-	height: 420px;
+	width: 360px;
+	height: 400px;
 	background: linear-gradient(0deg,transparent,
 	transparent,#ff2770,#ff2770,#ff2770);
 	z-index: 1;
