@@ -34,7 +34,7 @@
                             <img src="img_crud/boletos.jpg" class="ajustar_img"><br>
                             Registro de Boletas</a></td>
 
-                    <tr></tr>
+                    <tr></tr>d
 
                     <td onmouseover="bgColor='#bf0404'" onmouseout="bgColor='black'">
                         <a href="pagClientes.jsp">

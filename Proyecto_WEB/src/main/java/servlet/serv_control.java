@@ -64,6 +64,7 @@ public class serv_control extends HttpServlet {
             if (op==22) codFunAseat(request, response);
             if (op==23) Asibol(request, response);
             if (op==24) metodoFinal(request, response);
+            if (op==25) BOLlogin(request, response);
     }
     
     Control obj = new Control();
@@ -442,7 +443,7 @@ public class serv_control extends HttpServlet {
         ses.setAttribute("lisfunpeli", lisfunpeli);
         request.setAttribute("listAsi", obj.lisasifun(codD));
         
-        String pag="pagRegistro_asiento.jsp";
+        String pag="pagBOL_AddAsiento.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
     }
 
@@ -450,11 +451,14 @@ public class serv_control extends HttpServlet {
         void Asibol(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
         
         HttpSession ses=request.getSession();
-        String nombre = request.getParameter("nombre");    
+        String nombre = request.getParameter("nombre");
+        String tipo = request.getParameter("tipoAsi");
         int[] Asi_bol=obj.Asientos_bol(nombre);
-        ses.setAttribute("Asi_bol", Asi_bol);
         
-        String pag="crud.jsp";
+        ses.setAttribute("Asi_bol", Asi_bol);
+        ses.setAttribute("tipoAsi", tipo);
+        
+        String pag="pagBOL_AddLogin.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
     }
         
@@ -466,6 +470,49 @@ public class serv_control extends HttpServlet {
         ////////////////////////////////////////////////
         
     }
+        
+    protected void BOLlogin(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+            String name = request.getParameter("correo");
+            int pass = Integer.parseInt(request.getParameter("pss"));
+            boolean CLI = false;
+            
+            for (Cliente c : obj.liscli()) {
+//                System.out.println("DNI:"+c.dni+"--correo:"+c.correo+"--cumple:"+c.birth+"--nombre:"+c.nombre+"--telf:"+c.tel+"\n");
+                if (name.equals(c.correo)) {
+                    CLI = true;
+                    System.out.println("go correo");
+                    if (pass == c.dni) {
+                        System.out.println("go dni");
+                        request.setAttribute("dato1", "BIENVENIDO");
+                        request.getRequestDispatcher("/crud.jsp").forward(request, response);
+                    }else{
+                        System.out.println("DNI no encontrado XD");
+                        request.setAttribute("dato1", "ERROR CONTRASEÑA");
+                        request.getRequestDispatcher("/pagBOL_AddLogin.jsp").forward(request, response);
+                    }
+//                    if(pass != c.dni){
+//                        System.out.println("DNI no encontrado XD");
+//                    }
+                }else{
+                    CLI = false;
+//                    System.out.println("No encontrado");
+                }
+                
+
+                
+            }
+            
+            if(CLI == false){
+                System.out.println("NOOOO USUARIO");
+                request.setAttribute("dato1", "ERROR USUARIO");
+                request.getRequestDispatcher("/pagBOL_AddLogin.jsp").forward(request, response);
+            }
+            
+
+    }
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

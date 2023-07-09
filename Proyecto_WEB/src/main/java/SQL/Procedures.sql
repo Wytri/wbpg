@@ -236,6 +236,8 @@ go
 
 //registrar con los datos de cliente
 
+begin DROP procedure IF EXISTS test end 
+go
 create procedure test(
 @idPelicula varchar(10),@idSala varchar(10),@idAsiento varchar(10),@TipoA varchar(10),@idCliente varchar(10), @NOMBRE VARCHAR(25), @APELLIDO VARCHAR(25), @birth varchar(25), @correo varchar(100), @tel varchar(9) 
 )as
@@ -259,6 +261,8 @@ select * from Pelicula
 
 //registrar sin los datos de cliente
 
+begin DROP procedure IF EXISTS test2 end 
+go
 create procedure test2(
 @idPelicula varchar(10),@idSala varchar(10),@idAsiento varchar(10),@TipoA varchar(10) 
 )as
