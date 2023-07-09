@@ -276,3 +276,15 @@ declare @last varchar(10)=(select (max(IdOrden)) from Ordenes o)
 insert into Detalle values(@idDetalle,@idFuncion,@idAsiento,@last)
 go
 
+
+--agregar detalle
+begin DROP procedure IF EXISTS addDetalle end 
+go
+create procedure addDetalle(
+@idFuncion int,@idAsiento int,@idOrdenes int
+)as
+declare @idDetalle varchar(10)=(select (max(IdDetalle)+2) from Detalle);
+insert into Detalle values(@idDetalle,@idFuncion,@idAsiento,@idOrdenes)
+go
+
+execute addDetalle 10000, 15, 400003 

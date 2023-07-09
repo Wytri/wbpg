@@ -528,6 +528,24 @@ public class Control implements IControl{
         }
     }
     
+    @Override
+    public void adddeta(Detalle d) {
+        Connection cn=SQLConexion.getConexion();
+        try{
+                String sql="{call addDetalle(?,?,?)}";
+            CallableStatement st=cn.prepareCall(sql);
+            st.setInt(1, d.getFuncion());
+            st.setInt(2, d.getAsi());
+            st.setInt(3, d.getOrden());
+            st.executeUpdate();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+    }
+    
     public void addbbb(Boleto p) {
         Connection cn=SQLConexion.getConexion();
         try{

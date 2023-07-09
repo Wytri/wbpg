@@ -42,7 +42,13 @@ public class Detalle extends Boleto{
         this.orden = orden;
     }
 
-    /**
+    public Detalle(int funcion, int asi, int orden) {
+        this.funcion = funcion;
+        this.asi = asi;
+        this.orden = orden;
+    }
+    
+   /**
      * @return the funcion
      */
     public int getFuncion() {

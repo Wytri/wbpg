@@ -21,6 +21,10 @@ public class prueba {
             System.out.println(d.boleta);
         }
         
+//        Detalle det = new Detalle(10000, 10, 400003);
+//        
+//        c.adddeta(det);
+        
         for (Detalle pas : c.lisasifun(10001)) {
             System.out.println(pas.getFuncion()+" "+pas.getSala()+" "+pas.getAsi());
         }

@@ -60,7 +60,7 @@
                                     </section>
 
                                     <br>
-                                    <h3><a href="">Crear una cuenta</a></h3>
+                                    <h3><a href="pagRegistro_asiento2.jsp">Crear una cuenta</a></h3>
                                 </div>
                                 
                             </div>

@@ -485,8 +485,10 @@ public class serv_control extends HttpServlet {
                     System.out.println("go correo");
                     if (pass == c.dni) {
                         System.out.println("go dni");
+                        HttpSession ses=request.getSession();
+                        ses.setAttribute("DNI", pass);
                         request.setAttribute("dato1", "BIENVENIDO");
-                        request.getRequestDispatcher("/crud.jsp").forward(request, response);
+                        request.getRequestDispatcher("/pagTiendaVirtual.jsp").forward(request, response);
                     }else{
                         System.out.println("DNI no encontrado XD");
                         request.setAttribute("dato1", "ERROR CONTRASEÑA");
