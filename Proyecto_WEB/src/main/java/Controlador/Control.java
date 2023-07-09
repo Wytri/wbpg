@@ -1569,14 +1569,21 @@ public class Control implements IControl{
         
           int[] selected = new int[lista.length]; 
           
+          
+          
           for (int i = 0; i < lista.length; i++) {
-            if(i==0){
-                selected[i]=Integer.parseInt(lista[i].substring(1,lista[i].length()));
+              
+              if(lista.length==1){
+                selected[i]=Integer.parseInt(lista[i].substring(1,lista[i].length()-1));
             }else{
-                if(i==lista.length-1){
-                    selected[i]=Integer.parseInt(lista[i].substring(0,lista[i].length()-1));
+                if(i==0){
+                    selected[i]=Integer.parseInt(lista[i].substring(1,lista[i].length()));
                 }else{
-                    selected[i]=Integer.parseInt(lista[i]);
+                    if(i==lista.length-1){
+                        selected[i]=Integer.parseInt(lista[i].substring(0,lista[i].length()-1));
+                    }else{
+                        selected[i]=Integer.parseInt(lista[i]);
+                    }
                 }
             }
                   

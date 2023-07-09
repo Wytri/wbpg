@@ -17,30 +17,34 @@
 
         <%-- Obtener el nombre y el arreglo de la URL --%>
         <%
-          String nombre = request.getParameter("nombre");
-          String[] lista = nombre.split(",",-1);
-          int[] selected = new int[lista.length]; 
-          
-          for (int i = 0; i < lista.length; i++) {
-            if(i==0){
-                selected[i]=Integer.parseInt(lista[i].substring(1,lista[i].length()));
-                out.println("Asientos:"+lista[i].substring(1,lista[i].length())+"<br>");
-            }else{
-                if(i==lista.length-1){
-                    selected[i]=Integer.parseInt(lista[i].substring(0,lista[i].length()-1));
-                    out.println("Asientos:"+lista[i].substring(0,lista[i].length()-1)+"<br>");
-                }else{
-                    selected[i]=Integer.parseInt(lista[i]);
-                    out.println("Asientos:"+lista[i]+"<br>");
-                }
-            }
-                  
-          }
-          
-          for (int i = 0; i < selected.length; i++) {
-                  out.println("Asientos con int:"+selected[i]+"<br>");
-              }
+            HttpSession ses=request.getSession();
+            String tipo =(String) ses.getAttribute("tipoAsi");
+            int[] XD = (int[])ses.getAttribute("Asi_bol");
             
+          //String nombre = request.getParameter("nombre");          
+          //String[] lista = nombre.split(",",-1);
+          //int[] selected = new int[lista.length]; 
+          
+          //for (int i = 0; i < lista.length; i++) {
+          //  if(i==0){
+          //      selected[i]=Integer.parseInt(lista[i].substring(1,lista[i].length()));
+          //      out.println("Asientos:"+lista[i].substring(1,lista[i].length())+"<br>");
+          //  }else{
+          //      if(i==lista.length-1){
+          //          selected[i]=Integer.parseInt(lista[i].substring(0,lista[i].length()-1));
+          //          out.println("Asientos:"+lista[i].substring(0,lista[i].length()-1)+"<br>");
+          //      }else{
+          //          selected[i]=Integer.parseInt(lista[i]);
+          //          out.println("Asientos:"+lista[i]+"<br>");
+          //      }
+          //  }
+          //        
+          //}
+          
+          for (int i = 0; i < XD.length; i++) {
+                  out.println("Asientos con int:"+XD[i]+"<br>");
+              }
+            out.println("<br>TIPO DE ASI:  "+tipo);
           //}
         %>
     </body>

@@ -15,7 +15,7 @@
             <ul>
                 <li><h1><a href="crud.jsp">salir</a></h1></li>
                 <li><h1>2.Ingrese sus Datos</h1></li>
-                <li>.</li>
+                <li>x</li>
             </ul>
         </nav>
     </head>
@@ -34,7 +34,7 @@
                         <tr><td><td><input type="submit">
                     </table>
                 </form>
-                <li><h1><a href="pagRegistro_asiento2.jsp">No tengo cuenta</a></h1></li>
+                <h1><a href="pagRegistro_asiento2.jsp">No tengo cuenta</a></h1>
 
                 <%
                     if (request.getAttribute("dato1")!=null) {
