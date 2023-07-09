@@ -29,10 +29,11 @@ public interface IControl {
     List<Detalle> lisasifun(int cod);
     
     void addasi(Asiento a);
-    void addbol(Boleto b);
+    void addbol(Boleto b);    
     void addcli(Cliente c);
     void addpeli(Pelicula p);
     void addsala(Sala s);
+    void adddeta(Detalle d);
     void addtrabajador(Trabajadores s);
     void addusuario(Usuarios s);
     

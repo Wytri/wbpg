@@ -485,6 +485,8 @@ public class serv_control extends HttpServlet {
                     System.out.println("go correo");
                     if (pass == c.dni) {
                         System.out.println("go dni");
+                        HttpSession ses=request.getSession();
+                        ses.setAttribute("DNI", pass);
                         request.setAttribute("dato1", "BIENVENIDO");
                         request.getRequestDispatcher("/pagTiendaVirtual.jsp").forward(request, response);
                     }else{
