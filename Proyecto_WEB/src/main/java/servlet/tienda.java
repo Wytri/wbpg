@@ -38,8 +38,12 @@ public class tienda extends HttpServlet {
         if(op==1)Detalle(request, response);
         if(op==2)Carrito(request, response);
         if(op==3)Borrar(request, response);
+        
 //        if(op==4)Login(request, response);
         if(op==5)graba(request, response);
+        
+        if(op==6)Entrar(request, response);
+        
 //        if(op==6)anula(request, response);
 //        if(op==7)Registrar(request, response);
         if(op==8)DetalleCombo(request, response);
@@ -95,6 +99,18 @@ public class tienda extends HttpServlet {
         request.getRequestDispatcher(pag).forward(request, response);
     }
     
+    protected void Entrar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession ses=request.getSession();
+        //Añadir un cliente
+        int codOrden=(obj.busOrden().getOrden())+1;
+        ses.setAttribute("codCli", codOrden);
+        
+        System.out.println(codOrden);
+        String pag="/pagTiendaVirtual.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
+    
     protected void graba(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
         HttpSession ses=request.getSession();
         Control obj=new Control();
@@ -132,7 +148,7 @@ public class tienda extends HttpServlet {
         /*for(CompraProducto x:lista){
             obj.crearDetalleProducto(x.getProd(), x.getCantidad());
         }*/
-        idOrden=400001;
+        idOrden=(int)ses.getAttribute("codOrden");
         for (int i = 0; i < c; i++) {
             if(lista!=null & lista2!=null){
             if(lista.size()>i & lista2.size()>i){
