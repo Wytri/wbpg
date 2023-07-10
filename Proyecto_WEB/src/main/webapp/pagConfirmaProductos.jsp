@@ -18,7 +18,7 @@
     </head>
     <body background="FOTOS/FONDOTRI.GIF">
     <center>
-        <h1>Confirma</h1>
+        <h1>CONFIRMA TU COMPRA</h1>
         <%
         HttpSession ses=request.getSession();
         DecimalFormat df = new DecimalFormat("#.00");
@@ -59,7 +59,7 @@
 
         </table>
         <br>SUMA TOTAL:
-        <br><input name="sum" value="<%=df.format(suma)%>">
+        <br><input name="sum" value="<%=df.format(suma)%>" readonly="">
         <br><a href="tienda?opc=5&sum=<%=suma%>">Confirmar Compra</a><br>
         </center>
         

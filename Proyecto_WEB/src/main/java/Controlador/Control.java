@@ -318,6 +318,26 @@ public class Control implements IControl{
         return a;
     }
     
+    public Ordenes busOrden(){
+        Ordenes a=null;
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select TOP 1 IdOrden from Ordenes ORDER BY IdOrden DESC";
+            PreparedStatement st=cn.prepareStatement(sql);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                a=new Ordenes();
+                a.setOrden(rs.getInt(1));
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return a;
+    }
+    
     public void addOrden(Ordenes o){
         Connection cn=SQLConexion.getConexion();
         try{

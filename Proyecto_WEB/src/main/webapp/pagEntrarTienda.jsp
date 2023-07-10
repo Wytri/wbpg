@@ -20,13 +20,13 @@
         %>
     <center>
             <br>
-            <h1 style="color: white; font-family: Arial;">TIENDA VIRTUAL</h1>
+            <h1 style="color: white; font-family: Arial;">¿Desea añadir algún Combo o Producto a su compra?</h1>
             <form action="" name="fr">
                 <div class="fila">
                     <div class="columna">
                         <div class="columna">
-                            <a href="pagTiendaProductos.jsp" class="columna">
-                                <span>PRODUCTOS</span>
+                            <a href="tienda?opc=6" class="columna">
+                                <span>SÍ</span>
                                 <div style="background-color: #0056b3" id="emp" class="liquido"></div>
                             </a>
                         </div>
@@ -34,15 +34,8 @@
                 
                 
                         <div class="columna">
-                            <a href="pagTiendaCombos.jsp" class="columna">
-                                <span>COMBOS</span>
-                                <div style="background-color: #0056b3" id="emp" class="liquido"></div>
-                            </a>
-                        </div>
-                        
-                        <div class="columna">
-                            <a href="pagConfirmaProductos.jsp" class="columna">
-                                <span>COMPRA RESUMIDA</span>
+                            <a href="index.html" class="columna">
+                                <span>NO</span>
                                 <div style="background-color: #0056b3" id="emp" class="liquido"></div>
                             </a>
                         </div>
