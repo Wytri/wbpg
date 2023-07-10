@@ -461,6 +461,7 @@ public class serv_control extends HttpServlet {
         void metodoFinal(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
         String idAsiento= request.getParameter("tasiento");
         HttpSession ses=request.getSession();
+        
         //session para registro de cliente
         ses.setAttribute("idAsiento", idAsiento);
         ////////////////////////////////////////////////
