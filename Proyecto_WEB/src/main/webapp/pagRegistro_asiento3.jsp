@@ -28,7 +28,8 @@
               <%
                   String a="aa";
                   %>
-        <tr><td>Id detalle: <td><%=a%><br>
+                  <table>
+            <tr><td>Id detalle: <td><%=a%><br>
             <td>Documento de identidad: <td><%=a%><br>       
             <td>Nombre del Cliente: <td><%=a%><br>
             <tr><td>Ingrese su apellido: <td><%=a%><br>
@@ -40,6 +41,7 @@
             <tr><td>costo total de productos comprados: <td><%=a%><br> 
             <tr><td>Pago total: <td><%=a%><br> 
             <td><a href="serv_control?opc=25&iddetalle=<%=a%>&dni=<%=a%>&pago=<%=a%>">Efectuar la compra</a>
+                </table>
             </center>
         </div>
     </body>

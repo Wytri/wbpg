@@ -104,7 +104,7 @@ public class tienda extends HttpServlet {
         HttpSession ses=request.getSession();
         //Añadir un cliente
         int codOrden=(obj.busOrden().getOrden())+1;
-        ses.setAttribute("codCli", codOrden);
+        ses.setAttribute("codORDEN", codOrden);
         
         System.out.println(codOrden);
         String pag="/pagTiendaVirtual.jsp";

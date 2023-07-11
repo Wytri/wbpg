@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/Reg_Sala.css" rel="stylesheet" type="text/css"/>
+        
         <title>Login</title>
     </head>
     <body>
@@ -19,9 +20,9 @@
             <nav id="op">
                 <div class="contenedor">
                     <ul class="barra-top">
-                        <li><h1><a href="crud.jsp">salir</a></h1></li>
+                        <li><h1><a href="crud.jsp" class="antiliquido">salir</a></h1></li>
                         <li><h1>LOGIN</h1></li>
-                        <li><a href="crud.jsp">X</a></li>
+                        <li id="antiliquido"><a href="crud.jsp">X</a></li>
                     </ul>
                 </div>
             </nav>
@@ -98,7 +99,7 @@
             <div class="columnaPIE">
                 <div class="opcionPIE"><!-- opcionPIE2 -->
                     <div class="columna">
-                        <a href="" target="_blank">
+                        <a href="" target="_blank" class="antiliquido">
                             <i class="fa-solid fa-film"></i>
                             Contactanos
                         </a>

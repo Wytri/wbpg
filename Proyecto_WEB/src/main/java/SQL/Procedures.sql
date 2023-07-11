@@ -288,3 +288,27 @@ insert into Detalle values(@idDetalle,@idFuncion,@idAsiento,@idOrdenes)
 go
 
 execute addDetalle 10000, 15, 400003 
+
+
+--Creacion de Boleta--
+begin DROP procedure IF EXISTS Completa_BOL end 
+go
+--Primero crea el 1 asiento, 2 detalle y 3 boleta, //tablas incluidas: --se creará-- Asiento, Detalle, Boleta --info-- Ordenes, Funciones, Cliente, Pelicula
+create procedure Completa_BOL(
+@ID_Asiento int, @TIPO VARCHAR(3), @CAT VARCHAR(5), @idFuncion int,@idOrdenes int,@DNI INT, @pago decimal(5,2)
+)as
+--crea el asiento--
+insert into Asiento values(@ID_Asiento,@TIPO,@CAT);
+--automatiza el id detalle--
+declare @idDetalle int = (select (max(IdDetalle)+2) from Detalle);
+--crea el detalle según el asiento creado anterior y con el  id orden--
+insert into Detalle values(@idDetalle,@idFuncion,@ID_Asiento,@idOrdenes);
+--automatiza el id boleta--
+declare @ID_Boleta varchar(5)=(select 'B'+right('00000'+convert(varchar,isnull(Max(right(Boleta_id,4)),0)+1),4) from Boleta);
+--crea boleta según el detalle anterior
+insert into Boleta values(@ID_Boleta,@idDetalle, @DNI, @pago)
+
+go
+
+--ejemplo
+execute Completa_BOL 9, 'VIP', 'S0001', 10000, 400004, 65747965, 32.00
