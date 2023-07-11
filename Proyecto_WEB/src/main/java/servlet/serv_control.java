@@ -487,7 +487,7 @@ public class serv_control extends HttpServlet {
                     if (pass == c.dni) {
                         System.out.println("go dni");
                         HttpSession ses=request.getSession();
-                        ses.setAttribute("DNI", pass);
+                        ses.setAttribute("DNI", pass);///////////////////////////////////DNI
                         request.setAttribute("dato1", "BIENVENIDO");
                         request.getRequestDispatcher("/pagTiendaVirtual.jsp").forward(request, response);
                     }else{
@@ -512,8 +512,45 @@ public class serv_control extends HttpServlet {
                 request.setAttribute("dato1", "ERROR USUARIO");
                 request.getRequestDispatcher("/pagBOL_AddLogin.jsp").forward(request, response);
             }
-            
+    }
+    
+    protected void AsiDetBOLETA(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        HttpSession ses=request.getSession();
+        ArrayList<Pelicula> listUnPe=(ArrayList)ses.getAttribute("ListUnaPeli");
+        ArrayList<Funciones> lisfunpeli = (ArrayList)request.getAttribute("datoF");
+        int [] asibol = (int[]) request.getAttribute("Asi_bol");
+        String idCLi = (String) request.getAttribute("DNI");
+        String tipoAsi = (String) request.getAttribute("tipoAsi");
+        
+        int DNI = Integer.parseInt(idCLi);
+        int fun=0;
+        double cost=0;
+        String sala = "";
+        int ord = 400001;
+        
+        for(Funciones f: lisfunpeli){
+            System.out.println(f.getFuncion()+"///"+f.getInicio()+"///"+f.getSala()+"///");
+            fun = f.getFuncion();
+            sala = f.getSala();
+        }
+        
+        for(Pelicula p: listUnPe){
+            System.out.println(p.getIdpeli()+"///"+p.getNom()+"///"+p.getCosto()+"///");
+            cost = p.getCosto();
+        }
+        
+        for(int i=0;i<=asibol.length-1;i++){
+            System.out.println(asibol[i]);
+            obj.addAsiDetBol(asibol[i], tipoAsi, sala, fun, ord, DNI, cost);
+        }
 
+    }
+    
+    protected void CANCELAR_BOL(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        HttpSession ses=request.getSession();
+
+
+        
     }
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

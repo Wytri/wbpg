@@ -36,6 +36,7 @@ public class Control implements IControl{
         return lis;    
     }
     
+    @Override
     public List<Asiento> lisasibus(String cod) {
         List<Asiento> lis=new ArrayList();
         Connection cn=SQLConexion.getConexion();
@@ -189,6 +190,7 @@ public class Control implements IControl{
     }
     
     //buscar pelicula por categoria
+    @Override
     public List<Pelicula> lispeli(String ID) {
        List<Pelicula> lis=new ArrayList();
         Connection cn=SQLConexion.getConexion();
@@ -218,6 +220,7 @@ public class Control implements IControl{
         return lis;    
     }
     
+    @Override
     public List<Funciones> lisSalaF(String ID) {
        List<Funciones> lis=new ArrayList();
         Connection cn=SQLConexion.getConexion();
@@ -243,6 +246,7 @@ public class Control implements IControl{
         return lis;    
     }
     
+    @Override
     public void crearDetalleCombo(int id, int cant){
         Connection cn=SQLConexion.getConexion();
         try{
@@ -258,6 +262,7 @@ public class Control implements IControl{
         }
     }
     
+    @Override
     public DetalleCombo busDetCombo(){
         DetalleCombo a=null;
         Connection cn=SQLConexion.getConexion();
@@ -280,7 +285,7 @@ public class Control implements IControl{
         return a;
     }
     
-    
+    @Override
     public void crearDetalleProducto(int id, int cant){
         Connection cn=SQLConexion.getConexion();
         try{
@@ -296,6 +301,7 @@ public class Control implements IControl{
         }
     }
     
+    @Override
     public DetalleProducto busDetProdu(){
         DetalleProducto a=null;
         Connection cn=SQLConexion.getConexion();
@@ -318,6 +324,7 @@ public class Control implements IControl{
         return a;
     }
     
+    @Override
     public Ordenes busOrden(){
         Ordenes a=null;
         Connection cn=SQLConexion.getConexion();
@@ -338,6 +345,7 @@ public class Control implements IControl{
         return a;
     }
     
+    @Override
     public void addOrden(Ordenes o){
         Connection cn=SQLConexion.getConexion();
         try{
@@ -355,6 +363,7 @@ public class Control implements IControl{
         }
     }
     
+    @Override
     public void addOrdenSinCom(Ordenes o){
         Connection cn=SQLConexion.getConexion();
         try{
@@ -371,6 +380,7 @@ public class Control implements IControl{
         }
     }
     
+    @Override
     public void addOrdenSinPro(Ordenes o){
         Connection cn=SQLConexion.getConexion();
         try{
@@ -387,6 +397,7 @@ public class Control implements IControl{
         }
     }
     
+    @Override
     public void addOrdenVacia(Ordenes o){
         Connection cn=SQLConexion.getConexion();
         try{
@@ -426,6 +437,7 @@ public class Control implements IControl{
     ///////////////////////////////////////////////////////////////////////////
     
     //buscar especifico
+    @Override
     public List<Pelicula> buspel(String ID) {
        List<Pelicula> lis=new ArrayList();
         Connection cn=SQLConexion.getConexion();
@@ -509,6 +521,7 @@ public class Control implements IControl{
         }
     }
 
+    @Override
      public List<Boleto> codsbole() {
         List<Boleto> lis=new ArrayList();
         Connection cn=SQLConexion.getConexion();
@@ -566,6 +579,7 @@ public class Control implements IControl{
         }
     }
     
+    @Override
     public void addbbb(Boleto p) {
         Connection cn=SQLConexion.getConexion();
         try{
@@ -789,6 +803,7 @@ public class Control implements IControl{
     
     }
     
+    ////////////////////////////////////////////////////////////Busca usuarios
     public Usuarios busUsuarios(String ID) {
         Usuarios a=null;
         Connection cn=SQLConexion.getConexion();
@@ -811,7 +826,7 @@ public class Control implements IControl{
         }
         return a;    
     }
-
+////////////////////////////////////////////////////////////Busca usuarios
     @Override
     public List<Trabajadores> listra() {
         List<Trabajadores> lis=new ArrayList();
@@ -862,6 +877,7 @@ public class Control implements IControl{
         return lis; 
     }
     
+    @Override
     public List<Combo> busCombos(int ID) {
        List<Combo> lis=new ArrayList();
         Connection cn=SQLConexion.getConexion();
@@ -887,6 +903,7 @@ public class Control implements IControl{
         return lis;    
     }
     
+    @Override
     public List<Productos> busProductos(int ID) {
        List<Productos> lis=new ArrayList();
         Connection cn=SQLConexion.getConexion();
@@ -912,6 +929,7 @@ public class Control implements IControl{
         return lis;    
     }
     
+    @Override
     public void addCombo(Combo p) {
         Connection cn=SQLConexion.getConexion();
         try{
@@ -929,6 +947,7 @@ public class Control implements IControl{
         }
     }
     
+    @Override
     public void modCombos(Combo p) {
         Connection cn=SQLConexion.getConexion();
         try {    
@@ -948,6 +967,7 @@ public class Control implements IControl{
         }
     }
     
+    @Override
     public void modProductos(Productos p) {
         Connection cn=SQLConexion.getConexion();
         try {    
@@ -992,6 +1012,7 @@ public class Control implements IControl{
         return lis; 
     }
     
+    @Override
     public void addProducto(Productos p) {
         Connection cn=SQLConexion.getConexion();
         try{
@@ -1214,7 +1235,7 @@ public class Control implements IControl{
         }
     }
     
-    
+    @Override
     public List<Usuarios> coduser() {
         List<Usuarios> lis=new ArrayList();
         Connection cn=SQLConexion.getConexion();
@@ -1629,6 +1650,31 @@ public class Control implements IControl{
           
         return selected;
     }
+    
+    
+    @Override
+    public void addAsiDetBol(int idAsi, String tipoA, String sala, int IdFuncion, int Ord, int DNI, double pago) {
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="{call Completa_BOL(?,?,?,?,?,?,?)}";
+            CallableStatement st=cn.prepareCall(sql);
+            st.setInt(1, idAsi);
+            st.setString(2, tipoA);
+            st.setString(3, sala);
+            st.setInt(4, IdFuncion);
+            st.setInt(5, Ord);
+            st.setInt(6, DNI);
+            st.setDouble(7, pago);
+            st.executeUpdate();
+            
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+    }
+    
         
 }
            
