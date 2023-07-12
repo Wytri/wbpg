@@ -81,8 +81,13 @@
                                         %>
                                 <tr><td>costo de la peli: <td><%=costo%><br>
                                         <!--si se puede mostrar los productos-->
+                                        
+                                        
+                                        
                                 <tr><td>costo total de productos comprados: <td><%=a%><br> 
-                                <tr><td>Pago total boletas: <td><%=pagarBol%><br>                                                     
+                                <tr><td>Pago total boletas: <td><%=pagarBol%><br>   
+                                        
+                                        
                             </table>
                     </form>
                 </center>
