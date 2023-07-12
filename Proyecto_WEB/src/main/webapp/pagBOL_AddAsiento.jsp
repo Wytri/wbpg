@@ -21,9 +21,9 @@
             <nav id="op">
                 <div class="contenedor">
                     <ul class="barra-top">
-                        <li class="bordeado"><h1><a href="case01.html">salir</a></h1></li>
+                        <li class="bordeado"><h1><a href="serv_control?opc=27">salir</a></h1></li>
                         <li><h1>Selecciona tus butacas</h1></li>
-                        <li><a href="case01.html">X</a></li>
+                        <li><a href="serv_control?opc=27">X</a></li>
                     </ul>
                 </div>
             </nav>

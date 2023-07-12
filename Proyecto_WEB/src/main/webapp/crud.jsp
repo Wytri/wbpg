@@ -61,7 +61,7 @@
                         <a href="GraficoVentas.jsp">
                             <img src="img_crud/estadistica2.jpg" class="ajustar_img"><br>
                             GRÁFICOS</a></td>
-                </table>
+                </table>                
             </div>
 
         </center> 

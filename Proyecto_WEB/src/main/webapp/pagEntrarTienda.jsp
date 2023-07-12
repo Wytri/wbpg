@@ -34,7 +34,7 @@
                 
                 
                         <div class="columna">
-                            <a href="index.html" class="columna">
+                            <a href="serv_control?opc=26" class="columna">
                                 <span>NO</span>
                                 <div style="background-color: #0056b3" id="emp" class="liquido"></div>
                             </a>
