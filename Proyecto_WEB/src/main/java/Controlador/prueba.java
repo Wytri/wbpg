@@ -22,9 +22,9 @@ public class prueba {
         List<Funciones> lisfunCOD = c.lisfunCOD(10000);
         List<Pelicula> lispeUni = c.lispeUni("P0001");
         int fun=0;
-        int DNI= 65747965;
+        int DNI= 12345678;
         double cost=0;
-        String sala = "";
+        String sala = "JJS";
         
         
         for(Funciones f: lisfunCOD){
@@ -44,7 +44,8 @@ public class prueba {
         int [] asibol = {1,2,3,4,5};
         
         for(int i=0;i<=asibol.length-1;i++){
-            System.out.println(asibol[i]);
+            System.out.println(asibol[i]+"--"+"VIP"+"--"+sala+"--"+fun+"--"+0+"--"+DNI+"--"+cost);
+//            c.addAsiDetBol(asibol[i], "REG", sala, fun, 0, DNI, cost);
         }
         
         

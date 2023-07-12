@@ -65,6 +65,8 @@ public class serv_control extends HttpServlet {
             if (op==23) Asibol(request, response);
             if (op==24) metodoFinal(request, response);
             if (op==25) BOLlogin(request, response);
+            if (op==26) AsiDetBOLETA(request, response);
+            if (op==27) CANCELAR_BOL(request, response);
     }
     
     Control obj = new Control();
@@ -489,7 +491,7 @@ public class serv_control extends HttpServlet {
                         HttpSession ses=request.getSession();
                         ses.setAttribute("DNI", pass);///////////////////////////////////DNI
                         request.setAttribute("dato1", "BIENVENIDO");
-                        request.getRequestDispatcher("/pagTiendaVirtual.jsp").forward(request, response);
+                        request.getRequestDispatcher("/pagEntrarTienda.jsp").forward(request, response);
                     }else{
                         System.out.println("DNI no encontrado XD");
                         request.setAttribute("dato1", "ERROR CONTRASEÑA");
@@ -517,16 +519,15 @@ public class serv_control extends HttpServlet {
     protected void AsiDetBOLETA(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
         HttpSession ses=request.getSession();
         ArrayList<Pelicula> listUnPe=(ArrayList)ses.getAttribute("ListUnaPeli");
-        ArrayList<Funciones> lisfunpeli = (ArrayList)request.getAttribute("datoF");
-        int [] asibol = (int[]) request.getAttribute("Asi_bol");
-        String idCLi = (String) request.getAttribute("DNI");
-        String tipoAsi = (String) request.getAttribute("tipoAsi");
-        
-        int DNI = Integer.parseInt(idCLi);
+        ArrayList<Funciones> lisfunpeli = (ArrayList)ses.getAttribute("lisfunpeli");
+        int [] asibol = (int[]) ses.getAttribute("Asi_bol");
+        String tipoAsi = (String) ses.getAttribute("tipoAsi");
+        //int ord = (int) ses.getAttribute("codORDEN");
+        int DNI = (int) ses.getAttribute("DNI");
         int fun=0;
         double cost=0;
         String sala = "";
-        int ord = 400001;
+        int ord = 111111;
         
         for(Funciones f: lisfunpeli){
             System.out.println(f.getFuncion()+"///"+f.getInicio()+"///"+f.getSala()+"///");
@@ -543,14 +544,32 @@ public class serv_control extends HttpServlet {
             System.out.println(asibol[i]);
             obj.addAsiDetBol(asibol[i], tipoAsi, sala, fun, ord, DNI, cost);
         }
-
+        
+        
+        
+        String pag="crud.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
     }
     
     protected void CANCELAR_BOL(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
         HttpSession ses=request.getSession();
 
-
+//        ArrayList<Pelicula> listUnPe=(ArrayList)ses.getAttribute("ListUnaPeli");
+//        ArrayList<Funciones> lisfunpeli = (ArrayList)request.getAttribute("datoF");
+//        int [] asibol = (int[]) request.getAttribute("Asi_bol");
+//        String idCLi = (String) request.getAttribute("DNI");
+//          ses.setAttribute("DNI", pass);
+//        String tipoAsi = (String) request.getAttribute("tipoAsi");
         
+        
+        ses.setAttribute("ListUnaPeli", null); //opc=21, codpeliAfunc
+        ses.setAttribute("lisfunpeli", null);  //opc=22, codFunAseat
+        ses.setAttribute("Asi_bol", null);     //opc 23, Asibol
+        ses.setAttribute("DNI", null);         //opc=25, BOLlogin
+        ses.setAttribute("tipoAsi", null);     //opc 23, Asibol
+        
+        String pag="crud.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
     }
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

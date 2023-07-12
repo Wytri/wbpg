@@ -20,9 +20,9 @@
             <nav id="op">
                 <div class="contenedor">
                     <ul class="barra-top">
-                        <li><h1><a href="crud.jsp" class="antiliquido">salir</a></h1></li>
+                        <li><h1><a href="serv_control?opc=27">salir</a></h1></li>
                         <li><h1>LOGIN</h1></li>
-                        <li id="antiliquido"><a href="crud.jsp">X</a></li>
+                        <li id="antiliquido"><a href="serv_control?opc=27">X</a></li>
                     </ul>
                 </div>
             </nav>
@@ -45,8 +45,7 @@
                                 </div>
                                 
                                 <div class="llenar">
-                                    <section id="tabl">
-                                        
+                                    <section id="tabl">                                        
                                             <table class="tabla">
                                                 <input type="hidden" name="opc" value="25">
                                                 <tr><td><input class="campo" type="text" placeholder="Correo electrónico" id="txtcorreo" name="correo" required><!-- ya va salir convalidado si se pone email -->
@@ -80,7 +79,7 @@
                                     %>
                     </center>
                     </div><!-- contenedorT -->
-                                                   
+    </section>                                               
 
 
     <footer id="pie" class="espacios">
