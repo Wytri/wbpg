@@ -522,12 +522,12 @@ public class serv_control extends HttpServlet {
         ArrayList<Funciones> lisfunpeli = (ArrayList)ses.getAttribute("lisfunpeli");
         int [] asibol = (int[]) ses.getAttribute("Asi_bol");
         String tipoAsi = (String) ses.getAttribute("tipoAsi");
-        //int ord = (int) ses.getAttribute("codORDEN");
+        int ord = (int) ses.getAttribute("codORDEN");
         int DNI = (int) ses.getAttribute("DNI");
         int fun=0;
         double cost=0;
         String sala = "";
-        int ord = 111111;
+        //int ord = 111111;
         
         for(Funciones f: lisfunpeli){
             System.out.println(f.getFuncion()+"///"+f.getInicio()+"///"+f.getSala()+"///");
@@ -547,7 +547,8 @@ public class serv_control extends HttpServlet {
         
         
         
-        String pag="crud.jsp";
+        String pag="pagBOL_AddResumen.jsp";
+        
         request.getRequestDispatcher(pag).forward(request, response);
     }
     

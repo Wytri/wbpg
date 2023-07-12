@@ -118,7 +118,7 @@ public class tienda extends HttpServlet {
         System.out.println(h);
         double total=Double.parseDouble(request.getParameter("sum"));
         int a = 0,b = 0,c;
-        String pag="/pagConfirma.jsp";
+        String pag="/pagConfirmaProductos.jsp";
         int idDetalle; //Tablas Detalles
         int idOrden; //Tablas Ordenes
         List<CompraProducto> lista=(ArrayList)ses.getAttribute("canasta1");
@@ -148,7 +148,7 @@ public class tienda extends HttpServlet {
         /*for(CompraProducto x:lista){
             obj.crearDetalleProducto(x.getProd(), x.getCantidad());
         }*/
-        idOrden=(int)ses.getAttribute("codOrden");
+        idOrden=(int)ses.getAttribute("codORDEN");
         for (int i = 0; i < c; i++) {
             if(lista!=null & lista2!=null){
             if(lista.size()>i & lista2.size()>i){
@@ -189,18 +189,19 @@ public class tienda extends HttpServlet {
                 System.out.println("Lista vacía de producto");
                 obj.addOrdenSinCom(o);
             }
-            else{
-                Ordenes o=new Ordenes(idOrden, 0, 0, total);
-                System.out.println("Lista donde no compró nada");
-                obj.addOrdenVacia(o);
-            }
+
+        }
+        if(lista==null & lista2==null){
+            Ordenes o=new Ordenes(idOrden, 0, 0, total);
+            System.out.println("Lista donde no compró nada");
+            obj.addOrdenVacia(o);
         }
         
         ses.setAttribute("canasta1", null);
         ses.setAttribute("canasta2", null);
         //ses.setAttribute("total", sm);
         //ses.setAttribute("total", smC);
-        pag="/pagTiendaVirtual.jsp";
+        pag="/pagBOL_AddPago.jsp";
         
 
         
