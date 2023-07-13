@@ -4,6 +4,8 @@
     Author     : sebas
 --%>
 
+<%@page import="Controlador.Control"%>
+<%@page import="modelo.Cliente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -17,9 +19,17 @@
 
         <%-- Obtener el nombre y el arreglo de la URL --%>
         <%
+            Control c = new Control();
             HttpSession ses=request.getSession();
-            String tipo =(String) ses.getAttribute("tipoAsi");
-            int[] XD = (int[])ses.getAttribute("Asi_bol");
+            Cliente cli = new Cliente();
+            
+            cli = (Cliente) ses.getAttribute("CLIENTE");
+            
+            c.addcli(cli);
+            out.println(cli.getDni()+"--"+cli.getNombre()+"--"+cli.getApellido()+"--"+cli.getCorreo()+"--"+cli.getTel()+"--"+cli.getBirth());
+            
+            //String tipo =(String) ses.getAttribute("tipoAsi");
+            //int[] XD = (int[])ses.getAttribute("Asi_bol");
             
           //String nombre = request.getParameter("nombre");          
           //String[] lista = nombre.split(",",-1);
@@ -41,10 +51,10 @@
           //        
           //}
           
-          for (int i = 0; i < XD.length; i++) {
-                  out.println("Asientos con int:"+XD[i]+"<br>");
-              }
-            out.println("<br>TIPO DE ASI:  "+tipo);
+         // for (int i = 0; i < XD.length; i++) {
+           //       out.println("Asientos con int:"+XD[i]+"<br>");
+            //  }
+           // out.println("<br>TIPO DE ASI:  "+tipo);
           //}
         %>
     </body>

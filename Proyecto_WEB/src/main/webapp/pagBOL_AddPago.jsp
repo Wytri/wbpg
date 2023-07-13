@@ -4,6 +4,7 @@
     Author     : sebas
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="modelo.*"%>
 <%@page import="Controlador.Control"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,14 +12,19 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="css/Reg_Sala.css" rel="stylesheet" type="text/css"/>
+        <link href="css/BOL_estilo.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
     </head>
     <%
         HttpSession ses=request.getSession();
         Control obj = new Control();
-        String cod=(String)ses.getAttribute("codigoPelicula");
-        Pelicula p=obj.buscarP(cod).get(0);
+        ArrayList<Pelicula> listUnPe =(ArrayList)ses.getAttribute("ListUnaPeli");
+        String cod ="";
+        for(Pelicula p: listUnPe){
+            cod = p.getIdpeli();
+        }
+        Pelicula p = obj.buscarP(cod).get(0);
+        double total=Double.parseDouble(request.getParameter("sum"));
     %>
     <body>
         <header id="cabecera">
@@ -26,9 +32,9 @@
             <nav id="op">
                 <div class="contenedor">
                     <ul class="barra-top">
-                        <li class="bordeado"><h1><a href="serv_control?opc=27">Salir</a></h1></li>
+                        <li class="bordeado"><h1><a href="serv_control?opc=28">Salir</a></h1></li>
                         <li><h1>Rellena con los datos de tu Tarjeta</h1></li>
-                        <li><a href="serv_control?opc=27">X</a></li>
+                        <li><a href="serv_control?opc=28">X</a></li>
                     </ul>
                 </div>
             </nav>
@@ -37,7 +43,7 @@
         
         <section id="login" >
             <div class="contenedorT">
-                <form id="sesion" action="serv_control" method="post">
+                <form id="sesion" action="tienda" method="post">
                     <div class="txtsesion"><h1>Método de Pago</h1></div>
 
                             <div class="contenedorW1">
@@ -49,7 +55,8 @@
                                 <div class="llenar">
                                     <section id="tabl">                                        
                                             <table class="tabla">
-                                                <input type="hidden" name="opc" value="26">
+                                                <input type="hidden" name="opc" value="5">
+                                                <input type="hidden" name="sum" value="<%=total%>">
                                                 <tr><td><input class="campo" type="text" placeholder="# de tarjeta" name="correo" required>
                                                     <td><input class="campo" type="text" placeholder="CVV" name="cvv" required>
                                                 <tr><td><br>
@@ -105,6 +112,35 @@
                     </form>
             </div>
         </section>
+                                                        
+       <!-- Pie de página -->
+    <footer id="pie" class="espacios">
+        <div class="fila">
+            <div class="columnaPIE">
+                <div class="opcionPIE"><!-- opcionPIE1 -->
+                    <div class="columna">
+                        <a href="" target="_blank">
+                            <i class="fa-solid fa-film"></i>
+                            Terminos de uso y seguridad
+                        </a>
+                    </div>
+                </div><!-- fin opcionPIE1 -->
+            </div>
+
+            <div class="columnaPIE">
+                <div class="opcionPIE"><!-- opcionPIE2 -->
+                    <div class="columna">
+                        <a href="" target="_blank" class="antiliquido">
+                            <i class="fa-solid fa-film"></i>
+                            Contactanos
+                        </a>
+                    </div>
+                </div> <!-- fin opcionPIE2 --> 
+            </div>
+
+        </div>
+      
+    </footer>
         
     </body>
 </html>

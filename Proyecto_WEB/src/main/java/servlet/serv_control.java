@@ -63,10 +63,12 @@ public class serv_control extends HttpServlet {
             if (op==21) codpeliAfunc(request, response);
             if (op==22) codFunAseat(request, response);
             if (op==23) Asibol(request, response);
-            if (op==24) metodoFinal(request, response);
-            if (op==25) BOLlogin(request, response);
-            if (op==26) AsiDetBOLETA(request, response);
-            if (op==27) CANCELAR_BOL(request, response);
+            if (op==24) BOLlogin(request, response);
+            if (op==25) Crearcueta(request, response);
+            if (op==26) SinOrden(request, response);
+            if (op==27) AsiDetBOLETA(request, response);
+            if (op==28) CANCELAR_BOL(request, response);
+            
     }
     
     Control obj = new Control();
@@ -420,10 +422,6 @@ public class serv_control extends HttpServlet {
         String codP= request.getParameter("codP");
         ArrayList<Pelicula> listUnPe= (ArrayList<Pelicula>) obj.lispeUni(codP);
         
-        //session para el registro de cliente
-        ses.setAttribute("codigoPelicula", listUnPe.get(0).getIdpeli());
-        ////////////////////////////////////////////////
-        
         ses.setAttribute("ListUnaPeli", listUnPe);
         request.setAttribute("datoF", obj.lisSalaF(codP));
         
@@ -436,11 +434,6 @@ public class serv_control extends HttpServlet {
         HttpSession ses=request.getSession();
         int codD = Integer.parseInt(request.getParameter("codF"));
         ArrayList<Funciones> lisfunpeli = (ArrayList)obj.lisfunCOD(codD);
-        
-        //session para registro de cliente
-        ses.setAttribute("codigoFuncion", lisfunpeli.get(0).getFuncion());
-        ses.setAttribute("codigoSala", lisfunpeli.get(0).getSala());
-        ////////////////////////////////////////////////
         
         ses.setAttribute("lisfunpeli", lisfunpeli);
         request.setAttribute("listAsi", obj.lisasifun(codD));
@@ -464,16 +457,6 @@ public class serv_control extends HttpServlet {
         request.getRequestDispatcher(pag).forward(request, response);
     }
         
-        void metodoFinal(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        String idAsiento= request.getParameter("tasiento");
-        HttpSession ses=request.getSession();
-        
-        //session para registro de cliente
-        ses.setAttribute("idAsiento", idAsiento);
-        ////////////////////////////////////////////////
-        
-    }
-        
     protected void BOLlogin(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
@@ -488,8 +471,12 @@ public class serv_control extends HttpServlet {
                     System.out.println("go correo");
                     if (pass == c.dni) {
                         System.out.println("go dni");
+                        
                         HttpSession ses=request.getSession();
+                        Cliente a=new Cliente(11111111);
+                        ses.setAttribute("CLIENTE", a);
                         ses.setAttribute("DNI", pass);///////////////////////////////////DNI
+                        
                         request.setAttribute("dato1", "BIENVENIDO");
                         request.getRequestDispatcher("/pagEntrarTienda.jsp").forward(request, response);
                     }else{
@@ -568,10 +555,49 @@ public class serv_control extends HttpServlet {
         ses.setAttribute("Asi_bol", null);     //opc 23, Asibol
         ses.setAttribute("DNI", null);         //opc=25, BOLlogin
         ses.setAttribute("tipoAsi", null);     //opc 23, Asibol
-        
+        ses.setAttribute("CLIENTE", null);     //opc 28, Crearcueta
+        ses.setAttribute("codORDEN", null);    //opc 6,  Entrar ---> servlet=tienda
+            
         String pag="crud.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
     }
+    
+    protected void Crearcueta(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        HttpSession ses=request.getSession();
+
+        int DNIN = Integer.parseInt(request.getParameter("DNIN"));
+        String name = request.getParameter("Nombres");
+        String lastname = request.getParameter("Apellidos");
+        String date = request.getParameter("Fecha");
+        String email = request.getParameter("Correo");
+        int tele = Integer.parseInt( request.getParameter("telefono"));
+        String tefl = String.valueOf(tele);
+        
+        Cliente a=new Cliente();
+        
+                a.setDni(DNIN);
+                a.setNombre(name);
+                a.setApellido(lastname);
+                a.setBirth(date);
+                a.setCorreo(email);
+                a.setTel(tefl);
+        
+        ses.setAttribute("CLIENTE", a);
+        ses.setAttribute("DNI", DNIN);///////////////////////////////////BOL_LOGIN
+        String pag="pagEntrarTienda.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
+    
+    protected void SinOrden(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        HttpSession ses=request.getSession();
+        double suma;
+        suma = Double.parseDouble(request.getParameter("sum"));
+        ses.setAttribute("codORDEN", 0);
+        request.setAttribute("sum", suma);
+        
+        String pag="pagBOL_AddPago.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }    
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

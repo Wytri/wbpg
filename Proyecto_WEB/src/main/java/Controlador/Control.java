@@ -607,7 +607,7 @@ public class Control implements IControl{
     public void addcli(Cliente c) {
         Connection cn=SQLConexion.getConexion();
         try{
-            String sql="{call ADDCliente(?,?,?,?,?,?)}";
+            String sql="{call adddCliente(?,?,?,?,?,?)}";
             CallableStatement st=cn.prepareCall(sql);
             st.setInt(1, c.getDni());
             st.setString(2, c.getNombre());

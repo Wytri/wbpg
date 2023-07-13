@@ -34,7 +34,10 @@
                 
                 
                         <div class="columna">
-                            <a href="serv_control?opc=26" class="columna">
+                            <%
+                            double suma = 1.1;
+                            %>
+                            <a href="serv_control?opc=26&sum=<%=suma%>" class="columna">
                                 <span>NO</span>
                                 <div style="background-color: #0056b3" id="emp" class="liquido"></div>
                             </a>
