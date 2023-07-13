@@ -33,7 +33,7 @@
                 
                 
                 
-                        <div class="columna">
+                        <div class="columna"> 
                             <%
                             double suma = 1.1;
                             %>
