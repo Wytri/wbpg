@@ -49,6 +49,7 @@ public class tienda extends HttpServlet {
         if(op==8)DetalleCombo(request, response);
         if(op==9)CarritoCombo(request, response);
         if(op==10)BorrarCombo(request, response);
+        if(op==11)Previa(request, response);
     }
     
     protected void Detalle(HttpServletRequest request, HttpServletResponse response)
@@ -113,14 +114,23 @@ public class tienda extends HttpServlet {
     
     protected void graba(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
         HttpSession ses=request.getSession();
+        
+        int idOrden; //Tablas Ordenes
+        idOrden=(int)ses.getAttribute("codORDEN");
+        Cliente cli =(Cliente)ses.getAttribute("CLIENTE");
+        
+        if(idOrden==0){
+            System.out.println("XD");
+        }else{
+            
         Control obj=new Control();
-        String h=request.getParameter("sum");
+        String h = request.getParameter("sum");
         System.out.println(h);
         double total=Double.parseDouble(request.getParameter("sum"));
         int a = 0,b = 0,c;
         String pag="/pagConfirmaProductos.jsp";
         int idDetalle; //Tablas Detalles
-        int idOrden; //Tablas Ordenes
+//        int idOrden; //Tablas Ordenes
         List<CompraProducto> lista=(ArrayList)ses.getAttribute("canasta1");
         double sm=0;
         if(lista!=null){
@@ -148,7 +158,7 @@ public class tienda extends HttpServlet {
         /*for(CompraProducto x:lista){
             obj.crearDetalleProducto(x.getProd(), x.getCantidad());
         }*/
-        idOrden=(int)ses.getAttribute("codORDEN");
+        
         for (int i = 0; i < c; i++) {
             if(lista!=null & lista2!=null){
             if(lista.size()>i & lista2.size()>i){
@@ -201,12 +211,68 @@ public class tienda extends HttpServlet {
         ses.setAttribute("canasta2", null);
         //ses.setAttribute("total", sm);
         //ses.setAttribute("total", smC);
-        pag="/pagBOL_AddPago.jsp";
+        
+        }//fin del else
+        
+        
+        
+        
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////REGISTRAR ASIENTO DETALLE BOLETA////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ArrayList<Pelicula> listUnPe=(ArrayList)ses.getAttribute("ListUnaPeli");
+            ArrayList<Funciones> lisfunpeli = (ArrayList)ses.getAttribute("lisfunpeli");
+            int [] asibol = (int[]) ses.getAttribute("Asi_bol");
+            String tipoAsi = (String) ses.getAttribute("tipoAsi");
+            int ord = (int) ses.getAttribute("codORDEN");
+            int DNI = (int) ses.getAttribute("DNI");
+            int fun=0;
+            double cost=0;
+            String sala = "";
+                                
+            for(Funciones f: lisfunpeli){
+                System.out.println(f.getFuncion()+"///"+f.getInicio()+"///"+f.getSala()+"///");
+                fun = f.getFuncion();
+                sala = f.getSala();
+            }
+
+            for(Pelicula p: listUnPe){
+                System.out.println(p.getIdpeli()+"///"+p.getNom()+"///"+p.getCosto()+"///");
+                cost = p.getCosto();
+            }
+        
+        if(cli.getDni()==11111111){
+            
+            for(int i=0;i<=asibol.length-1;i++){
+                System.out.println(asibol[i]);
+                obj.addAsiDetBol(asibol[i], tipoAsi, sala, fun, ord, DNI, cost);
+            }
+            
+        }else{            
+            //crea nuevo cliente
+            obj.addcli(cli);
+            
+            //crea los asientos, detalles y boletas necesarios
+            for(int i=0;i<=asibol.length-1;i++){
+                System.out.println(asibol[i]);
+                obj.addAsiDetBol(asibol[i], tipoAsi, sala, fun, ord, DNI, cost);
+            }
+        
+        
+        
+        }
+        
         
 
         
+        String pag="/pagBOL_AddResumen.jsp";
         getServletContext().getRequestDispatcher(pag).forward(request, response);
     }
+    
+    
+    
     
     protected void DetalleCombo(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -255,6 +321,17 @@ public class tienda extends HttpServlet {
         String pag="/pagCompraCombos.jsp";
         request.getRequestDispatcher(pag).forward(request, response);
     }
+    
+    protected void Previa(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        double total=Double.parseDouble(request.getParameter("sum"));
+        
+        request.setAttribute("sum", total);
+        String pag="/pagBOL_AddPago.jsp";
+        request.getRequestDispatcher(pag).forward(request, response);
+    }
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

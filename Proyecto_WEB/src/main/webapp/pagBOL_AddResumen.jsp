@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="css/Reg_Sala.css" rel="stylesheet" type="text/css"/>
+        <link href="css/BOL_estilo.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
     </head>
     <body>
@@ -23,9 +23,9 @@
             <nav id="op">
                 <div class="contenedor">
                     <ul class="barra-top">
-                        <li><h1><a href="serv_control?opc=27">salir</a></h1></li>
+                        <li><h1><a href="serv_control?opc=28">salir</a></h1></li>
                         <li><h1>LOGIN</h1></li>
-                        <li id="antiliquido"><a href="serv_control?opc=27">X</a></li>
+                        <li id="antiliquido"><a href="serv_control?opc=28">X</a></li>
                     </ul>
                 </div>
             </nav>
@@ -42,11 +42,13 @@
                                     Control obj = new Control();
                                     String a="aa";
                                     HttpSession ses=request.getSession();
-                                    List<Pelicula> listUnPe = obj.lispeUni("P0001");;
-                                    List<Funciones> lisfunpeli = obj.lisfunCOD(10000);;
-                                    int [] asibol = {1,2,3,4};
-                                    String tipoAsi = "VIP";
-                                    int DNI = 12345678;
+                                    ArrayList<Pelicula> listUnPe=(ArrayList)ses.getAttribute("ListUnaPeli");
+                                    ArrayList<Funciones> lisfunpeli = (ArrayList)ses.getAttribute("lisfunpeli");
+                                    int [] asibol = (int[]) ses.getAttribute("Asi_bol");
+                                    String tipoAsi = (String) ses.getAttribute("tipoAsi");
+                                    int ord = (int) ses.getAttribute("codORDEN");
+                                    int DNI = (int) ses.getAttribute("DNI");
+
                                     
                                     //datos extraidos
                                     String IDpeli="",sala="",inicio="";
@@ -76,18 +78,28 @@
                                 <tr><td>Asiento(s): <td>
                                         <%
                                             for(int i=0;i<=asibol.length-1;i++){
-                                                out.print(asibol[i]);
+                                                out.print(asibol[i]+" ");
                                             }
                                         %>
+                                <tr><td>Tipo de Asiento(s): <td><%=tipoAsi%><br>
                                 <tr><td>costo de la peli: <td><%=costo%><br>
+                                <tr><td>Pago total boletas: <td><%=pagarBol%><br>  
                                         <!--si se puede mostrar los productos-->
                                         
                                         
                                         
                                 <tr><td>costo total de productos comprados: <td><%=a%><br> 
-                                <tr><td>Pago total boletas: <td><%=pagarBol%><br>   
+                                 
                                         
-                                        
+                                    <%                                        
+                                    ses.setAttribute("ListUnaPeli", null); //opc=21, codpeliAfunc
+                                    ses.setAttribute("lisfunpeli", null);  //opc=22, codFunAseat
+                                    ses.setAttribute("Asi_bol", null);     //opc 23, Asibol
+                                    ses.setAttribute("DNI", null);         //opc=25, BOLlogin
+                                    ses.setAttribute("tipoAsi", null);     //opc 23, Asibol
+                                    ses.setAttribute("CLIENTE", null);     //opc 28, Crearcueta
+                                    ses.setAttribute("codORDEN", null);    //opc 6,  Entrar ---> servlet=tienda
+                                    %>
                             </table>
                     </form>
                 </center>

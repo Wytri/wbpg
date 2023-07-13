@@ -385,3 +385,18 @@ h3 {
 .botonIngresar:hover{
     background-color: var(--color-hazul);
 }
+/*//////////////////////////////////////////////////FIN PARA LOGIN////////////////////*/
+
+/*//////////////////////////////////////////////////DESDE AQUI COMIENZA PARA NOCUENTA////////////////////*/
+
+#tablREG {
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;   
+}
+
+
+.img_Reg{
+    width: 20%;
+    height: 26%;
+}

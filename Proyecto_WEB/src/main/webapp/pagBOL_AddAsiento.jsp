@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="css/Reg_Sala.css" rel="stylesheet" type="text/css"/>
+        <link href="css/BOL_estilo.css" rel="stylesheet" type="text/css"/>
         <title>Registro Asiento</title>
     </head>
     <body>
@@ -21,9 +21,9 @@
             <nav id="op">
                 <div class="contenedor">
                     <ul class="barra-top">
-                        <li class="bordeado"><h1><a href="serv_control?opc=27">salir</a></h1></li>
+                        <li class="bordeado"><h1><a href="serv_control?opc=28">salir</a></h1></li>
                         <li><h1>Selecciona tus butacas</h1></li>
-                        <li><a href="serv_control?opc=27">X</a></li>
+                        <li><a href="serv_control?opc=28">X</a></li>
                     </ul>
                 </div>
             </nav>

@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="css/Reg_Sala.css" rel="stylesheet" type="text/css"/>
+        <link href="css/BOL_estilo.css" rel="stylesheet" type="text/css"/>
         
         <title>Login</title>
     </head>
@@ -20,9 +20,9 @@
             <nav id="op">
                 <div class="contenedor">
                     <ul class="barra-top">
-                        <li><h1><a href="serv_control?opc=27">salir</a></h1></li>
+                        <li><h1><a href="serv_control?opc=28">salir</a></h1></li>
                         <li><h1>LOGIN</h1></li>
-                        <li id="antiliquido"><a href="serv_control?opc=27">X</a></li>
+                        <li id="antiliquido"><a href="serv_control?opc=28">X</a></li>
                     </ul>
                 </div>
             </nav>
@@ -47,7 +47,7 @@
                                 <div class="llenar">
                                     <section id="tabl">                                        
                                             <table class="tabla">
-                                                <input type="hidden" name="opc" value="25">
+                                                <input type="hidden" name="opc" value="24">
                                                 <tr><td><input class="campo" type="text" placeholder="Correo electrónico" id="txtcorreo" name="correo" required><!-- ya va salir convalidado si se pone email -->
                                                 <tr><td><br>
                                                 <tr><td><br>                                                    
@@ -60,7 +60,7 @@
                                     </section>
 
                                     <br>
-                                    <h3><a href="pagRegistro_asiento2.jsp">Crear una cuenta</a></h3>
+                                    <h3><a href="pagBOL_AddNocuenta.jsp">Crear una cuenta</a></h3>
                                 </div>
                                 
                             </div>
@@ -98,7 +98,7 @@
             <div class="columnaPIE">
                 <div class="opcionPIE"><!-- opcionPIE2 -->
                     <div class="columna">
-                        <a href="" target="_blank" class="antiliquido">
+                        <a href="" target="_blank">
                             <i class="fa-solid fa-film"></i>
                             Contactanos
                         </a>

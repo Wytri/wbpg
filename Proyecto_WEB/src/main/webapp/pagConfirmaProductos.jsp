@@ -60,7 +60,7 @@
         </table>
         <br>SUMA TOTAL:
         <br><input name="sum" value="<%=df.format(suma)%>" readonly="">
-        <br><a href="tienda?opc=5&sum=<%=suma%>">Confirmar Compra</a><br>
+        <br><a href="tienda?opc=11&sum=<%=suma%>">Confirmar Compra</a><br>
         </center>
         
     </body>
