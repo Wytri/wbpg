@@ -83,15 +83,41 @@
                                         %>
                                 <tr><td>Tipo de Asiento(s): <td><%=tipoAsi%><br>
                                 <tr><td>costo de la peli: <td><%=costo%><br>
-                                <tr><td>Pago total boletas: <td><%=pagarBol%><br>  
+                                <tr><td>Pago total boletas: <td><%=pagarBol%><br>
                                         <!--si se puede mostrar los productos-->
+                                <tr><td>Lista de Compras de la Tienda:
+                                        <%
+                                            if(ses.getAttribute("codORDEN")!=null){
                                         
                                         
                                         
-                                <tr><td>costo total de productos comprados: <td><%=a%><br> 
+                                        int cod=(int)ses.getAttribute("codORDEN");
+                                        double total=0;
+                                        List<DetalleProducto> lisPro=(ArrayList)obj.lisBolPro(cod);
+                                        List<DetalleCombo> lisCom=obj.lisBolCom(cod);
+                                        for(DetalleProducto x: lisPro){
+                                        
+                                            %>
+                                        <tr><td>Nombre: <%=x.getNombre()%>, Cantidad: <%=x.getCant()%>, Total: <%=x.getTotal()%>
+                                        <%
+                                            total=total+x.getTotal();
+                                            }
+
+                                        for(DetalleCombo x: lisCom){
+                                        
+                                            %>
+                                        <tr><td>Nombre: <%=x.getNombre()%>, Cantidad: <%=x.getCantidad()%>, Total: <%=x.getTotal()%>
+                                        <%
+                                            total=total+x.getTotal();
+                                            }
+
+                                        %>
+                                        
+                                <tr><td>Costo total de Productos Comprados: <td><%=total%><br> 
                                  
                                         
-                                    <%                                        
+                                    <%
+                                        }                                        
                                     ses.setAttribute("ListUnaPeli", null); //opc=21, codpeliAfunc
                                     ses.setAttribute("lisfunpeli", null);  //opc=22, codFunAseat
                                     ses.setAttribute("Asi_bol", null);     //opc 23, Asibol

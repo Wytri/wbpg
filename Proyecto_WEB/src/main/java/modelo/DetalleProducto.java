@@ -12,6 +12,9 @@ public class DetalleProducto {
     public int detprod;
     public int prod;
     public int cant;
+    
+    public String nombre;
+    public double total;
 
     public DetalleProducto() {
     }
@@ -20,6 +23,30 @@ public class DetalleProducto {
         this.detprod = detprod;
         this.prod = prod;
         this.cant = cant;
+    }
+
+    public DetalleProducto(int cant, String nombre, double total) {
+        this.cant = cant;
+        this.nombre = nombre;
+        this.total = total;
+    }
+    
+    
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     

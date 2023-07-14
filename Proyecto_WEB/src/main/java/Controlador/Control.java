@@ -60,6 +60,54 @@ public class Control implements IControl{
         }
         return lis;    
     }
+    
+    public List<DetalleProducto> lisBolPro(int cod) {
+        List<DetalleProducto> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select po.NombreProducto,p.Cantidad,(po.Precio*p.Cantidad) as total from DetalleProducto p join Ordenes o on p.IdDetalleProducto=o.IdDetalleProducto join Productos po on p.IdProducto=po.IdProducto where o.IdOrden=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setInt(1, cod);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                DetalleProducto a=new DetalleProducto();
+                a.setNombre(rs.getString(1));
+                a.setCant(rs.getInt(2));
+                a.setTotal(rs.getDouble(3));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis;    
+    }
+    
+    public List<DetalleCombo> lisBolCom(int cod) {
+        List<DetalleCombo> lis=new ArrayList();
+        Connection cn=SQLConexion.getConexion();
+        try{
+            String sql="select co.NombreCombo,c.Cantidad,(co.Precio*c.Cantidad) from DetalleCombos c join Ordenes o on c.IdDetalleCombo=o.IdDetalleCombo join Combos co on c.IdCombo=co.IdCombo where o.IdOrden=?";
+            PreparedStatement st=cn.prepareStatement(sql);
+            st.setInt(1, cod);
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                DetalleCombo a=new DetalleCombo();
+                a.setNombre(rs.getString(1));
+                a.setCantidad(rs.getInt(2));
+                a.setTotal(rs.getDouble(3));
+                lis.add(a);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return lis;    
+    }
 
     @Override
     public List<Boleto> lisbole() {

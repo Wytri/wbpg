@@ -167,12 +167,14 @@ public class tienda extends HttpServlet {
                 int pro=obj.busDetProdu().getDetprod();
                 System.out.println("2 compras");
                 int com=obj.busDetCombo().getDetcom();
+                total=(lista.get(i).getCantidad()*lista.get(i).getPrecio())+(lista2.get(i).getCantidad()*lista2.get(i).getPrecio());
                 Ordenes o=new Ordenes(idOrden, com, pro, total);
                 obj.addOrden(o);
             }
             else if(lista2.size()>i){
                 obj.crearDetalleCombo(lista2.get(i).getComb(), lista2.get(i).getCantidad());
                 int com=obj.busDetCombo().getDetcom();
+                total=lista2.get(i).getCantidad()*lista2.get(i).getPrecio();
                 Ordenes o=new Ordenes(idOrden, com, 0, total);
                 System.out.println("Solo combo");
                 obj.addOrdenSinPro(o);
@@ -180,6 +182,7 @@ public class tienda extends HttpServlet {
             else if(lista.size()>i){
                 obj.crearDetalleProducto(lista.get(i).getProd(), lista.get(i).getCantidad());
                 int pro=obj.busDetProdu().getDetprod();
+                total=lista.get(i).getCantidad()*lista.get(i).getPrecio();
                 Ordenes o=new Ordenes(idOrden, 0, pro, total);
                 System.out.println("Solo Producto");
                 obj.addOrdenSinCom(o);
@@ -189,12 +192,14 @@ public class tienda extends HttpServlet {
                 obj.crearDetalleCombo(lista2.get(i).getComb(), lista2.get(i).getCantidad());
                 int com=obj.busDetCombo().getDetcom();
                 System.out.println("Lista vacía de Combo");
+                total=lista2.get(i).getCantidad()*lista2.get(i).getPrecio();
                 Ordenes o=new Ordenes(idOrden, com, 0, total);
                 obj.addOrdenSinPro(o);
             }
             else if(lista!=null){
                 obj.crearDetalleProducto(lista.get(i).getProd(), lista.get(i).getCantidad());
                 int pro=obj.busDetProdu().getDetprod();
+                total=lista.get(i).getCantidad()*lista.get(i).getPrecio();
                 Ordenes o=new Ordenes(idOrden, 0, pro, total);
                 System.out.println("Lista vacía de producto");
                 obj.addOrdenSinCom(o);
