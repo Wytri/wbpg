@@ -45,7 +45,7 @@
                 <input type="hidden" name="opc" value="9">
                 <input type="hidden" name="coda" value="<%=art.getComb()%>">
             <tr><td><center><a href="#" onclick="envia()">
-                        <img width="100" height="100" src="imagenes/evangelion.jpg"/></a></center>
+                        <img width="100" height="100" src="imagenes/COMP.png"/></a></center>
         </table>
             </form>
             </center>

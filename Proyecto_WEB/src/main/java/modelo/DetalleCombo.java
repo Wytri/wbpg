@@ -12,6 +12,9 @@ public class DetalleCombo {
     public int detcom;
     public int com;
     public int cantidad;
+    
+    public String nombre;
+    public double total;
 
     public DetalleCombo() {
     }
@@ -20,6 +23,30 @@ public class DetalleCombo {
         this.detcom = detcom;
         this.com = com;
         this.cantidad = cantidad;
+    }
+
+    public DetalleCombo(int cantidad, String nombre, double total) {
+        this.cantidad = cantidad;
+        this.nombre = nombre;
+        this.total = total;
+    }
+    
+    
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     
