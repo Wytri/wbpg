@@ -16,7 +16,10 @@
     </head>
     <body>
           <h1>Procesar Arreglo</h1> 
-
+          <script>
+              const continerQR = document.getElementById('continerQR');
+                new QRCode(continerQR, 'B0001');              
+          </script>
         <%-- Obtener el nombre y el arreglo de la URL --%>
         <%
             Control c = new Control();
