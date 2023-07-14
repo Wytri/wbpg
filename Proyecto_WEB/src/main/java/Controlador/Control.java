@@ -1723,6 +1723,30 @@ public class Control implements IControl{
         }
     }
     
+    
+        public List<Boleto> NUMBOL(int CANT) {
+        Connection cn=SQLConexion.getConexion();
+        List<Boleto> QR =new ArrayList();
+        try{
+            String sql="{call NUMBOL(?)}";
+            CallableStatement st=cn.prepareCall(sql);
+            st.setInt(1, CANT);
+
+            ResultSet rs=st.executeQuery();
+            while(rs.next()){
+                Boleto B=new Boleto();
+                B.setBoleta(rs.getString(1));
+                QR.add(B);
+            }
+            
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+          try{ cn.close();}catch(Exception ex2){}
+
+        }
+        return QR;
+    }
         
 }
            

@@ -26,27 +26,37 @@ public class prueba {
         double cost=0;
         String sala = "JJS";
         
+        List<Boleto> lisbol = c.NUMBOL(4);
+        System.out.println("XD");
+        String todo="";
         
-        for(Funciones f: lisfunCOD){
-            System.out.println(f.getFuncion()+"///"+f.getInicio()+"///"+f.getSala()+"///");
-            fun = f.getFuncion();
-            sala = f.getSala();
+        for(Boleto b:lisbol){
+            System.out.println(b.getBoleta());
+            todo = todo + b.getBoleta();
         }
         
-        for(Pelicula p: lispeUni){
-            System.out.println(p.getIdpeli()+"///"+p.getNom()+"///"+p.getCosto()+"///");
-            cost = p.getCosto();
-        }
-        
-        //c.addAsiDetBol(29, "VIP", sala, fun, 400001, DNI, cost);
-        
-        
-        int [] asibol = {1,2,3,4,5};
-        
-        for(int i=0;i<=asibol.length-1;i++){
-            System.out.println(asibol[i]+"--"+"VIP"+"--"+sala+"--"+fun+"--"+0+"--"+DNI+"--"+cost);
-//            c.addAsiDetBol(asibol[i], "REG", sala, fun, 0, DNI, cost);
-        }
+        System.out.println(todo);
+//        
+//        for(Funciones f: lisfunCOD){
+//            System.out.println(f.getFuncion()+"///"+f.getInicio()+"///"+f.getSala()+"///");
+//            fun = f.getFuncion();
+//            sala = f.getSala();
+//        }
+//        
+//        for(Pelicula p: lispeUni){
+//            System.out.println(p.getIdpeli()+"///"+p.getNom()+"///"+p.getCosto()+"///");
+//            cost = p.getCosto();
+//        }
+//        
+//        //c.addAsiDetBol(29, "VIP", sala, fun, 400001, DNI, cost);
+//        
+//        
+//        int [] asibol = {1,2,3,4,5};
+//        
+//        for(int i=0;i<=asibol.length-1;i++){
+//            System.out.println(asibol[i]+"--"+"VIP"+"--"+sala+"--"+fun+"--"+0+"--"+DNI+"--"+cost);
+////            c.addAsiDetBol(asibol[i], "REG", sala, fun, 0, DNI, cost);
+//        }
         
         
         

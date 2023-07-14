@@ -294,3 +294,18 @@ go
 
 --ejemplo
 execute Completa_BOL 9, 'VIP', 'S0001', 10000, 400004, 65747965, 32.00
+
+
+--crear QR obtener ID de boleta (s)
+begin DROP procedure IF EXISTS NUMBOL end 
+go
+
+create procedure NUMBOL(
+@cant int
+)as
+
+select TOP (@cant) Boleta_id from Boleta ORDER BY Boleta_id DESC
+
+go
+
+execute NUMBOL 6
