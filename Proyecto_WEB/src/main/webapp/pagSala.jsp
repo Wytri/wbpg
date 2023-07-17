@@ -12,6 +12,7 @@
     <head>
         <link href="css/adminlte.min.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/liq.css"/>
         <title>JSP Page</title>
         
         <style>
@@ -100,10 +101,13 @@
               color: rgb(75, 156, 13);
               background-position: 0 0;
             }
+            
+            .campo{
+                font-size: 40px;
+            }
         </style>
     </head>
     <body>
-            <h1>Ejercicio 1 - Listar Salas (DEPENDINETE)!</h1>
              <%
                 Control obj = new Control();
 
@@ -114,13 +118,17 @@
              %>   
 
 
-            <h2 class="alert-default-info">Lista de Salas</h2>
+             <h2 class="alert-danger" style="font-size: 40px; padding: 10px">Lista de Salas</h2>
 
+            <a class="liq" href="crud.jsp">
+                <div style="background-color: #dc3545" class="liquido"></div>
+                <span>Retornar</span>
+            </a>
             
         <center>
             <form action="" name="fr">
                 
-            <select name="listFun" required>
+                <select name="listFun" class="campo" required>
                     <option value="">Elegir</option>
                     <%
                        String xd="";
@@ -132,7 +140,7 @@
                         }                  
                 %>    
                 </select>
-                <input type="submit">
+                <input class="campo alert-danger" type="submit">
                 
             </form><br>
                 
@@ -191,6 +199,5 @@
                     }
                 %>   
         </center>      
-    <a href="crud.jsp">Retornar</a><br>
     </body>
 </html>

@@ -12,6 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/BOL_estilo.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="css/liq.css"/>
         <title>Registro Asiento</title>
     </head>
     <body>
@@ -21,7 +22,14 @@
             <nav id="op">
                 <div class="contenedor">
                     <ul class="barra-top">
-                        <li class="bordeado"><h1><a href="serv_control?opc=28">salir</a></h1></li>
+                        <li class="bordeado">
+                            <h1>
+                                <a class="liq" href="serv_control?opc=28">
+                                    <div style="background-color: #007bff;" class="liquido"></div>
+                                    <span style="font-size: 20px">Salir</span>
+                                </a><br>
+                            </h1>
+                        </li>
                         <li><h1>Selecciona tus butacas</h1></li>
                         <li><a href="serv_control?opc=28">X</a></li>
                     </ul>
@@ -86,7 +94,9 @@
                                     <tr><td>
                                 </table>
                             </form>
-                                    <input type="submit" onclick="rpst()" value="COMPRAR">
+                                    <input id="boton" style="background-color: blue; color: white; 
+                                           font-size: 40px; border-radius: 30px; padding: 10px
+                                           " type="submit" onclick="rpst()" value="COMPRAR">
                         </div><!-- contenedorW -->
 
 

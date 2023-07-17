@@ -13,6 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/BOL_estilo.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="css/liq.css"/>
         <title>JSP Page</title>
     </head>
     <%
@@ -32,7 +33,10 @@
             <nav id="op">
                 <div class="contenedor">
                     <ul class="barra-top">
-                        <li class="bordeado"><h1><a href="serv_control?opc=28">Salir</a></h1></li>
+                        <li class="bordeado"><h1><a href="serv_control?opc=28">
+                            <div style="background-color: #007bff;" class="liquido"></div>
+                                    <span style="font-size: 20px">Salir</span>
+                                </a></h1></li>
                         <li><h1>Rellena con los datos de tu Tarjeta</h1></li>
                         <li><a href="serv_control?opc=28">X</a></li>
                     </ul>

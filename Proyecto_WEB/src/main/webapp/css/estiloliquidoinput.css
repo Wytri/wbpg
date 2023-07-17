@@ -1,0 +1,59 @@
+
+* {
+    margin: 0;
+    padding: 0;
+	box-sizing: border-box;
+}
+
+/* conf para fondo negro */
+body {
+	/* display: flex; */
+	align-items: center;
+	justify-content: center;
+	/* min-height: 100vh; */
+	background: #0c0c0c; 
+}
+
+.estilo {
+    position: relative;
+    margin: 10px;
+    padding: 30px;
+    text-align: center;
+    font-size: x-large;
+    display: block;
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 387px;
+    overflow: hidden;
+    border-radius: 40px;
+    color: black;
+}
+
+.azul {
+    background: linear-gradient(to bottom, #4973ff, #ffffff);
+}
+.azul:hover {
+    color: white;
+    background: linear-gradient(to bottom, #49e4ff, #4973ff);
+}
+
+.rojo {
+    color: black;
+    background: linear-gradient(to bottom, #ff4970, #ffffff);
+}
+
+.rojo:hover {
+    color: white;
+    background: linear-gradient(to bottom, #f484ef, #ff4970);
+}
+
+.verde {
+    background: linear-gradient(to bottom, #49ff64, #ffffff);
+}
+
+.verde:hover {
+    color: white;
+    background: linear-gradient(to bottom, #f3ff49, #49ff64);
+}
+

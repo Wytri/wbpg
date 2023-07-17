@@ -10,6 +10,7 @@
     <head>
         <link href="css/adminlte.min.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/liq.css"/>
         <title>JSP Page</title>
         
         <script language='JavaScript'>
@@ -85,6 +86,10 @@
                                                                 border: 5px double;
                                                                 ">
         </form>
+        <a class="liq" href="crud.jsp">
+            <div style="background-color: #dc3545; margin: 7px;" class="liquido"></div>
+            <span>Retornar</span>
+        </a>
     </body>
     <br>
     <iframe name="ventana" height="900" width="1400"></iframe>

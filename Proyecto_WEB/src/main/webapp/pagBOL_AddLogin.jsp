@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/BOL_estilo.css" rel="stylesheet" type="text/css"/>
-        
+        <link rel="stylesheet" href="css/liq.css"/>
         <title>Login</title>
     </head>
     <body>
@@ -20,7 +20,12 @@
             <nav id="op">
                 <div class="contenedor">
                     <ul class="barra-top">
-                        <li><h1><a href="serv_control?opc=28">salir</a></h1></li>
+                        <li><h1>
+                                <a class="liq" href="serv_control?opc=28">
+                                   <div style="background-color: #007bff;" class="liquido"></div>
+                                    <span style="font-size: 20px">Salir</span>
+                                </a>
+                            </h1></li>
                         <li><h1>LOGIN</h1></li>
                         <li id="antiliquido"><a href="serv_control?opc=28">X</a></li>
                     </ul>
@@ -55,7 +60,9 @@
                                                 <tr><td><br>
                                                 <tr><td><br>                                                     
                                             </table>
-                                            <input class="botonIngresar" type="submit" value="Ingresar">
+                                            <input style="background-color: blue; color: white; 
+                                           font-size: 40px; border-radius: 30px; padding: 10px
+                                           " class="botonIngresar" type="submit" value="Ingresar">
                                         
                                     </section>
 

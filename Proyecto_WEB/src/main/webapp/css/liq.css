@@ -1,0 +1,79 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 16/07/2023, 02:51:56 PM
+    Author     : henry
+*/
+
+.liq {
+    position: relative;
+    margin: 10px;
+    padding: 30px;
+    text-align: center;
+    display: block;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 287px;
+    overflow: hidden;
+    border-radius: 40px;
+}
+
+.liq span {
+    position: relative;
+    color: #fff;
+    font-size: 20px;
+    font-family: Arial;
+    letter-spacing: 8px;
+    z-index: 1;
+}
+
+.liq .liquido {
+    position: absolute;
+    top: -80px;
+    left: 0;
+    width: 287px;
+    height: 230px;
+    /* background: #4973ff; */
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, .5s);
+    transition: .5s;
+}
+
+.liq .liquido::after, .liq .liquido::before {
+    content: '';
+    width: 170%;
+    height: 250%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -75%);
+    background: #000;
+}
+
+.liq .liquido::before {
+    border-radius: 45%;
+    background: rgba(20, 20, 20, 1);
+    animation: animate 5s linear infinite;
+}
+
+.liq .liquido::after {
+    border-radius: 40%;
+    background: rgba(20, 20, 20, .5);
+    animation: animate 10s linear infinite;
+}
+
+.liq:hover .liquido {
+    top: -138px;
+}
+
+@keyframes animate {
+    0% {
+        transform: translate(-50%, -70%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -75%) rotate(360deg);
+    }
+}
