@@ -33,7 +33,7 @@
             <nav id="op">
                 <div class="contenedor">
                     <ul class="barra-top">
-                        <li class="bordeado"><h1><a href="serv_control?opc=28">
+                        <li class="bordeado"><h1><a href="index.html" class="liq">
                             <div style="background-color: #007bff;" class="liquido"></div>
                                     <span style="font-size: 20px">Salir</span>
                                 </a></h1></li>
