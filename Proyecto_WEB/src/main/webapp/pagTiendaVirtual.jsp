@@ -23,7 +23,10 @@
             <h1 style="color: white; font-family: Arial;">TIENDA VIRTUAL</h1>
             <form action="" name="fr">
                 <div class="fila">
-                    <a href="crud.jsp" class="liq">
+                    <%
+                            double suma = 1.1;
+                            %>
+                        <a href="serv_control?opc=26&sum=<%=suma%>" class="liq">
                         <span>SALIR</span>
                         <div style="background-color: #ffca2c" class="liquido"></div>
                     </a>

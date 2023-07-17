@@ -21,7 +21,7 @@
                 <div class="contenedor">
                     <ul class="barra-top">
                         <li><h1>
-                                <a class="liq" href="serv_control?opc=28">
+                                <a class="liq" href="index.html">
                                    <div style="background-color: #007bff;" class="liquido"></div>
                                     <span style="font-size: 20px">Salir</span>
                                 </a>
