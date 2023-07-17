@@ -13,6 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/BOL_estilo.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="css/liq.css"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <title>JSP Page</title>
     </head>
@@ -24,7 +25,10 @@
             <nav id="op">
                 <div class="contenedor">
                     <ul class="barra-top">
-                        <li><h1><a href="serv_control?opc=28">salir</a></h1></li>
+                        <li><h1><a href="serv_control?opc=28">
+                            <div style="background-color: #007bff;" class="liquido"></div>
+                                    <span style="font-size: 20px">Salir</span>
+                                </a></h1></li>
                         <li><h1>LOGIN</h1></li>
                         <li id="antiliquido"><a href="serv_control?opc=28">X</a></li>
                     </ul>

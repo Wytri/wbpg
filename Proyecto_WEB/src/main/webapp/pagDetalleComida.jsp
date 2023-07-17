@@ -14,10 +14,10 @@
     <head>
         <link href="css/adminlte.min.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/liq.css"/>
         <title>JSP Page</title>
     </head>
     <body>
-            <h1>Ejercicio 1 - Listar Detalle de Comida (DEPENDINETE)!</h1>
              <%
                  Control obj = new Control();
                  String nom="";
@@ -53,20 +53,45 @@
              %>
 
 
-             <h2 class="alert-default-info">Lista de Compras</h2>
+             <h2 class="alert-danger">Lista de Compras</h2>
 
-             <a href="pagComida.jsp">Retornar</a><br>
+             <a class="liq" href="pagComida.jsp">
+                <div style="background-color: #dc3545" class="liquido"></div>
+                <span>Retornar</span>
+            </a><br>
 
-        <center>
              <div style="max-width: 30%">
-                <table class="table table-hover">
+                <table>
                     <thead>
-                        <tr class="bg-dark"><th>CodigoDetalle<th>Cantidad Compra<th>
+                        <tr>
+                            <th><a class="columna aa liq">
+                            <span style="font-size: 20px; font-weight: 300">Codigo</span>
+                            <div style="background-color: blue" class="liquido"></div>
+                        </a>
+                            <th><a class="columna aa liq">
+                            <span style="font-size: 20px; font-weight: 300">Cantidad</span>
+                            <div style="background-color: blue" class="liquido"></div>
+                        </a>
                     </thead>   
                 <%
                      if (o.equals("1")) {
                        for(DetalleCombo x:lista){
-                    out.print("<tr><td>"+x.getDetcom()+"<td>"+x.getCantidad());
+                %>
+                <tr>
+                    <td>
+                        <a class="columna aa liq">
+                            <span style="font-size: 20px; font-weight: 300"><%=x.getDetcom()%></span>
+                            <div style="background-color: #6610f2" class="liquido"></div>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="columna aa liq">
+                            <span style="font-size: 20px; font-weight: 300"><%=x.getCantidad()%></span>
+                            <div style="background-color: #008138" class="liquido"></div>
+                        </a>
+                    </td>
+                </tr>
+                <%
                     }  
                    }else if (o.equals("2")) {
                            for(DetalleProducto x:lista2){
@@ -74,8 +99,8 @@
                    }  
                       }
 
-                %>    
+                %>  
+                </table>
             </div>
-        </center>
     </body>
 </html>

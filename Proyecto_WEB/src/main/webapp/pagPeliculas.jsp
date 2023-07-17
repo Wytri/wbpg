@@ -15,9 +15,82 @@
         <link href="css/adminlte.min.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        
+        <style>
+.liq {
+    position: relative;
+    margin: 10px;
+    padding: 30px;
+    text-align: center;
+    display: block;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 287px;
+    overflow: hidden;
+    border-radius: 40px;
+}
+
+.liq span {
+    position: relative;
+    color: #fff;
+    font-size: 20px;
+    font-family: Arial;
+    letter-spacing: 8px;
+    z-index: 1;
+}
+
+.liq .liquido {
+    position: absolute;
+    top: -80px;
+    left: 0;
+    width: 287px;
+    height: 230px;
+    /* background: #4973ff; */
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, .5s);
+    transition: .5s;
+}
+
+.liq .liquido::after, .liq .liquido::before {
+    content: '';
+    width: 170%;
+    height: 250%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -75%);
+    background: #000;
+}
+
+.liq .liquido::before {
+    border-radius: 45%;
+    background: rgba(20, 20, 20, 1);
+    animation: animate 5s linear infinite;
+}
+
+.liq .liquido::after {
+    border-radius: 40%;
+    background: rgba(20, 20, 20, .5);
+    animation: animate 10s linear infinite;
+}
+
+.liq:hover .liquido {
+    top: -138px;
+}
+
+@keyframes animate {
+    0% {
+        transform: translate(-50%, -70%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -75%) rotate(360deg);
+    }
+}
+        </style>
     </head>
     <body>
-        <h1>Ejercicio 1 - Listar Peliculas (DEPENDIENTE)!</h1>
+        <h1>Listar Peliculas (DEPENDIENTE)!</h1>
         <%
             HttpSession ses=request.getSession();
             ArrayList<Pelicula> lista=(ArrayList)request.getAttribute("dato");
@@ -28,7 +101,7 @@
             int inicio=0, fin, numPag=canReg/tampag+1;
             for(int p=1; p<=numPag;p++){
                 %>
-                <a href="serv_control?opc=2&cod=<%=cod%>&pa=<%=p%>"><%=p%></a>
+                <a href="serv_control?opc=2&cod=<%=cod%>&pa=<%=p%>" style="font-size: 30px"><%=p%></a>
         <%
             }
             int pagina;
@@ -45,7 +118,7 @@
             
             String cate = request.getAttribute("codigo").toString();
             ses.setAttribute("codCate", cate);
-            out.print("<h3>Lista de Peliculas de la Categoria: "+cate+"</h3>");
+            out.print("<h3>Lista de Peliculas de la Categoria: <span style='color: blue'>"+cate+"</span></h3>");
         %>
         
         
@@ -57,13 +130,20 @@
                     nombre=v.getName();
                 }
             }
-            out.print("<h3>Categoria: "+nombre+"</h3>");
+            out.print("<h3>Categoria: <span style='color: blue'>"+nombre+"</span></h3>");
         %>
+        
+        <a class="liq" href="pagCategorias.jsp">
+            <span>Retornar</span>
+            <div style="background-color: blue" class="liquido"></div>
+        </a>
+        <a class="liq" href="pagNuevaPelicula.jsp">
+            <span>Adicioon</span>
+            <div style="background-color: #DC3545" class="liquido"></div>
+        </a>
         
         <h2 class="alert-default-info">Lista de Peliculas</h2>
         
-        <a href="pagCategorias.jsp">Retornar</a><br>
-        <a href="pagNuevaPelicula.jsp">Adicionar</a><br><br>
         <table class="table table-hover">
             <thead>
                 <tr class="bg-dark" style="text-align: center;"><th>Codigo<th>Nombre<th>Año<th>Duracion<th>Costo<th>Clasificacion<th>Sinopsis<th>Imagen<th>Actualizar<th>Eliminar</tr>
