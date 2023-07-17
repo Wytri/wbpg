@@ -28,7 +28,7 @@
         <form name="fr">
         <table cellpadding="10" cellspacing="10" class="table table-hover">
             
-            <tr><td rowspan="5"><img src="imagenes/<%=art.getNombre()%>.jpg" height="200"/>
+            <tr><td rowspan="5"><img src="imagenes/<%=art.getNombre()%>.png" height="200"/>
             <tr><td>Descripcion <td><%=art.getDescr()%>
             <tr><td>Precio <td>S/ <%=art.getPrecio()%>
             <tr><td>Stock <td><%=x%>

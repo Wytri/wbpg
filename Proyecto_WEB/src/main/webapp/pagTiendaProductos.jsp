@@ -36,7 +36,7 @@
                     %>
                     <td style="border-radius: 30px; background-image: linear-gradient(to bottom, #ffffff, #007bff)">
             <center>
-                            <img style=" padding: 10px" src="imagenes/<%=x.getNombre()%>.jpg" width="200" height="200"/>
+                            <img style=" padding: 10px" src="imagenes/<%=x.getNombre()%>.png" width="200" height="200"/>
                             <div style="font-family: Arial;"><%=x.getNombre()%></div>
                             <div style="font-family: Arial;">Apartir de:</div>
                             <div style="font-family: Arial;">S/ <%=x.getPrecio()%></div>
@@ -47,6 +47,7 @@
                             </a>
                         
                             
+            
                 <%
                     cuenta++;
                     if(cuenta%4==0)out.print("<tr>");
