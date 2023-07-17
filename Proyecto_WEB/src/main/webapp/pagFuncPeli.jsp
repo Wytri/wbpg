@@ -165,7 +165,7 @@
                             <div class="fila">
                                 <h2 style="color: white; background-color: #007bff; padding: 10px;">Funciones para <%=p.getNom()%></h2>
                             </div>
-                            <a class="li" href="pagPeliculasAdd.jsp">
+                            <a class="li" href="index.html">
                                 <div style="background-color: #007bff;" class="liquido"></div>
                                 <span style="font-size: 20px">Retornar</span>
                             </a><br>
